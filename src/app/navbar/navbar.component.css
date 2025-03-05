@@ -1,0 +1,36 @@
+#logonav {
+  max-height: 50px;
+  width: auto;
+  vertical-align: middle;
+  display: inline;
+}
+
+/* Navbar styles */
+#navbar {
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  display: flex;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+#navbar a:hover {
+  background-color: #495057;
+  color: #f8f9fa;
+}

@@ -1,0 +1,205 @@
+<div class="container">
+
+  <!-- Header Section -->
+  <header id="home" style="position: relative; text-align: center; color: white;">
+    <img id="logo" src="images/galaxylabslogo.png" alt="Galaxy Labs Logo" style="max-width: 100%; height: auto;">
+    <p class="slide-in-left" style="font-size: 2rem; margin-top: 20px;">Innovating the Future</p>
+    <a href="https://www.instagram.com/galaxylabsinsta/" target="_blank">
+      <button class="button" style="background-color: #00bcd4; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        Learn More
+      </button>
+    </a>
+    <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+      <source src="images/genesis_home.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </header>
+
+  <!-- About Section -->
+  <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+    <img src="images/earth-fade.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+    <section id="about" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px;">
+      <h2>What We Do</h2>
+      <p>
+        At Galaxy Labs, we are dedicated to pushing the boundaries of technology
+        to create innovative solutions that improve lives. Our team of experts is
+        passionate about developing cutting-edge software and hardware to meet the
+        needs of our clients and drive the tech industry forward.
+      </p>
+    </section>
+  </div>
+
+  <!-- More Services Section -->
+  <div id="more-services" style="background-color: black; color: white; padding: 40px 100px;">
+    <h2 style="color: white; text-align: center;">More Services</h2>
+    <div class="services-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%;">
+      <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+        <h3>Software Solutions</h3>
+        <p>Our team of experienced developers will work closely with you to understand your business requirements, goals, and pain points to develop a solution that is tailored to your unique needs.</p>
+        <a href="#learn-more-custom-software" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+      </div>
+      <div class="service" style="background-color: transparent;padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+        <h3>Mobile Applications</h3>
+        <p>Our team of developers can create, design, and rebuild any application to attract more customers and increase your business revenue.</p>
+        <a href="#learn-more-mobile-apps" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+      </div>
+      <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+        <h3>Web Applications</h3>
+        <p>Our team of experienced developers has a deep understanding of the latest technologies and frameworks that are essential for creating high-performance, scalable, and secure web applications.</p>
+        <a href="#learn-more-web-app-dev" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+      </div>
+      <div class="service" style="background-color: transparent;padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+        <h3>API Integration</h3>
+        <p>We can integrate your off-the-shelf software utilizing API configurations into your custom software. Whether you need to integrate your CRM system with your accounting software or connect your e-commerce platform with your shipping provider, our team can help.</p>
+        <a href="#learn-more-api-integration" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    @media (max-width: 1200px) {
+      .service {
+        flex: 1 1 calc(33.33% - 20px); /* 3 columns on medium screens */
+      }
+    }
+  
+    @media (max-width: 900px) {
+      .service {
+        flex: 1 1 calc(50% - 20px); /* 2 columns on small screens */
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .service {
+        flex: 1 1 100%; /* 1 column on extra small screens */
+      }
+    }
+  </style>
+  
+  
+  
+  
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 40px; background-color: #f4f4f9;">
+    <!-- Text Section -->
+    <div class="info-section" style="flex: 1; max-width: 500px; text-align: center; margin-bottom: 30px;">
+      <h2 style="font-family: 'Roboto', sans-serif; font-size: 32px; margin-bottom: 15px; color: #333;">
+        Have a Software Problem?
+      </h2>
+      <p style="font-family: 'Roboto', sans-serif; font-size: 18px; margin-bottom: 25px; color: #666;">
+        Together, let’s find a solution.
+      </p>
+    </div>
+  
+    <!-- Form Section -->
+    <!-- <div style="flex: 1; max-width: 500px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+      <form>
+        <div style="margin-bottom: 20px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" placeholder="Enter your name" />
+          </mat-form-field>
+        </div>
+  
+        <div style="margin-bottom: 20px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label style = "color:black">Email</mat-label>
+            <input matInput type="email" name="email" placeholder="Enter your email" />
+          </mat-form-field>
+        </div>
+  
+        <div style="margin-bottom: 20px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Message</mat-label>
+            <textarea matInput rows="5" name="message" placeholder="Type your message"></textarea>
+          </mat-form-field>
+        </div>
+  
+        <div style="align-items: center;">
+          <button mat-raised-button color="primary" type="submit" style="width: 100%; padding: 12px; font-size: 16px;">
+            Send Message
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+   -->
+  
+  <!-- Duarte Foundation Section -->
+<div style="position: relative; width: 100%; height: 60%; overflow: hidden; background-color: #ffffff;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; position: relative; padding: 100px 20px;">
+    
+    <!-- Left Section with Image or Design Element -->
+    
+    <!-- Right Section with Duarte Foundation Information -->
+    <div class="right-section" style="flex: 1; min-width: 300px; padding: 20px; background-color: white; border-radius: 8px; color:black;">
+      <div class="info-section" style="text-align: center;">
+        <h2 style="margin-bottom: 10px;">The Duarte Foundation</h2>
+        <p style="margin-bottom: 20px; font-size: 1.2rem;">
+          The Duarte Foundation is a nonprofit organization dedicated to supporting underrepresented and minority students. 
+          Our mission is to provide resources, mentorship, and financial assistance to help these students achieve their academic and career goals.
+        </p>
+        <p style="margin-bottom: 20px; font-size: 1.2rem;">
+          Each year, the foundation awards a scholarship to one deserving student, helping to make their higher education dreams a reality.
+          We believe in empowering future leaders by breaking down barriers and creating opportunities.
+        </p>
+        <a href="https://www.duartefoundation.org" style="text-decoration: none; color: #00bcd4;">
+          <h1 style="margin: 0; font-size: 1.5rem;">Learn More</h1>
+        </a>
+      </div>
+    </div>
+    <div class="left-section" style="flex: 1; min-width: 300px; display: flex; align-items: center; justify-content: center; text-align: center;">
+      <img src="images/scholarship.png" alt="Duarte Foundation Logo" style="max-width: 80%; height: auto; border-radius: 8px;">
+    </div>
+  </div>
+</div>
+<!-- Quote Section -->
+<div id="quote-section" style="background-color: #f4f4f4; padding: 40px 20px; text-align: center; margin-top: 40px;">
+  <blockquote style="font-size: 1.5rem; font-style: italic; color: #333; max-width: 800px; margin: 0 auto;">
+    "At Galaxy Labs, we believe in pushing the boundaries of innovation to create technology that not only solves problems but shapes the future."
+  </blockquote>
+  <p style="margin-top: 20px; font-weight: bold; color: #00bcd4;">— Galaxy Labs Team</p>
+</div>
+<!-- Career Opportunities Section -->
+<div id="career-section" style="background-color: #00bcd4; padding: 40px 20px; text-align: center; color: white; margin-top: 40px; border-radius: 8px;">
+  <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">Join Our Team</h2>
+  <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    Are you passionate about technology and innovation? At Galaxy Labs, we’re dedicated to creating groundbreaking solutions. If you’re ready to take on exciting challenges and make an impact, we want to hear from you!
+  </p>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
+    <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;">
+    <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
+      "Together, we can shape the future!"
+    </p>
+  </div>
+  
+  <a href="https://www.galaxylabs.com/careers" target="_blank" style="text-decoration: none;">
+    <button class="button" style="background-color: white; color: #00bcd4; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-size: 1.25rem; transition: background-color 0.3s; font-weight: bold;">
+      Apply Now
+    </button>
+  </a>
+</div>
+
+
+
+<!-- Genesis Section -->
+<!-- <div id="genesis" style="position: relative; text-align: center; color: white; padding: 100px 20px; height: 100vh; overflow: hidden; background: rgba(0, 0, 0, 0.7);">
+  <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+    <source src="images/medical_background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center;">
+    <h2 style="font-size: 3rem; margin-bottom: 20px;">Introducing Genesis</h2>
+    <p style="font-size: 1.25rem; margin-bottom: 40px; max-width: 600px; line-height: 1.5;">
+   Using algorithms and medical data, Genesis offers health assessments and accurate diagnostics.    </p>
+    <a href="https://www.instagram.com/galaxylabsinsta/" target="_blank">
+      <button class="button" style="background-color: #00bcd4; color: white; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-size: 1.25rem; transition: background-color 0.3s;">
+        Launching soon
+      </button>
+    </a>
+  </div>
+</div> -->
+
+
+</div>
