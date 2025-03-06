@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gl-labs",
+            "outputPath": "dist/gl-labs-angular", 
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -92,5 +92,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "242a0f24-10a5-486c-af23-e26fa5fb0acc"
   }
 }
