@@ -21,11 +21,9 @@
 }
 
 #navbar a {
-  float: left;
-  display: block;
   color: white;
   text-align: center;
-  padding: 15px 20px;
+  padding: 5px 20px;
   text-decoration: none;
   font-size: 1em;
 }
@@ -33,4 +31,24 @@
 #navbar a:hover {
   background-color: #495057;
   color: #f8f9fa;
+}
+
+.custom-button {
+  align-items: center; /* Centers text vertically */
+  background-color: #013f8e;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+  margin-right: 20px; /* Adds space from the right */
+  height: 30px; /* Ensures a consistent height */
+}
+
+.custom-button:hover {
+  background-color: #3700b3;
+  transform: scale(1.05);
+}
+
+.custom-button:active {
+  background-color: #311b92;
+  transform: scale(0.98);
 }
