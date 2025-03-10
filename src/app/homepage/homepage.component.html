@@ -1,153 +1,160 @@
 <div class="container">
-  <!-- Header Section -->
-  <header id="home" style="position: relative; text-align: center; color: white;">
-      <img id="logo" src="images/galaxylabslogo.png" alt="Galaxy Labs Logo" style="max-width: 100%; height: auto;" />
-      <p class="slide-in-left" style="font-size: 2rem; margin-top: 20px;">
-          Innovating the Future
-      </p>
-      <a href="https://www.instagram.com/galaxylabsinsta/" target="_blank">
-          <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-              About Us
-          </button>
-      </a>
-      <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-          <source src="images/genesis_home.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-      </video>
-  </header>
-
-  <!-- About Section -->
-  <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-    <img src="images/earth-fade.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-    <section id="about" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px; width: 80%; max-width: 800px;">
-        <h2 style="font-size: 2rem;">What We Do</h2>
-        <p style="font-size: 1.1rem;">
-            At Galaxy Labs, we are dedicated to pushing the boundaries of technology to create innovative solutions that improve lives. Our team of experts is passionate about developing cutting-edge software and hardware to meet the
-            needs of our clients and drive the tech industry forward.
+    <!-- Header Section -->
+    <header id="home" style="position: relative; text-align: center; color: rgb(65, 61, 61);">
+        <img id="logo" src="images/galaxylabslogo.png" alt="Galaxy Labs Logo" style="max-width: 100%; height: auto;" />
+        <p class="slide-in-left" style="color: white; font-size: 2rem; margin-top: 20px;">
+            Custom Software Solutions for Your Business – Web, Mobile, AI & More!
         </p>
-    </section>
-</div>
+        <a href="tel:+1234567890">
+            <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+                Text or Call
+            </button>
+        </a>
+        <a href="#">
+            <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin: 0 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+                Free Estimate
+            </button>
+        </a>
 
-<style>
-    /* Mobile Responsive Styles */
-    @media (max-width: 768px) {
-        section#about {
-            width: 90%; /* Make the section slightly smaller on mobile */
-            padding: 15px; /* Reduce padding */
-        }
-        section#about h2 {
-            font-size: 1.5rem; /* Smaller title font size for mobile */
-        }
-        section#about p {
-            font-size: 1rem; /* Adjust the paragraph font size for smaller screens */
-        }
-    }
-    
-    /* Smaller Devices (Phone Portrait) */
-    @media (max-width: 480px) {
-        section#about {
-            width: 95%; /* Further reduce width for very small screens */
-            padding: 10px; /* Even smaller padding */
-        }
-        section#about h2 {
-            font-size: 1.3rem; /* Further reduce the title size */
-        }
-        section#about p {
-            font-size: 0.9rem; /* Adjust paragraph text for better readability on small screens */
-        }
-    }
-</style>
+        <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="images/cityscape.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </header>
 
+    <!-- About Section -->
+    <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+        <img src="images/earth-fade.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+        <section
+            id="about"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px; width: 80%; max-width: 800px;"
+        >
+            <h2 style="font-size: 2rem;">What We Do</h2>
+            <p style="font-size: 1.1rem;">
+                At Galaxy Labs, we are dedicated to pushing the boundaries of technology to create innovative solutions that improve lives. Our team of experts is passionate about developing cutting-edge software and hardware to meet the
+                needs of our clients and drive the tech industry forward.
+            </p>
+        </section>
+    </div>
 
-  <!-- More Services Section -->
-  <div id="" style="background-color: black; color: white; padding: 40px 10px;">
-    <h2 style="color: white; text-align: center;">More Services</h2>
-    <div class="" style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%;">
-        <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
-            <h3>Software Solutions</h3>
-            <p>
-                Our team of experienced developers will work closely with you to understand your business requirements, goals, and pain points to develop a solution that is tailored to your unique needs.
-            </p>
-            <a href="#learn-more-custom-software" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
-        </div>
-        <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
-            <h3>Mobile Applications</h3>
-            <p>
-                Our team of developers can create, design, and rebuild any application to attract more customers and increase your business revenue.
-            </p>
-            <a href="#learn-more-mobile-apps" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
-        </div>
-        <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
-            <h3>Web Applications</h3>
-            <p>
-                Our team of experienced developers has a deep understanding of the latest technologies and frameworks that are essential for creating high-performance, scalable, and secure web applications.
-            </p>
-            <a href="#learn-more-web-app-dev" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
-        </div>
-        <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
-            <h3>API Integration</h3>
-            <p>
-                We can integrate your off-the-shelf software utilizing API configurations into your custom software. Whether you need to integrate your CRM system with your accounting software or connect your e-commerce platform with
-                your shipping provider, our team can help.
-            </p>
-            <a href="#learn-more-api-integration" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+    <style>
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            section#about {
+                width: 90%; /* Make the section slightly smaller on mobile */
+                padding: 15px; /* Reduce padding */
+            }
+            section#about h2 {
+                font-size: 1.5rem; /* Smaller title font size for mobile */
+            }
+            section#about p {
+                font-size: 1rem; /* Adjust the paragraph font size for smaller screens */
+            }
+        }
+
+        /* Smaller Devices (Phone Portrait) */
+        @media (max-width: 480px) {
+            section#about {
+                width: 95%; /* Further reduce width for very small screens */
+                padding: 10px; /* Even smaller padding */
+            }
+            section#about h2 {
+                font-size: 1.3rem; /* Further reduce the title size */
+            }
+            section#about p {
+                font-size: 0.9rem; /* Adjust paragraph text for better readability on small screens */
+            }
+        }
+    </style>
+
+    <!-- More Services Section -->
+    <div id="" style="background-color: black; color: white; padding: 40px 10px;">
+        <h2 style="color: white; text-align: center;">More Services</h2>
+        <div class="" style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%;">
+            <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+                <h3>Software Solutions</h3>
+                <p>
+                    Our team of experienced developers will work closely with you to understand your business requirements, goals, and pain points to develop a solution that is tailored to your unique needs.
+                </p>
+                <a href="#learn-more-custom-software" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+            </div>
+            <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+                <h3>Mobile Applications</h3>
+                <p>
+                    Our team of developers can create, design, and rebuild any application to attract more customers and increase your business revenue.
+                </p>
+                <a href="#learn-more-mobile-apps" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+            </div>
+            <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+                <h3>Web Applications</h3>
+                <p>
+                    Our team of experienced developers has a deep understanding of the latest technologies and frameworks that are essential for creating high-performance, scalable, and secure web applications.
+                </p>
+                <a href="#learn-more-web-app-dev" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+            </div>
+            <div class="service" style="background-color: transparent; padding: 20px; border-radius: 8px; flex: 1 1 calc(25% - 20px); margin: 10px;">
+                <h3>API Integration</h3>
+                <p>
+                    We can integrate your off-the-shelf software utilizing API configurations into your custom software. Whether you need to integrate your CRM system with your accounting software or connect your e-commerce platform with
+                    your shipping provider, our team can help.
+                </p>
+                <a href="#learn-more-api-integration" class="learn-more" style="color: white; text-decoration: none;">Learn More</a>
+            </div>
         </div>
     </div>
-</div>
 
-<style>
-    /* Mobile Responsive Styles */
-    @media (max-width: 768px) {
-        #more-services {
-            padding: 40px 20px; /* Reduce padding for smaller screens */
+    <style>
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            #more-services {
+                padding: 40px 20px; /* Reduce padding for smaller screens */
+            }
+            .services-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center the services on mobile */
+            }
+            .service {
+                flex: 1 1 calc(50% - 20px); /* On smaller screens, show two columns */
+                margin: 10px;
+            }
         }
-        .services-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* Center the services on mobile */
-        }
-        .service {
-            flex: 1 1 calc(50% - 20px); /* On smaller screens, show two columns */
-            margin: 10px;
-        }
-    }
 
-    @media (max-width: 480px) {
-        #more-services {
-            padding: 20px 10px; /* Further reduce padding for very small screens */
+        @media (max-width: 480px) {
+            #more-services {
+                padding: 20px 10px; /* Further reduce padding for very small screens */
+            }
+            .service {
+                flex: 1 1 100%; /* On very small screens, show one column */
+                margin: 10px 0;
+            }
+            .services-container {
+                justify-content: center; /* Ensure services are centered */
+            }
         }
-        .service {
-            flex: 1 1 100%; /* On very small screens, show one column */
-            margin: 10px 0;
+    </style>
+
+    <style>
+        @media (max-width: 1200px) {
+            .service {
+                flex: 1 1 calc(33.33% - 20px); /* 3 columns on medium screens */
+            }
         }
-        .services-container {
-            justify-content: center; /* Ensure services are centered */
+
+        @media (max-width: 900px) {
+            .service {
+                flex: 1 1 calc(50% - 20px); /* 2 columns on small screens */
+            }
         }
-    }
-</style>
 
-
-  <style>
-      @media (max-width: 1200px) {
-          .service {
-              flex: 1 1 calc(33.33% - 20px); /* 3 columns on medium screens */
-          }
-      }
-
-      @media (max-width: 900px) {
-          .service {
-              flex: 1 1 calc(50% - 20px); /* 2 columns on small screens */
-          }
-      }
-
-      @media (max-width: 600px) {
-          .service {
-              flex: 1 1 100%; /* 1 column on extra small screens */
-          }
-      }
-  </style>
-      <!-- Portfolio/Case Studies Section -->
-      <div id="portfolio" style="background-color: #121212; color: white; padding: 60px 30px; text-align: center; overflow-x: hidden;">
+        @media (max-width: 600px) {
+            .service {
+                flex: 1 1 100%; /* 1 column on extra small screens */
+            }
+        }
+    </style>
+    <!-- Portfolio/Case Studies Section -->
+    <div id="portfolio" style="background-color: #121212; color: white; padding: 60px 30px; text-align: center; overflow-x: hidden;">
         <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Insights To Our Work</h2>
         <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px; margin: auto;">
             Discover how Galaxy Labs has helped businesses with innovative software solutions.
@@ -205,91 +212,90 @@
             </div>
         </div>
     </div>
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 40px; background-color: #f4f4f9;">
-      <!-- Text Section -->
-      <div class="info-section" style="flex: 1; max-width: 500px; text-align: center; margin-bottom: 30px;">
-          <h2 style="font-family: 'Roboto', sans-serif; font-size: 32px; margin-bottom: 15px; color: #333;">
-              Have a Software Problem?
-          </h2>
-          <p style="font-family: 'Roboto', sans-serif; font-size: 18px; margin-bottom: 25px; color: #666;">
-              Together, let’s find a solution.
-          </p>
-      </div>
-      <!-- Quote Section -->
-      <div id="quote-section" style="background-color: #f4f4f4; padding: 40px 20px; text-align: center; margin-top: 40px;">
-          <blockquote style="font-size: 1.5rem; font-style: italic; color: #333; max-width: 800px; margin: 0 auto;">
-              "At Galaxy Labs, we believe in pushing the boundaries of innovation to create technology that not only solves problems but shapes the future."
-          </blockquote>
-          <p style="margin-top: 20px; font-weight: bold; color: #00bcd4;">
-              — Galaxy Labs Team
-          </p>
-      </div>
-      <!-- Career Opportunities Section -->
-      <div id="career-section" style="background-color: #00bcd4; padding: 40px 20px; text-align: center; color: white; margin-top: 40px; border-radius: 8px;">
-          <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">
-              Software Solutions
-          </h2>
-          <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-              Looking for cutting-edge software solutions? At Galaxy Labs, we specialize in delivering innovative and tailored technology to meet your business needs. Contact us today to discuss your project and get a custom estimate!
-          </p>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 40px; background-color: #f4f4f9;">
+        <!-- Text Section -->
+        <div class="info-section" style="flex: 1; max-width: 500px; text-align: center; margin-bottom: 30px;">
+            <h2 style="font-family: 'Roboto', sans-serif; font-size: 32px; margin-bottom: 15px; color: #333;">
+                Have a Software Problem?
+            </h2>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 18px; margin-bottom: 25px; color: #666;">
+                Together, let’s find a solution.
+            </p>
+        </div>
+        <!-- Quote Section -->
+        <div id="quote-section" style="background-color: #f4f4f4; padding: 40px 20px; text-align: center; margin-top: 40px;">
+            <blockquote style="font-size: 1.5rem; font-style: italic; color: #333; max-width: 800px; margin: 0 auto;">
+                "At Galaxy Labs, we believe in pushing the boundaries of innovation to create technology that not only solves problems but shapes the future."
+            </blockquote>
+            <p style="margin-top: 20px; font-weight: bold; color: #00bcd4;">
+                — Galaxy Labs Team
+            </p>
+        </div>
+        <!-- Career Opportunities Section -->
+        <div id="career-section" style="background-color: #00bcd4; padding: 40px 20px; text-align: center; color: white; margin-top: 40px; border-radius: 8px;">
+            <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">
+                Software Solutions
+            </h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Looking for cutting-edge software solutions? At Galaxy Labs, we specialize in delivering innovative and tailored technology to meet your business needs. Contact us today to discuss your project and get a custom estimate!
+            </p>
 
-          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
-              <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;" />
-              <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
-                  "Together, we can shape the future!"
-              </p>
-          </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
+                <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;" />
+                <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
+                    "Together, we can shape the future!"
+                </p>
+            </div>
 
-          <a href="https://www.galaxylabs.com/careers" target="_blank" style="text-decoration: none;">
-              <button class="button" style="background-color: white; color: #00bcd4; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-size: 1.25rem; transition: background-color 0.3s; font-weight: bold;">
-                  Contact Us Today!
-              </button>
-          </a>
-      </div>
+            <a href="https://www.galaxylabs.com/careers" target="_blank" style="text-decoration: none;">
+                <button class="button" style="background-color: white; color: #00bcd4; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-size: 1.25rem; transition: background-color 0.3s; font-weight: bold;">
+                    Contact Us Today!
+                </button>
+            </a>
+        </div>
 
-
-
-      <!-- CSS -->
-      <style>
-          .portfolio-wrapper {
-              overflow-x: auto;
-              scrollbar-width: none; /* Hides scrollbar for Firefox */
-              -ms-overflow-style: none; /* Hides scrollbar for IE */
-          }
-          .portfolio-wrapper::-webkit-scrollbar {
-              display: none; /* Hides scrollbar for Chrome, Safari */
-          }
-          .portfolio-container {
-              display: flex;
-              gap: 20px;
-          }
-          .portfolio-item {
-              background: #1e1e1e;
-              border-radius: 8px;
-              padding: 20px;
-              width: 300px;
-              text-align: left;
-              display: inline-block;
-              white-space: normal;
-          }
-          .portfolio-item img {
-              width: 100%;
-              border-radius: 8px;
-          }
-          .portfolio-item h3 {
-              margin-top: 15px;
-              font-size: 1.2rem;
-              color: white;
-          }
-          .portfolio-item p {
-              font-size: 0.9rem;
-              color: #bbb;
-          }
-          .portfolio-item a {
-              color: #00bcd4;
-              text-decoration: none;
-              font-weight: bold;
-          }
-      </style>
-  </div>
+        <!-- CSS -->
+        <style>
+            .portfolio-wrapper {
+                overflow-x: auto;
+                scrollbar-width: none; /* Hides scrollbar for Firefox */
+                -ms-overflow-style: none; /* Hides scrollbar for IE */
+            }
+            .portfolio-wrapper::-webkit-scrollbar {
+                display: none; /* Hides scrollbar for Chrome, Safari */
+            }
+            .portfolio-container {
+                display: flex;
+                gap: 20px;
+            }
+            .portfolio-item {
+                background: #1e1e1e;
+                border-radius: 8px;
+                padding: 20px;
+                width: 300px;
+                text-align: left;
+                display: inline-block;
+                white-space: normal;
+            }
+            .portfolio-item img {
+                width: 100%;
+                border-radius: 8px;
+            }
+            .portfolio-item h3 {
+                margin-top: 15px;
+                font-size: 1.2rem;
+                color: white;
+            }
+            .portfolio-item p {
+                font-size: 0.9rem;
+                color: #bbb;
+            }
+            .portfolio-item a {
+                color: #00bcd4;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+    </div>
 </div>
