@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, NavbarComponent, MatFormFieldModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
