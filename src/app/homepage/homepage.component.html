@@ -29,7 +29,7 @@
             id="about"
             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px; width: 80%; max-width: 800px;"
         >
-            <h2 style="font-size: 2rem;">What We Do</h2>
+            <h2 style="font-size: 2rem;">Our Vision</h2>
             <p style="font-size: 1.1rem;">
                 At Galaxy Labs, we are dedicated to pushing the boundaries of technology to create innovative solutions that improve lives. Our team of experts is passionate about developing cutting-edge software and hardware to meet the
                 needs of our clients and drive the tech industry forward.
@@ -102,6 +102,7 @@
             </div>
         </div>
     </div>
+    
 
     <style>
         /* Mobile Responsive Styles */
@@ -232,6 +233,105 @@
                 — Galaxy Labs Team
             </p>
         </div>
+
+        <!-- Why Choose Galaxy Labs Section -->
+<div id="why-choose-us" style="background: radial-gradient(circle at top, #0b0d21, #000); color: white; text-align: center; padding: 80px 30px; position: relative; overflow: hidden;">
+
+    <!-- Animated Stars Background -->
+    <div class="stars"></div>
+
+    <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px; text-shadow: 0px 0px 15px rgba(0, 191, 255, 0.8);">
+        Why Choose <span style="color: #00d9ff;">Galaxy Labs?</span>
+    </h2>
+
+    <p style="font-size: 1.4rem; max-width: 800px; margin: auto; margin-bottom: 50px; opacity: 0.8;">
+        Pioneering the future of technology with innovation, expertise, and cutting-edge solutions.
+    </p>
+
+    <!-- Features Grid (3 Columns x 2 Rows) -->
+    <div class="why-choose-grid">
+        <div class="feature-card">
+            <h3>🚀 Expert Developers</h3>
+            <p>Our team leads the industry with deep technical expertise and innovation.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🛠️ Custom Solutions</h3>
+            <p>We build scalable, future-ready solutions tailored to your business needs.</p>
+        </div>
+        <div class="feature-card">
+            <h3>💡 Cutting-Edge Technology</h3>
+            <p>AI, cloud computing, and automation drive our high-performance systems.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🌟 End-to-End Support</h3>
+            <p>From development to deployment, we provide 24/7 expert support.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📈 Proven Success</h3>
+            <p>Our projects transform businesses, backed by real-world success stories.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔍 Transparent Pricing</h3>
+            <p>No hidden costs—just clear pricing and honest communication.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modern CSS for Galaxy Theme (Updated for 3x2 Grid) -->
+<style>
+    .why-choose-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-rows: repeat(2, auto);  /* 2 rows */
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .feature-card {
+        background: rgba(0, 10, 30, 0.8);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.3);
+        transition: 0.3s ease-in-out;
+        text-align: center;
+        border: 1px solid rgba(0, 191, 255, 0.2);
+    }
+
+    .feature-card:hover {
+        box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
+        transform: scale(1.05);
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 1024px) {
+        .why-choose-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .why-choose-grid {
+            grid-template-columns: repeat(1, 1fr); /* 1 column for small screens */
+        }
+    }
+
+    /* Animated Star Background */
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/stardust.png');
+        opacity: 0.1;
+        animation: stars 50s linear infinite;
+    }
+
+    @keyframes stars {
+        from { transform: translateY(0); }
+        to { transform: translateY(-100px); }
+    }
+</style>
+
         <!-- Career Opportunities Section -->
         <div id="career-section" style="background-color: #00bcd4; padding: 40px 20px; text-align: center; color: white; margin-top: 40px; border-radius: 8px;">
             <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">

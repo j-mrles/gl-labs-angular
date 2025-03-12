@@ -40,7 +40,6 @@
   border-radius: 6px;
   transition: background 0.3s, transform 0.2s;
   margin-right: 20px; /* Adds space from the right */
-  height: 30px; /* Ensures a consistent height */
 }
 
 .custom-button:hover {
