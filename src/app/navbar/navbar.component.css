@@ -18,6 +18,12 @@
   align-items: center;
   padding: 0 10px;
   display: flex;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  backdrop-filter: blur(5px); /* Optional: Adds a blur effect for better readability */
+  padding: 10px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #navbar a {
