@@ -1,55 +1,70 @@
-#logonav {
-  max-height: 50px;
-  width: auto;
-  vertical-align: middle;
-  display: inline;
-}
-
-/* Navbar styles */
 #navbar {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  backdrop-filter: blur(5px); /* Optional: Adds a blur effect */
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: top 0.3s;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
-  backdrop-filter: blur(5px); /* Optional: Adds a blur effect for better readability */
-  padding: 10px; /* Adjust as needed */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  height: 50px; /* Adjust as needed */
 }
 
-#navbar a {
+/* Logo styling: Align it to the far left */
+#logonav {
+  max-height: 30px;
+  width: auto;
+  position: absolute;
+  left: 20px; /* Adjust for spacing */
+}
+
+/* Centered navigation menu */
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  list-style: none;
+  gap: 30px; /* Adjust spacing between links */
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
   color: white;
   text-align: center;
-  padding: 5px 20px;
   text-decoration: none;
   font-size: 1em;
+  padding: 5px 15px;
 }
 
-#navbar a:hover {
+.nav-links a:hover {
   background-color: #495057;
   color: #f8f9fa;
+  border-radius: 4px;
+}
+
+/* Contact button remains on the right */
+.example-button-row {
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .custom-button {
-  align-items: center; /* Centers text vertically */
   background-color: #013f8e;
+  color: white;
   font-weight: 500;
   border-radius: 6px;
   transition: background 0.3s, transform 0.2s;
-  margin-right: 20px; /* Adds space from the right */
+  padding: 8px 12px;
+  text-decoration: none;
 }
 
 .custom-button:hover {
-  background-color: #3700b3;
+  background-color: transparent;
   transform: scale(1.05);
 }
 
@@ -59,7 +74,14 @@
 }
 
 @media (max-width: 1000px) {
-  .custom-button{
+  .custom-button {
     display: none;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    text-align: center;
   }
 }
