@@ -3,12 +3,39 @@
   margin: 0 auto;
 }
 
+/* Background Video */
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Animated Star Background */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.1;
+  animation: stars 50s linear infinite;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+
 /* Header styling */
 header#home {
-  position: relative;
   overflow: hidden;
-  text-align: center;
-  color: white;
   padding: 280px 20px;
   top: -20%;
 }
@@ -18,80 +45,65 @@ header#home {
   margin-bottom: 20px;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  section#about {
-      width: 90%; /* Make the section slightly smaller on mobile */
-      padding: 15px; /* Reduce padding */
-  }
-  section#about h2 {
-      font-size: 1.5rem; /* Smaller title font size for mobile */
-  }
-  section#about p {
-      font-size: 1rem; /* Adjust the paragraph font size for smaller screens */
-  }
+#about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-/* Smaller Devices (Phone Portrait) */
-@media (max-width: 480px) {
-  section#about {
-      width: 95%; /* Further reduce width for very small screens */
-      padding: 10px; /* Even smaller padding */
-  }
-  section#about h2 {
-      font-size: 1.3rem; /* Further reduce the title size */
-  }
-  section#about p {
-      font-size: 0.9rem; /* Adjust paragraph text for better readability on small screens */
-  }
+#about p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
-@media screen and (max-width: 768px) {
-  #portfolio h2 {
-      font-size: 2rem;
-  }
-
-  #portfolio p {
-      font-size: 1rem;
-  }
-
-  .portfolio-container {
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-
-  .portfolio-item {
-      width: 100%;
-      max-width: 320px;
-      margin-bottom: 20px;
-  }
-
-  .portfolio-wrapper {
-      overflow-x: visible;
-      padding-bottom: 20px;
-  }
+/* Portfolio section */
+.portfolio-container {
+  display: flex;
+  gap: 20px;
 }
 
-@media screen and (max-width: 480px) {
-  #portfolio h2 {
-      font-size: 1.5rem;
-  }
-
-  #portfolio p {
-      font-size: 0.9rem;
-  }
-
-  .portfolio-item {
-      width: 100%;
-      max-width: 280px;
-      margin-bottom: 20px;
-  }
+.portfolio-item {
+  display: inline-block;
+  white-space: normal;
 }
 
+.portfolio-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.portfolio-item h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.portfolio-item p {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.portfolio-item a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Portfolio Wrapper (Scrollable) */
+.portfolio-wrapper {
+  overflow-x: auto;
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar for IE */
+}
+
+.portfolio-wrapper::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari */
+}
+
+/* Why Choose Grid (Features Section) */
 .why-choose-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 20px;
   max-width: 1200px;
   margin: auto;
@@ -112,77 +124,14 @@ header#home {
   transform: scale(1.05);
 }
 
-/* Responsive Layout */
-@media (max-width: 1024px) {
-  .why-choose-grid {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
-  }
-}
-
-@media (max-width: 768px) {
-  .why-choose-grid {
-      grid-template-columns: repeat(1, 1fr); /* 1 column for small screens */
-  }
-}
-
-/* Animated Star Background */
-.stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.1;
-  animation: stars 50s linear infinite;
-}
-
-@keyframes stars {
-  from {
-      transform: translateY(0);
-  }
-  to {
-      transform: translateY(-100px);
-  }
-}
-
-.portfolio-wrapper {
-  overflow-x: auto;
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hides scrollbar for IE */
-}
-.portfolio-wrapper::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari */
-}
-.portfolio-container {
+/* Projects Section */
+#software-problem {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.portfolio-item {
-  background: #1e1e1e;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  text-align: left;
-  display: inline-block;
-  white-space: normal;
-}
-.portfolio-item img {
-  width: 100%;
-  border-radius: 8px;
-}
-.portfolio-item h3 {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: white;
-}
-.portfolio-item p {
-  font-size: 0.9rem;
-  color: #bbb;
-}
-.portfolio-item a {
-  color: #00bcd4;
-  text-decoration: none;
-  font-weight: bold;
-}
+
+/* Buttons & Miscellaneous */
 .button,
 .learn-more {
   background-color: #013f8e;
@@ -195,35 +144,85 @@ header#home {
   text-decoration: none;
 }
 
-#background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .why-choose-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* About section styling */
-#about {
-  text-align: center;
-  padding: 50px 20px;
+@media (max-width: 768px) {
+  .why-choose-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
-#about h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  section#about {
+    width: 90%;
+    padding: 15px;
+  }
+
+  section#about h2 {
+    font-size: 1.5rem;
+  }
+
+  section#about p {
+    font-size: 1rem;
+  }
+
+  #portfolio h2 {
+    font-size: 2rem;
+  }
+
+  #portfolio p {
+    font-size: 1rem;
+  }
+
+  .portfolio-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .portfolio-item {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 20px;
+  }
+
+  .portfolio-wrapper {
+    overflow-x: visible;
+    padding-bottom: 20px;
+  }
 }
 
-#about p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
+/* Smaller Devices (Phone Portrait) */
+@media (max-width: 480px) {
+  section#about {
+    width: 95%;
+    padding: 10px;
+  }
 
-/* Projects section styling */
-#software-problem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  section#about h2 {
+    font-size: 1.3rem;
+  }
+
+  section#about p {
+    font-size: 0.9rem;
+  }
+
+  #portfolio h2 {
+    font-size: 1.5rem;
+  }
+
+  #portfolio p {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-item {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 20px;
+  }
 }
