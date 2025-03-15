@@ -66,78 +66,121 @@
             }
         }
     </style>
+<!-- Portfolio/Case Studies Section -->
+<div
+    id="portfolio"
+    style="
+        background-image: url('images/painting.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: black;
+        padding: 60px 30px;
+        text-align: center;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    "
+>
+    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Our Services</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">
+        Discover how Galaxy Labs has helped businesses with innovative software solutions.
+    </p>
 
-    <!-- Portfolio/Case Studies Section -->
-    <div
-        id="portfolio"
-        style="
-            background-image: url('images/painting.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: black;
-            padding: 60px 30px;
-            text-align: center;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        "
-    >
-        <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Our Services</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">
-            Discover how Galaxy Labs has helped businesses with innovative software solutions.
-        </p>
+    <div class="portfolio-wrapper" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
+        <div class="portfolio-container" style="display: flex; gap: 20px; padding-bottom: 20px; width: fit-content; opacity: 0.8;">
+            <!-- Portfolio Item -->
+            <div
+                class="portfolio-item"
+                style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+            >
+                <img src="images/careers.png" alt="Project 1" style="width: 100%; border-radius: 10px;" />
+                <h3 style="color: black; margin-top: 15px;">AI-Powered Analytics</h3>
+                <p style="color: #333;">Developed an AI system that helps businesses analyze trends.</p>
+                <a href="portfolio/project1.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
+            </div>
 
-        <div class="portfolio-wrapper" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
-            <div class="portfolio-container" style="display: flex; gap: 20px; padding-bottom: 20px; width: fit-content; opacity: 0.8;">
-                <!-- Portfolio Item -->
-                <div
-                    class="portfolio-item"
-                    style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
-                    onmouseover="this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.transform='scale(1)'"
-                >
-                    <img src="images/careers.png" alt="Project 1" style="width: 100%; border-radius: 10px;" />
-                    <h3 style="color: black; margin-top: 15px;">AI-Powered Analytics</h3>
-                    <p style="color: #333;">Developed an AI system that helps businesses analyze trends.</p>
-                    <a href="portfolio/project1.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
-                </div>
+            <div
+                class="portfolio-item"
+                style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+            >
+                <img src="images/careers.png" alt="Project 2" style="width: 100%; border-radius: 10px;" />
+                <h3 style="color: black; margin-top: 15px;">Mobile App Development</h3>
+                <p style="color: #333;">Designed a mobile app that increased engagement by 50%.</p>
+                <a href="portfolio/project2.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
+            </div>
 
-                <div
-                    class="portfolio-item"
-                    style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
-                    onmouseover="this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.transform='scale(1)'"
-                >
-                    <img src="images/careers.png" alt="Project 2" style="width: 100%; border-radius: 10px;" />
-                    <h3 style="color: black; margin-top: 15px;">Mobile App Development</h3>
-                    <p style="color: #333;">Designed a mobile app that increased engagement by 50%.</p>
-                    <a href="portfolio/project2.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
-                </div>
-
-                <div
-                    class="portfolio-item"
-                    style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
-                    onmouseover="this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.transform='scale(1)'"
-                >
-                    <img src="images/careers.png" alt="Project 3" style="width: 100%; border-radius: 10px;" />
-                    <h3 style="color: black; margin-top: 15px;">E-commerce Platform</h3>
-                    <p style="color: #333;">Developed a scalable e-commerce solution for businesses.</p>
-                    <a href="portfolio/project3.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
-                </div>
+            <div
+                class="portfolio-item"
+                style="background: white; border-radius: 15px; padding: 20px; text-align: center; width: 280px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+            >
+                <img src="images/careers.png" alt="Project 3" style="width: 100%; border-radius: 10px;" />
+                <h3 style="color: black; margin-top: 15px;">E-commerce Platform</h3>
+                <p style="color: #333;">Developed a scalable e-commerce solution for businesses.</p>
+                <a href="portfolio/project3.html" style="color: #007bff; text-decoration: none; font-weight: bold;">View More →</a>
             </div>
         </div>
     </div>
+</div>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; background-color: #f4f4f9;">
+<style>
+    @media screen and (max-width: 768px) {
+        #portfolio h2 {
+            font-size: 2rem;
+        }
 
+        #portfolio p {
+            font-size: 1rem;
+        }
+
+        .portfolio-container {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .portfolio-item {
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-wrapper {
+            overflow-x: visible;
+            padding-bottom: 20px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        #portfolio h2 {
+            font-size: 1.5rem;
+        }
+
+        #portfolio p {
+            font-size: 0.9rem;
+        }
+
+        .portfolio-item {
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+
+    <div style="flex-wrap: wrap; justify-content: center; align-items: center; background-color: #f4f4f9;">
         <!-- Quote Section -->
-        <div id="quote-section" style="background-color: #f4f4f4; padding: 40px 20px; text-align: center; margin-top: 40px;">
-            <blockquote style="font-size: 1.5rem; font-style: italic; color: #333; max-width: 800px; margin: 0 auto;">
+        <div id="quote-section" style="background: url('images/construction-site.png') center/cover no-repeat; padding: 40px 20px; text-align: center; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); position: relative;">
+            <blockquote style="font-size: 1.5rem; font-style: italic; color: rgb(0, 0, 0); max-width: 800px; margin: 0 auto;">
                 "At Galaxy Labs, we believe in pushing the boundaries of innovation to create technology that not only solves problems but shapes the future."
             </blockquote>
             <p style="margin-top: 20px; font-weight: bold; color: #00bcd4;">
@@ -147,7 +190,6 @@
 
         <!-- Why Choose Galaxy Labs Section -->
         <div id="why-choose-us" style="background: url('images/electrical.png') no-repeat center center/cover; color: white; text-align: center; padding: 80px 30px; position: relative; overflow: hidden;">
-
             <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">Why Choose <span style="color: #013f8e;">Galaxy Labs?</span></h2>
 
             <p style="font-size: 1.4rem; max-width: 800px; margin: auto; margin-bottom: 50px; opacity: 0.8;">
@@ -183,21 +225,6 @@
             </div>
         </div>
 
-        <div class="info-section" 
-        style="flex: 1; 
-               width: 100%; 
-               text-align: center; 
-               background: url('images/construction-site.png') center/cover no-repeat; 
-               border-radius: 8px;">
-       <h2 style="font-family: 'Roboto', sans-serif; font-size: 32px; margin-bottom: 15px; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-           Have a Software Problem?
-       </h2>
-       <p style="font-family: 'Roboto', sans-serif; font-size: 18px; margin-bottom: 25px; color: #ddd; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
-           Together, let’s find a solution.
-       </p>
-   </div>
-   
-   
         <!-- Modern CSS for Galaxy Theme (Updated for 3x2 Grid) -->
         <style>
             .why-choose-grid {
@@ -258,13 +285,8 @@
         </style>
 
         <!-- Career Opportunities Section -->
-        <div id="career-section" 
-        style="background: url('images/grass.png') center/cover no-repeat; 
-               padding: 40px 20px; 
-               text-align: center; 
-               color: white; 
-               border-radius: 8px;">
-               <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">
+        <div id="career-section" style="background: url('images/grass.png') center/cover no-repeat; padding: 40px 20px; text-align: center; color: white; border-radius: 8px;">
+            <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">
                 Want to learn more?
             </h2>
             <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
