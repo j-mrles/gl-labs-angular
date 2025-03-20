@@ -1,14 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DiscoverComponent } from './discover/discover.component'; // Import ServicesComponent
+import { Routes } from '@angular/router';
+import { DiscoverComponent } from './discover/discover.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 export const routes: Routes = [
-  { path: 'Discover', component: DiscoverComponent },  // Define route
-  // other routes...
+  { path: '', component: HomepageComponent }, // Default route (Home)
+  { path: 'discover', component: DiscoverComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
