@@ -14,7 +14,7 @@
 #logonav {
   max-height: 30px;
   width: auto;
-  position: absolute;
+  position: relative;
   left: 20px; /* Adjust for spacing */
 }
 
