@@ -1,0 +1,116 @@
+/* General container styling */
+.discover-container {
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+  position: relative;
+}
+
+/* Background Video */
+#discover-background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Animated Star Background */
+.discover-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.1;
+  animation: stars 50s linear infinite;
+  z-index: -1;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+/* Services Section */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.service-card {
+  background: rgba(0, 10, 30, 0.8);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.3);
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  border: 1px solid rgba(0, 191, 255, 0.2);
+}
+
+.service-card:hover {
+  box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.service-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 15px;
+}
+
+.service-description {
+  font-size: 1rem;
+  color: #bbb;
+  margin: 10px 0;
+}
+
+.explore-btn {
+  background-color: #013f8e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 480px) {
+  .discover-container {
+    padding: 30px 10px;
+  }
+  .service-title {
+    font-size: 1.3rem;
+  }
+  .service-description {
+    font-size: 0.9rem;
+  }
+}
