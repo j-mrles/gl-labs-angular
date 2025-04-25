@@ -1,4 +1,3 @@
-/* General container styling */
 .discover-container {
   margin: 0 auto;
   padding: 50px 20px;
@@ -6,7 +5,6 @@
   position: relative;
 }
 
-/* Background Video */
 #discover-background-video {
   position: absolute;
   top: 0;
@@ -17,7 +15,6 @@
   z-index: -1;
 }
 
-/* Animated Star Background */
 .discover-stars {
   position: absolute;
   width: 100%;
@@ -37,7 +34,6 @@
   }
 }
 
-/* Services Section */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -89,7 +85,6 @@
   text-decoration: none;
 }
 
-/* Responsive Layout */
 @media (max-width: 1024px) {
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -102,7 +97,6 @@
   }
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 480px) {
   .discover-container {
     padding: 30px 10px;
