@@ -42,9 +42,9 @@ export class HomepageComponent {
   servicesTitle = 'Our Services';
   servicesSubtitle = 'Explore the range of services we offer to elevate your business.';
   portfolioItems = [
-    { image: 'images/service1.png', title: 'Mobile App Development', description: 'Designed a mobile app that increased engagement by 50%.' },
-    { image: 'images/service2.png', title: 'E-commerce Platform', description: 'Developed a scalable e-commerce solution for businesses.' },
-    { image: 'images/service3.png', title: 'Consulting', description: 'Expert advice for tech-driven growth.' }
+    { image: 'images/mobileapp.png', title: 'Mobile App Development', description: 'Designed a mobile app that increased engagement by 50%.' },
+    { image: 'images/analytics.png', title: 'E-commerce Platform', description: 'Developed a scalable e-commerce solution for businesses.' },
+    { image: 'images/solutions.png', title: 'Consulting', description: 'Expert advice for tech-driven growth.' }
   ];
 
   // Why Choose Us Section
@@ -78,8 +78,8 @@ export class HomepageComponent {
     },
     {
       name: 'Enterprise',
-      description: 'Custom solutions for large businesses.',
-      price: 'Contact Us',
+      description: 'Solutions for large businesses.',
+      price: '$1999',
       features: ['Dedicated Manager', 'Custom Apps', 'Weekly Updates'],
       color: '#e74c3c',
       link: '/contact'

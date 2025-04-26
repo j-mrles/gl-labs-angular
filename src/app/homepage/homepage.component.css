@@ -11,16 +11,7 @@
    width: 80%;
    max-width: 800px;
 }
-.button, .learn-more {
-   background-color: #013f8e;
-   color: white;
-   border: none;
-   padding: 10px 20px;
-   font-size: 1rem;
-   border-radius: 5px;
-   cursor: pointer;
-   text-decoration: none;
-}
+
 .career-section{
    padding: 40px 20px;
    text-align: center;
