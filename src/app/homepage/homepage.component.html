@@ -1,223 +1,113 @@
 <header id="home" style="position: relative; text-align: center; color: rgb(65, 61, 61);">
     <img id="logo" src="images/galaxylabslogo.png" alt="GalaxyLabs Logo" style="max-width: 100%; height: auto;" />
     <p class="slide-in-left" style="color: white; font-size: 2rem; margin-top: 20px;">
-        Custom Software Solutions for Your Business – Web, Mobile, AI & More!
+      {{ heroText }}
     </p>
-    <a href="tel:+12054930261">
-        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-            Text or Call
-        </button>
+    <a [href]="phoneLink">
+      <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        {{ textOrCallButton }}
+      </button>
     </a>
-    <a href="mailto:info@galaxylabsusa.com?subject=Inquiry&body=Hello, I would like to learn more about GalaxyLabs.">
-        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin: 0 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-            Free Estimate
-        </button>
+    <a [href]="estimateLink">
+      <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin: 0 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        {{ freeEstimateButton }}
+      </button>
     </a>
     <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-        <source src="images/cityscape.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+      <source src="images/cityscape.mp4" type="video/mp4" />
+      {{ videoFallback }}
     </video>
-</header>
-<div class="our-vision" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+  </header>
+  
+  <div class="our-vision" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <img src="images/construction.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-    <section class="about" style="">
-        <h2 style="font-size: 2rem;">Our Vision</h2>
-        <p style="font-size: 1.1rem;">
-            At GalaxyLabs, we are dedicated to pushing the boundaries of technology to create innovative solutions that improve lives. Our team of experts is passionate about developing cutting-edge software and hardware to meet the needs
-            of our clients and drive the tech industry forward.
-        </p>
+    <section class="about">
+      <h2 style="font-size: 2rem;">{{ visionTitle }}</h2>
+      <p style="font-size: 1.1rem;">{{ visionDescription }}</p>
     </section>
-</div>
-<div class="portfolio" style="background-image: url('images/painting.png');">
-    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Our Services</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">
-        Discover how GalaxyLabs has helped businesses with innovative software solutions.
-    </p>
+  </div>
+  
+  <div class="portfolio" style="background-image: url('images/painting.png');">
+    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">{{ servicesTitle }}</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">{{ servicesSubtitle }}</p>
+  
     <div class="portfolio-wrapper" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
-        <div class="portfolio-container" style="display: flex; gap: 20px; padding-bottom: 20px; width: fit-content; opacity: 0.8;">
-            <div class="portfolio-item" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="images/analytics.png" alt="Project 1" style="width: 100%; border-radius: 10px;" />
-                <h3 style="color: black; margin-top: 15px;">AI-Powered Analytics</h3>
-                <p style="color: #333;">
-                    Developed an AI system that helps businesses analyze trends.
-                </p>
-            </div>
-            <div class="portfolio-item" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="images/mobileapp.png" alt="Project 2" style="width: 100%; border-radius: 10px;" />
-                <h3 style="color: black; margin-top: 15px;">Mobile App Development</h3>
-                <p style="color: #333;">
-                    Designed a mobile app that increased engagement by 50%.
-                </p>
-            </div>
-            <div class="portfolio-item" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="images/business_website.png" alt="Project 3" style="width: 100%; border-radius: 10px;" />
-                <h3 style="color: black; margin-top: 15px;">E-commerce Platform</h3>
-                <p style="color: #333;">
-                    Developed a scalable e-commerce solution for businesses.
-                </p>
-            </div>
+      <div class="portfolio-container" style="display: flex; gap: 20px; padding-bottom: 20px; width: fit-content; opacity: 0.8;">
+        <div *ngFor="let service of portfolioItems" class="portfolio-item">
+          <img [src]="service.image" [alt]="service.title" style="width: 100%; border-radius: 10px;" />
+          <h3 style="color: black; margin-top: 15px;">{{ service.title }}</h3>
+          <p style="color: #333;">{{ service.description }}</p>
         </div>
+      </div>
     </div>
-</div>
-<div style="flex-wrap: wrap; justify-content: center; align-items: center; background-color: #f4f4f9;">
+  </div>
+  
+  <div style="flex-wrap: wrap; justify-content: center; align-items: center; background-color: #f4f4f9;">
     <div id="why-choose-us" style="background: url('images/electrical.png') no-repeat center center/cover; color: white; text-align: center; padding: 80px 30px; position: relative; overflow: hidden;">
-        <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">
-            Why Choose
-            <span style="color: #013f8e;">GalaxyLabs?</span>
-        </h2>
-        <p style="font-size: 1.4rem; max-width: 800px; margin: auto; margin-bottom: 50px; opacity: 0.8;">
-            Pioneering the future of technology with innovation, expertise, and cutting-edge solutions.
-        </p>
-        <div class="why-choose-grid">
-            <div class="feature-card">
-                <h3>🚀 Expert Developers</h3>
-                <p>
-                    Our team leads the industry with deep technical expertise and innovation.
-                </p>
-            </div>
-            <div class="feature-card">
-                <h3>🛠️ Custom Solutions</h3>
-                <p>
-                    We build scalable, future-ready solutions tailored to your business needs.
-                </p>
-            </div>
-            <div class="feature-card">
-                <h3>💡 Cutting-Edge Technology</h3>
-                <p>
-                    AI, cloud computing, and automation drive our high-performance systems.
-                </p>
-            </div>
-            <div class="feature-card">
-                <h3>🌟 End-to-End Support</h3>
-                <p>From development to deployment, we provide 24/7 expert support.</p>
-            </div>
-            <div class="feature-card">
-                <h3>📈 Proven Success</h3>
-                <p>
-                    Our projects transform businesses, backed by real-world success stories.
-                </p>
-            </div>
-            <div class="feature-card">
-                <h3>🔍 Transparent Pricing</h3>
-                <p>No hidden costs—just clear pricing and honest communication.</p>
-            </div>
+      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">
+        {{ whyChooseTitle }} <span style="color: #013f8e;">GalaxyLabs?</span>
+      </h2>
+      <p style="font-size: 1.4rem; max-width: 800px; margin: auto; margin-bottom: 50px; opacity: 0.8;">
+        {{ whyChooseSubtitle }}
+      </p>
+      <div class="why-choose-grid">
+        <div *ngFor="let feature of featureCards" class="feature-card">
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
         </div>
+      </div>
     </div>
+  
     <div class="pricing" style="background: url('images/construction-site.png') no-repeat center center/cover;">
-        <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">
-            Software Development Packages
-        </h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">
-            Choose the perfect package that fits your business needs. Whether you're a startup or an enterprise, we have tailored solutions for you.
-        </p>
-        <div class="pricing-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-            <div
-                class="pricing-card"
-                style="background: rgba(0, 0, 0, 0.7); border-radius: 15px; padding: 30px; text-align: center; width: 300px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'"
-            >
-                <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 15px;">
-                    Basic
-                </h3>
-                <p style="font-size: 1.1rem;">
-                    Ideal for small businesses and startups.
-                </p>
-                <h4 style="font-size: 2rem; margin: 15px 0;">$599</h4>
-                <ul style="list-style: none; padding: 0; font-size: 1rem; text-align: left;">
-                    <li>✔ Custom Website (Up to 5 Pages)</li>
-                    <li>✔ Mobile-Responsive Design</li>
-                    <li>✔ Basic SEO Optimization</li>
-                    <li>✔ 3 Revisions</li>
-                    <li>✖ No AI Features</li>
-                </ul>
-                <a href="mailto:info@galaxylabsusa.com?subject=Basic Package Inquiry" style="display: block; background-color: #007bff; color: white; padding: 10px; margin-top: 20px; text-decoration: none; border-radius: 5px;">
-                    Get Started
-                </a>
-            </div>
-            <div class="pricing-card" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <h3 style="color: #28a745; font-size: 2rem; margin-bottom: 15px;">
-                    Standard
-                </h3>
-                <p style="font-size: 1.1rem;">Perfect for growing businesses.</p>
-                <h4 style="font-size: 2rem; margin: 15px 0;">$1,399</h4>
-                <ul style="list-style: none; padding: 0; font-size: 1rem; text-align: left;">
-                    <li>✔ Custom Website & Web App</li>
-                    <li>✔ Mobile App (iOS & Android)</li>
-                    <li>✔ Advanced SEO Optimization</li>
-                    <li>✔ 5 Revisions</li>
-                    <li>✔ AI Custom Software Integration</li>
-                </ul>
-                <a class="get-started" href="mailto:info@galaxylabsusa.com?subject=Standard Package Inquiry">
-                    Get Started
-                </a>
-            </div>
-            <div class="pricing-card" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <h3 style="color: #ff9800; font-size: 2rem; margin-bottom: 15px;">
-                    Premium
-                </h3>
-                <p style="font-size: 1.1rem;">
-                    For enterprises and large-scale solutions.
-                </p>
-                <h4 style="font-size: 2rem; margin: 15px 0;">$2,999</h4>
-                <ul style="list-style: none; padding: 0; font-size: 1rem; text-align: left;">
-                    <li>✔ Custom Enterprise Software</li>
-                    <li>✔ AI-Powered Analytics</li>
-                    <li>✔ Cloud Integration & Security</li>
-                    <li>✔ Unlimited Revisions</li>
-                    <li>✔ 24/7 Technical Support</li>
-                </ul>
-                <a class="get-started" href="mailto:info@galaxylabsusa.com?subject=Premium Package Inquiry">
-                    Get Started
-                </a>
-            </div>
+      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ pricingTitle }}</h2>
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ pricingSubtitle }}</p>
+  
+      <div class="pricing-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <div *ngFor="let package of pricingPackages" class="pricing-card" 
+  >
+          <h3 [style.color]="package.color" style="font-size: 2rem; margin-bottom: 15px;">{{ package.name }}</h3>
+          <p style="font-size: 1.1rem;">{{ package.description }}</p>
+          <h4 style="font-size: 2rem; margin: 15px 0;">{{ package.price }}</h4>
+          <ul style="list-style: none; padding: 0; font-size: 1rem; text-align: left;">
+            <li *ngFor="let feature of package.features">
+              {{ feature }}
+            </li>
+          </ul>
+          <a class="get-started" [href]="package.link">
+            {{ getStartedText }}
+          </a>
         </div>
+      </div>
     </div>
+  
     <div class="reviews" style="background: url('images/dirt.png') no-repeat center center/cover;">
-        <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">
-            What Our Clients Say
-        </h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">
-            Hear from businesses and entrepreneurs who trusted us to build their digital success.
-        </p>
-        <div class="reviews-wrapper">
-            <div class="review-card">
-                <p style="font-style: italic; font-size: 1.1rem;">
-                    “Galaxy Labs turned our startup idea into a reality. The team was professional, efficient, and delivered beyond our expectations!”
-                </p>
-                <h4 style="margin-top: 15px; color: #f8d210;">— Sarah Johnson</h4>
-            </div>
-            <div class="review-card">
-                <p style="font-style: italic; font-size: 1.1rem;">
-                    “Amazing service! They built a sleek, responsive website for my business, and I started seeing increased engagement immediately.”
-                </p>
-                <h4 style="margin-top: 15px; color: #f8d210;">— Mike Reynolds</h4>
-            </div>
-            <div class="review-card">
-                <p style="font-style: italic; font-size: 1.1rem;">
-                    “Our AI-powered analytics dashboard has been a game-changer. Thanks to Galaxy Labs, our decision-making is data-driven.”
-                </p>
-                <h4 style="margin-top: 15px; color: #f8d210;">— Laura Chen</h4>
-            </div>
+      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ reviewsTitle }}</h2>
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ reviewsSubtitle }}</p>
+  
+      <div class="reviews-wrapper">
+        <div *ngFor="let review of reviews" class="review-card">
+          <p style="font-style: italic; font-size: 1.1rem;">“{{ review.text }}”</p>
+          <h4 style="margin-top: 15px; color: #f8d210;">— {{ review.author }}</h4>
         </div>
+      </div>
     </div>
+  
     <div class="career-section" style="background: url('images/grass.png') center/cover no-repeat;">
-        <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">
-            Want to learn more?
-        </h2>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Looking for cutting-edge software solutions? At GalaxyLabs, we specialize in delivering innovative and tailored technology to meet your business needs. Contact us today to discuss your project and get a custom estimate!
+      <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">{{ careerTitle }}</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        {{ careerDescription }}
+      </p>
+  
+      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
+        <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;" />
+        <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
+          "{{ careerQuote }}"
         </p>
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
-            <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;" />
-            <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
-                "Together, we can shape the future!"
-            </p>
-        </div>
-        <a href="mailto:info@galaxylabsusa.com?subject=Inquiry&body=Hello, I would like to learn more about GalaxyLabs." target="_blank" style="text-decoration: none;">
-            <button class="button" style="background-color: white; color: #00bcd4; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-size: 1.25rem; transition: background-color 0.3s; font-weight: bold;">
-                Contact Us Today!
-            </button>
-        </a>
+      </div>
+  
+      <a [href]="contactLink" target="_blank" style="text-decoration: none;">
+        <button class="button">{{ contactButtonText }}</button>
+      </a>
     </div>
-</div>
+  </div>
+  
