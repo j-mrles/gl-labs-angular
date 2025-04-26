@@ -1,239 +1,265 @@
-.button,
-.learn-more {
-  background-color: #013f8e;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
+.about{
+  position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+   color: white;
+   background: rgba(0, 0, 0, 0.5);
+   padding: 20px;
+   border-radius: 8px;
+   width: 80%;
+   max-width: 800px;
 }
-
+.button, .learn-more {
+   background-color: #013f8e;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   text-decoration: none;
+}
+.career-section{
+   padding: 40px 20px;
+   text-align: center;
+   color: white;
+   border-radius: 8px;
+}
 .get-started{
-  display: block; background-color: #ff9800; color: white; padding: 10px; margin-top: 20px; text-decoration: none; border-radius: 5px;
+   display: block;
+   background-color: #ff9800;
+   color: white;
+   padding: 10px;
+   margin-top: 20px;
+   text-decoration: none;
+   border-radius: 5px;
 }
 header#home {
-  overflow: hidden;
-  padding: 280px 20px;
+   overflow: hidden;
+   padding: 280px 20px;
 }
-
 #background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   z-index: -1;
 }
-
 #logo {
-  max-width: 1000px;
-  margin-bottom: 20px;
+   max-width: 1000px;
+   margin-bottom: 20px;
 }
-
 .stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.1;
-  animation: stars 50s linear infinite;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: url("https://www.transparenttextures.com/patterns/stardust.png");
+   opacity: 0.1;
+   animation: stars 50s linear infinite;
 }
-
 @keyframes stars {
-  from {
-    transform: translateY(0);
+   from {
+       transform: translateY(0);
   }
-  to {
-    transform: translateY(-100px);
+   to {
+       transform: translateY(-100px);
   }
 }
-
 #about h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+   font-size: 2.5rem;
+   margin-bottom: 20px;
 }
-
 #about p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+   font-size: 1.2rem;
+   line-height: 1.6;
 }
-
 #software-problem {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
 }
-
 .feature-card {
-  background: rgba(0, 10, 30, 0.8);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.3);
-  transition: 0.3s ease-in-out;
-  text-align: center;
-  border: 1px solid rgba(0, 191, 255, 0.2);
+   background: rgba(0, 10, 30, 0.8);
+   padding: 25px;
+   border-radius: 12px;
+   box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.3);
+   transition: 0.3s ease-in-out;
+   text-align: center;
+   border: 1px solid rgba(0, 191, 255, 0.2);
 }
-
 .feature-card:hover {
-  box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
-  transform: scale(1.05);
+   box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
+   transform: scale(1.05);
 }
 .portfolio{
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  padding: 60px 30px;
-  text-align: center;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   color: black;
+   padding: 60px 30px;
+   text-align: center;
+   overflow-x: hidden;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
-
 .portfolio-container {
-  display: flex;
-  gap: 20px;
+   display: flex;
+   gap: 20px;
 }
-
 .portfolio-wrapper {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding-bottom: 20px;
+   overflow-x: auto;
+   scrollbar-width: none;
+   -ms-overflow-style: none;
+   padding-bottom: 20px;
 }
-
 .portfolio-wrapper::-webkit-scrollbar {
-  display: none;
+   display: none;
 }
-
 .portfolio-item {
-  display: inline-block;
-  white-space: normal;
-  width: 100%;
-  max-width: 320px;
-  margin-bottom: 20px;
+   display: inline-block;
+   white-space: normal;
+   width: 100%;
+   max-width: 320px;
+   margin-bottom: 20px;
+   background: white;
+   border-radius: 15px;
+   padding: 20px;
+   text-align: center;
+   width: 280px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s ease-in-out;
 }
-
 .portfolio-item img {
-  width: 100%;
-  border-radius: 8px;
+   width: 100%;
+   border-radius: 8px;
 }
-
 .portfolio-item h3 {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: white;
+   margin-top: 15px;
+   font-size: 1.2rem;
+   color: white;
 }
-
 .portfolio-item p {
-  font-size: 0.9rem;
-  color: #bbb;
+   font-size: 0.9rem;
+   color: #bbb;
 }
-
 .portfolio-item a {
-  color: #00bcd4;
-  text-decoration: none;
-  font-weight: bold;
+   color: #00bcd4;
+   text-decoration: none;
+   font-weight: bold;
+}
+.pricing{
+   color: white;
+   text-align: center;
+   padding: 80px 30px;
+   position: relative;
+   overflow: hidden;
+   min-height: 100vh;
 }
 .pricing-card{
-  background: rgba(0, 0, 0, 0.7); border-radius: 15px; padding: 30px; text-align: center; width: 300px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;
+   background: rgba(0, 0, 0, 0.7);
+   border-radius: 15px;
+   padding: 30px;
+   text-align: center;
+   width: 300px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s ease-in-out;
 }
 .why-choose-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: repeat(2, auto);
+   gap: 20px;
+   max-width: 1200px;
+   margin: auto;
 }
-
+.reviews{
+   color: white;
+   text-align: center;
+   padding: 80px 30px;
+   position: relative;
+   overflow: hidden;
+   min-height: 80vh;
+}
 .review-card{
-  background: rgba(0, 0, 0, 0.7); border-radius: 15px; padding: 30px; text-align: left; width: 300px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+   background: rgba(0, 0, 0, 0.7);
+   border-radius: 15px;
+   padding: 30px;
+   text-align: left;
+   width: 300px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 .reviews-wrapper{
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 30px;
 }
 @media (max-width: 1024px) {
-  .why-choose-grid {
-    grid-template-columns: repeat(2, 1fr);
+   .why-choose-grid {
+       grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 768px) {
-  .portfolio-container {
-    flex-wrap: wrap;
-    justify-content: center;
+   .portfolio-container {
+       flex-wrap: wrap;
+       justify-content: center;
   }
-
-  .portfolio-item {
-    width: 100%;
-    max-width: 320px;
-    margin-bottom: 20px;
+   .portfolio-item {
+       width: 100%;
+       max-width: 320px;
+       margin-bottom: 20px;
   }
-
-  .portfolio-wrapper {
-    overflow-x: visible;
-    padding-bottom: 20px;
+   .portfolio-wrapper {
+       overflow-x: visible;
+       padding-bottom: 20px;
   }
-
-  section#about {
-    width: 90%;
-    padding: 15px;
+   section#about {
+       width: 90%;
+       padding: 15px;
   }
-
-  section#about h2 {
-    font-size: 1.5rem;
+   section#about h2 {
+       font-size: 1.5rem;
   }
-
-  section#about p {
-    font-size: 1rem;
+   section#about p {
+       font-size: 1rem;
   }
-
-  #portfolio h2 {
-    font-size: 2rem;
+   #portfolio h2 {
+       font-size: 2rem;
   }
-
-  #portfolio p {
-    font-size: 1rem;
+   #portfolio p {
+       font-size: 1rem;
   }
-
-  .why-choose-grid {
-    grid-template-columns: repeat(1, 1fr);
+   .why-choose-grid {
+       grid-template-columns: repeat(1, 1fr);
   }
 }
-
 @media (max-width: 480px) {
-  .portfolio-item {
-    width: 100%;
-    max-width: 280px;
-    margin-bottom: 20px;
+   .portfolio-item {
+       width: 100%;
+       max-width: 280px;
+       margin-bottom: 20px;
   }
-
-  section#about {
-    width: 95%;
-    padding: 10px;
+   section#about {
+       width: 95%;
+       padding: 10px;
   }
-
-  section#about h2 {
-    font-size: 1.3rem;
+   section#about h2 {
+       font-size: 1.3rem;
   }
-
-  section#about p {
-    font-size: 0.9rem;
+   section#about p {
+       font-size: 0.9rem;
   }
-
-  #portfolio h2 {
-    font-size: 1.5rem;
+   #portfolio h2 {
+       font-size: 1.5rem;
   }
-
-  #portfolio p {
-    font-size: 0.9rem;
+   #portfolio p {
+       font-size: 0.9rem;
   }
 }
