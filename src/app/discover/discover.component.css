@@ -1,110 +1,183 @@
+/* General Container */
 .discover-container {
-  margin: 0 auto;
-  padding: 50px 20px;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Section Styles */
+section {
+  margin-bottom: 4rem;
   text-align: center;
-  position: relative;
 }
 
-#discover-background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
-.discover-stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.1;
-  animation: stars 50s linear infinite;
-  z-index: -1;
+/* Hero Section */
+.hero {
+  padding: 4rem 2rem;
+  margin: 35px;
+  background: linear-gradient(135deg, #013f8e,#4f46e5);
+  color: #fff;
+  border-radius: 1rem;
 }
 
-@keyframes stars {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-100px);
-  }
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-.service-card {
-  background: rgba(0, 10, 30, 0.8);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.3);
-  transition: 0.3s ease-in-out;
-  text-align: center;
-  border: 1px solid rgba(0, 191, 255, 0.2);
-}
-
-.service-card:hover {
-  box-shadow: 0px 0px 30px rgba(0, 191, 255, 0.6);
-  transform: scale(1.05);
-}
-
-.service-image {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.service-title {
-  font-size: 1.5rem;
-  color: white;
-  margin-top: 15px;
-}
-
-.service-description {
-  font-size: 1rem;
-  color: #bbb;
-  margin: 10px 0;
-}
-
-.explore-btn {
-  background-color: #013f8e;
-  color: white;
+.cta-button {
+  background-color: #ffffff;
+  color: #3b82f6;
+  padding: 0.75rem 1.5rem;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 9999px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e0e7ff;
+}
+
+/* Solutions Grid */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.solution-card {
+  background-color: #fff;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.solution-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.pricing {
+  text-align: center;
+  margin: 4rem 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background: #fff;
+  padding: 2rem;
+  border: 2px solid;
+  border-radius: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.features li {
+  margin-bottom: 0.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  color: white;
   text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
 }
 
-@media (max-width: 1024px) {
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cta-button:hover {
+  opacity: 0.9;
 }
 
-@media (max-width: 768px) {
-  .service-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
+
+/* Technology Stack */
+.tech-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-@media (max-width: 480px) {
-  .discover-container {
-    padding: 30px 10px;
-  }
-  .service-title {
-    font-size: 1.3rem;
-  }
-  .service-description {
-    font-size: 0.9rem;
-  }
+.tech-list li {
+  background-color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Case Studies */
+.case {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Final CTA */
+.final-cta {
+  background-color: #013f8e;
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+}
+
+.final-cta h2 {
+  margin-bottom: 1.5rem;
 }

@@ -18,3 +18,26 @@ body {
   cursor: pointer;
   font-size: 1rem;
 }
+.logo {
+    max-width: 1000px;
+    margin-bottom: 20px;
+ }
+ .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+ }
+ .white-button {
+  background-color: white;
+  color: #013f8e;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}

@@ -1,0 +1,139 @@
+.about-us {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .about-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .about-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  
+  /* Section Titles */
+  section h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Mission Section */
+  .mission p {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Values Section */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .value-card {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .value-card img {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .value-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Why Choose Us Section */
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .reason-card {
+    background: #f0f8ff;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+  
+  .reason-card:hover {
+    background: #e0f0ff;
+  }
+  
+  /* Partners Section */
+  .partners {
+    margin-top: 4rem;
+    text-align: center;
+  }
+  
+  .partners-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    margin-top: 2rem;
+  }
+  
+  .partners-logos img {
+    width: 100px;
+    height: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .partners-logos img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s forwards;
+  }
+  

@@ -1,0 +1,14 @@
+<div class="our-products-container">
+    <h1>Our Products</h1>
+    <p>Explore our innovative products designed to make your business more efficient and insightful.</p>
+  
+    <div class="product-cards">
+      <div *ngFor="let product of products" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <a [href]="product.link" class="btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  
