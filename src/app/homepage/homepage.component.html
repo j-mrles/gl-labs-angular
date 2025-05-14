@@ -1,118 +1,97 @@
-<header id="home" style="position: relative; text-align: center; color: rgb(65, 61, 61);">
-  <!-- Transparent background wrapper -->
-  <div style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; display: inline-block; margin-top: 20px;">
-    <img id="logo" src="images/galaxylabslogo2.png" alt="GalaxyLabs Logo" style="padding: 50px; max-width: 60%; height: auto;" />
-    
-    <p class="slide-in-left" style="color: white; font-size: 2rem; margin-top: 20px;">
-      {{ heroText }}
-    </p>
-    <div style="margin-top: 15px;">
-      <a [href]="phoneLink">
-        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-          {{ textOrCallButton }}
-        </button>
-      </a>
-      <a [href]="estimateLink">
-        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin: 10px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-          {{ freeEstimateButton }}
-        </button>
-      </a>
+<!-- HERO SECTION -->
+<section [@slideUp] style="padding: 4rem 2rem; margin: 65px; background: url('images/nightsky.png') no-repeat center center; background-size: cover; color: #fff; border-radius: 1rem; text-align: center; position: relative;">
+
+  <!-- Logo Positioned on top of Background -->
+  <img src="images/galaxylabsicon.png" alt="Galaxy Labs Logo" style="max-width: 150px; position: relative; z-index: 1;">
+  
+  <!-- Text with direct white color styling -->
+  <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: rgb(255, 255, 255); z-index: 1;">Welcome to Galaxy Labs</h1>
+  <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgb(255, 255, 255); z-index: 1;">Innovative solutions for a brighter future</p>
+  
+  <!-- Button with refined box-shadow for better visibility -->
+  <button class="cta-button" style="background-color: #ffffff; color: #3b82f6; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.07); 
+    padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer; 
+    transition: background-color 0.3s, box-shadow 0.3s; z-index: 1;">Get Started</button>
+
+</section>
+
+
+
+<!-- WHAT WE OFFER -->
+<section [@staggerFade] style="margin-bottom: 4rem; text-align: center;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">What We Offer</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; padding: 0 2rem;">
+    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="AI" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <h3>AI Integration</h3>
+      <p>We leverage artificial intelligence to streamline operations and drive results.</p>
     </div>
+    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3534/3534068.png" alt="Cloud" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <h3>Cloud Solutions</h3>
+      <p>Secure and scalable cloud platforms built for efficiency and uptime.</p>
+    </div>
+    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3756/3756931.png" alt="Mobile" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <h3>Mobile Development</h3>
+      <p>Build native and cross-platform apps that deliver top-tier UX.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section [@fadeIn] style="margin-bottom: 4rem; text-align: center; padding: 0 2rem;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">How It Works</h2>
+  <p style="color: #666; max-width: 600px; margin: 0 auto;">Our process is streamlined to get your product up and running in no time.</p>
+  <ul style="list-style: none; padding: 0; margin-top: 2rem;">
+    <li style="margin-bottom: 1rem;">✔ Discovery and planning</li>
+    <li style="margin-bottom: 1rem;">✔ Agile development with sprints</li>
+    <li style="margin-bottom: 1rem;">✔ Testing and deployment</li>
+  </ul>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section [@slideUp] style="margin-bottom: 4rem; text-align: center; padding: 0 2rem;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">Featured Projects</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem;">
+    <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <img src="images/analytics.png" alt="Project 1" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
+      <h3 style="margin-top: 1rem;">Smart Inventory System</h3>
+      <p>Automated alerts and predictive stock analysis.</p>
+    </div>
+    <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <img src="images/business-website.png" alt="Project 2" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
+      <h3 style="margin-top: 1rem;">Data Insight Platform</h3>
+      <p>Turn big data into real-time decisions for enterprise clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section [@fadeIn] style="background-color: #013f8e; color: #fff; padding: 3rem 2rem; border-radius: 1rem; text-align: center;">
+  <h2 style="margin-bottom: 1.5rem;">Ready to Start Your Project?</h2>
+  <p style="margin-bottom: 1rem;">Let’s talk about how Galaxy Labs can help you grow.</p>
+  <button class="cta-button" style="background-color: #ffffff; color: #3b82f6; padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">Contact Us</button>
+</section>
+<!-- CONTACT FORM SECTION -->
+<section [@fadeIn] style="display: flex; align-items: center; justify-content: space-between; padding: 4rem 2rem; background-color: #f3f4f6; color: #111; border-radius: 1rem; margin-top: 2rem;">
+  <!-- Left side: Contact Form -->
+  <div style="width: 48%; display: flex; flex-direction: column;">
+    <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: left;">Send Us a Message</h2>
+    <form style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <input type="text" placeholder="Your Name" required style="padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 0.5rem; font-size: 1rem;">
+      <input type="email" placeholder="Your Email" required style="padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 0.5rem; font-size: 1rem;">
+      <textarea rows="5" placeholder="Your Message" required style="padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
+      <button type="submit" style="background-color: #013f8e; color: #fff; padding: 0.75rem; border: none; border-radius: 0.5rem; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+        Send Message
+      </button>
+    </form>
   </div>
 
-  <img src="images/home-image.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;" />
-</header>
-
-  
-  <div class="our-vision" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-    <img src="images/construction.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-    <section class="about">
-      <h2 style="font-size: 2rem;">{{ visionTitle }}</h2>
-      <p style="font-size: 1.1rem;">{{ visionDescription }}</p>
-    </section>
+  <!-- Right side: Additional Content (Image/Info) -->
+  <div style="width: 48%; text-align: center;">
+    <img src="images/careers.png" alt="Contact Us" style="width: 100%; max-width: 400px; border-radius: 1rem; margin-top: 2rem;">
+    <p style="font-size: 1.125rem; color: #555; margin-top: 1.5rem;">We'd love to hear from you! Whether you have questions about our services or need more information, feel free to reach out. Our team is ready to assist you.</p>
   </div>
-  
-  <div class="portfolio" style="background-image: url('images/painting.png');">
-    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">{{ servicesTitle }}</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">{{ servicesSubtitle }}</p>
-  
-    <div class="portfolio-wrapper" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
-      <div class="portfolio-container" style="display: flex; gap: 20px; padding-bottom: 20px; width: fit-content; opacity: 0.8;">
-        <div *ngFor="let service of portfolioItems" class="portfolio-item">
-          <img [src]="service.image" [alt]="service.title" style="width: 100%; border-radius: 10px;" />
-          <h3 style="color: black; margin-top: 15px;">{{ service.title }}</h3>
-          <p style="color: #333;">{{ service.description }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div style="flex-wrap: wrap; justify-content: center; align-items: center; background-color: #f4f4f9;">
-    <div id="why-choose-us" style="background: url('images/electrical.png') no-repeat center center/cover; color: white; text-align: center; padding: 80px 30px; position: relative; overflow: hidden;">
-      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">
-        {{ whyChooseTitle }} <span style="color: #013f8e;">GalaxyLabs?</span>
-      </h2>
-      <p style="font-size: 1.4rem; max-width: 800px; margin: auto; margin-bottom: 50px; opacity: 0.8;">
-        {{ whyChooseSubtitle }}
-      </p>
-      <div class="why-choose-grid">
-        <div *ngFor="let feature of featureCards" class="feature-card">
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
-        </div>
-      </div>
-    </div>
-  
-    <div class="pricing" style="background: url('images/construction-site.png') no-repeat center center/cover;">
-      <h2 style="color: black; font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ pricingTitle }}</h2>
-      <p style="color: black; font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ pricingSubtitle }}</p>
-  
-      <div class="pricing-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-        <div *ngFor="let package of pricingPackages" class="pricing-card" 
-  >
-          <h3 [style.color]="package.color" style="font-size: 2rem; margin-bottom: 15px;">{{ package.name }}</h3>
-          <p style="font-size: 1.1rem;">{{ package.description }}</p>
-          <h4 style="font-size: 2rem; margin: 15px 0;">{{ package.price }}</h4>
-          <ul style="list-style: none; padding: 0; font-size: 1rem; text-align: left;">
-            <li *ngFor="let feature of package.features">
-              {{ feature }}
-            </li>
-          </ul>
-          <a class="get-started" [href]="package.link">
-            {{ getStartedText }}
-          </a>
-        </div>
-      </div>
-    </div>
-  
-    <div class="reviews" style="background: url('images/business_website.png') no-repeat center center/cover;">
-      <h2 style="color: black; font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ reviewsTitle }}</h2>
-      <p style="color: black; font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ reviewsSubtitle }}</p>
-  
-      <div class="reviews-wrapper">
-        <div *ngFor="let review of reviews" class="review-card">
-          <p style="font-style: italic; font-size: 1.1rem;">“{{ review.text }}”</p>
-          <h4 style="margin-top: 15px; color: #f8d210;">— {{ review.author }}</h4>
-        </div>
-      </div>
-      </div>
-  
-    <div class="career-section" style="background: url('images/mobileapp.png') center/cover no-repeat;">
-      <h2 style="margin-bottom: 20px; font-size: 2.5rem; font-weight: bold;">{{ careerTitle }}</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-        {{ careerDescription }}
-      </p>
-  
-      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
-        <img src="images/careers.png" alt="Career Opportunities" style="width: 50%; margin-bottom: 20px;" />
-        <p style="font-size: 1rem; font-style: italic; color: #fff; max-width: 600px; text-align: center;">
-          "{{ careerQuote }}"
-        </p>
-      </div>
-  
-      <a [href]="contactLink" target="_blank" style="text-decoration: none;">
-        <button class="button">{{ contactButtonText }}</button>
-      </a>
-    </div>
-  </div>
-  
+</section>
