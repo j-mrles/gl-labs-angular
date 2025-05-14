@@ -8,12 +8,23 @@
         <li><a href="/discover">Services</a></li>
         <li><a href="/our-products">Products</a></li>
         <li><a href="/about-us">About Us</a></li>
-
     </ul>
     
     <div class="example-button-row">
         <a mat-flat-button class="custom-button" href="mailto:jmorales@galaxylabsusa.com?subject=Inquiry&body=Hello, I would like to learn more about Galaxy Labs." target="_blank">
             Contact Us Today
         </a>
+    </div>
+
+    <!-- Hamburger Icon for Mobile -->
+    <div class="hamburger" (click)="toggleMenu()"></div>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu" [class.open]="isMenuOpen">
+        <span class="close-btn" (click)="toggleMenu()">×</span>
+        <a href="/">Home</a>
+        <a href="/discover">Services</a>
+        <a href="/our-products">Products</a>
+        <a href="/about-us">About Us</a>
     </div>
 </nav>

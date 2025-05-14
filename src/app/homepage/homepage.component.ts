@@ -27,7 +27,7 @@ export class HomepageComponent {
 
 
   // Hero Section
-  heroText = 'Welcome to GalaxyLabs!';
+  heroText = 'Custom Software, Websites and more!';
   phoneLink = 'tel:+1234567890';
   textOrCallButton = 'Text or Call Us';
   estimateLink = '/estimate';

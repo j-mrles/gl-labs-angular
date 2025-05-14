@@ -1,23 +1,28 @@
 <header id="home" style="position: relative; text-align: center; color: rgb(65, 61, 61);">
-    <img id="logo" src="images/galaxylabslogo.png" alt="GalaxyLabs Logo" style="max-width: 100%; height: auto;" />
+  <!-- Transparent background wrapper -->
+  <div style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; display: inline-block; margin-top: 20px;">
+    <img id="logo" src="images/galaxylabslogo2.png" alt="GalaxyLabs Logo" style="padding: 50px; max-width: 60%; height: auto;" />
+    
     <p class="slide-in-left" style="color: white; font-size: 2rem; margin-top: 20px;">
       {{ heroText }}
     </p>
-    <a [href]="phoneLink">
-      <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-        {{ textOrCallButton }}
-      </button>
-    </a>
-    <a [href]="estimateLink">
-      <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin: 0 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
-        {{ freeEstimateButton }}
-      </button>
-    </a>
-    <video autoplay loop muted playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-      <source src="images/cityscape_1.mp4" type="video/mp4" />
-      {{ videoFallback }}
-    </video>
-  </header>
+    <div style="margin-top: 15px;">
+      <a [href]="phoneLink">
+        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+          {{ textOrCallButton }}
+        </button>
+      </a>
+      <a [href]="estimateLink">
+        <button class="button" style="background-color: #013f8e; color: white; border: none; padding: 10px 20px; margin-left: 10px; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+          {{ freeEstimateButton }}
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <img src="images/home-image.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;" />
+</header>
+
   
   <div class="our-vision" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
     <img src="images/construction.png" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
@@ -59,8 +64,8 @@
     </div>
   
     <div class="pricing" style="background: url('images/construction-site.png') no-repeat center center/cover;">
-      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ pricingTitle }}</h2>
-      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ pricingSubtitle }}</p>
+      <h2 style="color: black; font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ pricingTitle }}</h2>
+      <p style="color: black; font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ pricingSubtitle }}</p>
   
       <div class="pricing-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
         <div *ngFor="let package of pricingPackages" class="pricing-card" 
@@ -80,9 +85,9 @@
       </div>
     </div>
   
-    <div class="reviews" style="background: url('images/dirt.png') no-repeat center center/cover;">
-      <h2 style="font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ reviewsTitle }}</h2>
-      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ reviewsSubtitle }}</p>
+    <div class="reviews" style="background: url('images/business_website.png') no-repeat center center/cover;">
+      <h2 style="color: black; font-size: 3rem; font-weight: bold; text-transform: uppercase; margin-bottom: 40px;">{{ reviewsTitle }}</h2>
+      <p style="color: black; font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">{{ reviewsSubtitle }}</p>
   
       <div class="reviews-wrapper">
         <div *ngFor="let review of reviews" class="review-card">
