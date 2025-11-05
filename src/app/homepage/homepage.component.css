@@ -1,3 +1,90 @@
+/* Launch Banner Styles */
+.launch-banner {
+  background: linear-gradient(135deg, #013f8e 0%, #0066cc 50%, #013f8e 100%);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  text-align: center;
+  position: sticky;
+  top: 50px; /* Position below fixed navbar (50px height) */
+  box-shadow: 0 4px 12px rgba(1, 63, 142, 0.3);
+  z-index: 999;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.launch-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.launch-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.launch-text {
+  font-size: 1rem;
+  font-weight: 500;
+  flex: 1;
+  min-width: 200px;
+}
+
+.banner-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  opacity: 0.8;
+}
+
+.banner-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .launch-banner {
+    padding: 0.875rem 1rem;
+  }
+  
+  .launch-banner-content {
+    gap: 0.75rem;
+  }
+  
+  .launch-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .launch-text {
+    font-size: 0.875rem;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+  .banner-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
 /* .about{
   position: absolute;
    top: 50%;

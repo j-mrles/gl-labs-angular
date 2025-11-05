@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   trigger,
   style,
@@ -10,6 +11,8 @@ import {
 
 @Component({
   selector: 'app-homepage',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
   animations: [
@@ -37,4 +40,10 @@ import {
     ])
   ]
 })
-export class HomepageComponent {}
+export class HomepageComponent {
+  bannerVisible = true;
+
+  dismissBanner() {
+    this.bannerVisible = false;
+  }
+}

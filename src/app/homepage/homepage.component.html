@@ -1,3 +1,12 @@
+<!-- LAUNCH BANNER -->
+<div class="launch-banner" [@fadeIn] *ngIf="bannerVisible">
+  <div class="launch-banner-content">
+    <span class="launch-badge">🎉 Official Launch</span>
+    <span class="launch-text">Website Version is Officially Launching - Go Live Release 0.0.0</span>
+    <button class="banner-close" (click)="dismissBanner()" aria-label="Close banner">×</button>
+  </div>
+</div>
+
 <!-- HERO SECTION -->
 <section [@slideUp] style="padding: 4rem 2rem; margin: 65px; background: url('images/nightsky.png') no-repeat center center; background-size: cover; color: #fff; border-radius: 1rem; text-align: center; position: relative;">
 
