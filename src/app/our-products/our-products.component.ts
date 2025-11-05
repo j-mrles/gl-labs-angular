@@ -15,19 +15,19 @@ export class OurProductsComponent {
       name: 'Chatbot Therapist',
       description: 'A chatbot that acts as a therapist, providing mental health support with AI-driven conversations.',
       image: 'https://images.pexels.com/photos/16380906/pexels-photo-16380906.jpeg',
-      link: '/chatbot-therapist'
+      link: 'https://github.com/j-mrles/Jarvis-Personal-Assistant'
     },
     {
-      name: 'Stock Market Notification Bot',
-      description: 'Get real-time notifications about the latest stock market movements and stock refresh data.',
-      image: 'https://images.unsplash.com/photo-1518981334267-4572b0640879',
-      link: '/stock-notification-bot'
+      name: 'STOCKR',
+      description: 'STOCKR is a microservices-based platform that aggregates stock news from multiple sources, analyzes sentiment using AI/ML models, and presents results through an intuitive dashboard. Built with Angular 17, ASP.NET Core, and Python FastAPI for real-time market intelligence.',
+      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop',
+      link: 'https://github.com/j-mrles/STOCKR'
     },
     {
-      name: 'Stock Market Analyzer',
-      description: 'A deep analysis tool for specific stocks to help you make informed decisions based on market data.',
-      image: 'https://images.pexels.com/photos/890508/pexels-photo-890508.jpeg',
-      link: '/stock-analyzer'
+      name: 'Vista',
+      description: 'A feature-rich social media platform built with Flutter and Dart using MVC architecture. Leverages Google Firebase for secure authentication, content moderation, and personalized content discovery. Features real-time posts, interactive feeds, direct messaging, and custom profiles.',
+      image: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop',
+      link: 'https://github.com/j-mrles/Vista-Mobile-App'
     }
   ];  
 }

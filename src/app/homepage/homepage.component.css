@@ -84,7 +84,6 @@
     right: 0.5rem;
   }
 }
-
 /* Mobile Responsive Styles for Homepage */
 @media (max-width: 768px) {
   /* Hero Section - Mobile */
@@ -479,3 +478,4 @@ text-box{
        font-size: 0.9rem;
   }
 } */
+

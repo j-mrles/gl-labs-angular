@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-discover',
   standalone: true,
-  imports: [    CommonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.css'
 })
@@ -49,6 +52,26 @@ export class DiscoverComponent {
       image: 'https://cdn-icons-png.flaticon.com/512/1828/1828884.png',
       title: 'Maintenance Plans',
       description: 'Security updates, hosting, scaling support.'
+    },
+    {
+      image: 'https://cdn-icons-png.flaticon.com/512/2942/2942651.png',
+      title: 'API Development',
+      description: 'RESTful and GraphQL APIs for seamless integrations.'
+    },
+    {
+      image: 'https://cdn-icons-png.flaticon.com/512/1995/1995515.png',
+      title: 'Cloud Migration',
+      description: 'Move your infrastructure to AWS, Azure, or Google Cloud.'
+    },
+    {
+      image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+      title: 'Database Solutions',
+      description: 'SQL and NoSQL database design and optimization.'
+    },
+    {
+      image: 'https://cdn-icons-png.flaticon.com/512/1055/1055687.png',
+      title: 'AI & Machine Learning',
+      description: 'Custom AI solutions and ML model integration.'
     }
   ];
   
@@ -102,8 +125,21 @@ export class DiscoverComponent {
   ];
   
   caseStudies = [
-    { project: 'GreenHarvest App', summary: 'Built an e-commerce platform for produce delivery with 25k users.' },
-    { project: 'ShiftPro CRM', summary: 'Custom CRM for staffing agencies, reducing hiring time by 30%.' }
+    { 
+      project: 'Coastal Garden Designs', 
+      summary: 'Custom website and online presence for a landscape design business, showcasing beautiful coastal garden projects and increasing client inquiries by 40%.',
+      link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html'
+    },
+    { 
+      project: 'Little Bee\'s Creations', 
+      summary: 'E-commerce platform for handmade crafts and custom creations, featuring an intuitive shopping experience that boosted online sales by 60%.',
+      link: 'https://j-mrles.github.io/LinkTree/littlebee\'s-creations/home/index.html'
+    },
+    { 
+      project: 'Gum-Gum Cards (Linktree)', 
+      summary: 'Custom Linktree-style landing page solution connecting customers to multiple product offerings and social media channels, simplifying the customer journey.',
+      link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html'
+    }
   ];
   
 }

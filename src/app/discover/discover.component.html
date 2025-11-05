@@ -48,9 +48,25 @@
   <!-- Case Studies -->
   <section class="case-studies">
     <h2>Case Studies</h2>
-    <div class="case" *ngFor="let caseItem of caseStudies">
-      <h3>{{ caseItem.project }}</h3>
-      <p>{{ caseItem.summary }}</p>
+    <div class="case-studies-grid">
+      <mat-card class="case-card" *ngFor="let caseItem of caseStudies">
+        <mat-card-header>
+          <mat-card-title>
+            <a [href]="caseItem.link" target="_blank" rel="noopener noreferrer">
+              {{ caseItem.project }}
+            </a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ caseItem.summary }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button [href]="caseItem.link" target="_blank" rel="noopener noreferrer" color="primary">
+            View Project
+            <mat-icon style="vertical-align: middle; font-size: 18px; margin-left: 4px;">open_in_new</mat-icon>
+          </a>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </section>
 
