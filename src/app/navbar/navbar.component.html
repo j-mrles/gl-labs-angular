@@ -9,22 +9,24 @@
         <li><a href="/our-products">Products</a></li>
         <li><a href="/about-us">About Us</a></li>
     </ul>
-    
-    <div class="example-button-row">
-        <a mat-flat-button class="custom-button" href="mailto:jmorales@galaxylabsusa.com?subject=Inquiry&body=Hello, I would like to learn more about Galaxy Labs." target="_blank">
-            Contact Us Today
-        </a>
-    </div>
 
     <!-- Hamburger Icon for Mobile -->
-    <div class="hamburger" (click)="toggleMenu()"></div>
+    <div class="hamburger" [class.active]="isMenuOpen" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <!-- Side Menu -->
     <div id="sideMenu" class="side-menu" [class.open]="isMenuOpen">
-        <span class="close-btn" (click)="toggleMenu()">×</span>
-        <a href="/">Home</a>
-        <a href="/discover">Services</a>
-        <a href="/our-products">Products</a>
-        <a href="/about-us">About Us</a>
+        <div class="side-menu-content">
+            <a href="/" (click)="closeMenu()">Home</a>
+            <a href="/discover" (click)="closeMenu()">Services</a>
+            <a href="/our-products" (click)="closeMenu()">Products</a>
+            <a href="/about-us" (click)="closeMenu()">About Us</a>
+        </div>
     </div>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="menu-overlay" [class.active]="isMenuOpen" (click)="toggleMenu()"></div>
 </nav>
