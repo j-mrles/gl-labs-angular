@@ -479,3 +479,56 @@ text-box{
   }
 } */
 
+/* Hero Section Loader */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section .hero-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1, 63, 142, 0.78);
+  color: #ffffff;
+  z-index: 3;
+  gap: 1rem;
+  transition: opacity 0.4s ease;
+}
+
+.hero-section.loaded .hero-loader {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-section .spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.hero-section .hero-content {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-section.loaded .hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

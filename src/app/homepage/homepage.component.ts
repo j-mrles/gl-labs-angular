@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   trigger,
@@ -40,8 +40,22 @@ import {
     ])
   ]
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit {
   bannerVisible = true;
+  heroLoaded = false;
+  private readonly heroBackgroundUrl = 'images/nightsky.png';
+
+  ngOnInit(): void {
+    const heroImage = new Image();
+    heroImage.src = this.heroBackgroundUrl;
+
+    if (heroImage.complete) {
+      this.heroLoaded = true;
+    } else {
+      heroImage.onload = () => (this.heroLoaded = true);
+      heroImage.onerror = () => (this.heroLoaded = true);
+    }
+  }
 
   dismissBanner() {
     this.bannerVisible = false;
