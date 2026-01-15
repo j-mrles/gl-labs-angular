@@ -19,39 +19,11 @@ import {
       <section class="auth__panel" aria-label="Login panel">
         <div class="auth__brand">
           <div class="auth__kicker">StockBoss</div>
-          <h1 class="auth__title">{{ mode === 'login' ? 'Login' : 'Create account' }}</h1>
-          <p class="auth__subtitle">
-            {{ mode === 'login'
-              ? 'Sign in to your account.'
-              : 'Create an account to access StockBoss.'
-            }}
-          </p>
+          <h1 class="auth__title">Login</h1>
+          <p class="auth__subtitle">Sign in to your account.</p>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="Authentication mode">
-          <button
-            class="tab"
-            type="button"
-            role="tab"
-            [attr.aria-selected]="mode === 'login'"
-            [class.is-active]="mode === 'login'"
-            (click)="setMode('login')"
-          >
-            Login
-          </button>
-          <button
-            class="tab"
-            type="button"
-            role="tab"
-            [attr.aria-selected]="mode === 'signup'"
-            [class.is-active]="mode === 'signup'"
-            (click)="setMode('signup')"
-          >
-            Create account
-          </button>
-        </div>
-
-        <form class="auth__form" autocomplete="on" (ngSubmit)="submit()">
+        <form class="auth__form" autocomplete="on" (ngSubmit)="login()">
           <label class="field">
             <span>Username</span>
             <input
@@ -76,22 +48,10 @@ import {
             >
           </label>
 
-          <label class="field" *ngIf="mode === 'signup'">
-            <span>Signup PIN</span>
-            <input
-              type="password"
-              name="pin"
-              placeholder="••••••••"
-              autocomplete="off"
-              [(ngModel)]="pin"
-              required
-            >
-          </label>
-
           <div class="error" *ngIf="error">{{ error }}</div>
 
           <button class="btn btn--primary" type="submit" [disabled]="loading">
-            {{ loading ? (mode === 'login' ? 'Signing in…' : 'Creating…') : (mode === 'login' ? 'Continue' : 'Create account') }}
+            {{ loading ? 'Signing in…' : 'Continue' }}
           </button>
 
           <a class="btn btn--secondary" routerLink="/" [class.is-disabled]="loading">Back to home</a>
@@ -145,28 +105,6 @@ import {
       display: grid;
       gap: 12px;
       margin-top: 6px;
-    }
-    .tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 2px;
-    }
-    .tab {
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.82);
-      padding: 10px 12px;
-      cursor: pointer;
-      font-weight: 650;
-      letter-spacing: 0.01em;
-      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-    }
-    .tab.is-active {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.22);
-      color: #fff;
     }
     .field { display: grid; gap: 6px; text-align: left; }
     .field span { font-size: 0.9rem; color: rgba(255,255,255,0.82); }
@@ -226,24 +164,12 @@ import {
   `]
 })
 export class StaffLoginComponent {
-  readonly SIGNUP_PIN = 'gumgum';
-
-  mode: 'login' | 'signup' = 'login';
   username = '';
   password = '';
-  pin = '';
   loading = false;
   error = '';
 
   constructor(private readonly router: Router) {}
-
-  setMode(next: 'login' | 'signup') {
-    if (this.loading) return;
-    this.mode = next;
-    this.error = '';
-    this.password = '';
-    this.pin = '';
-  }
 
   private resolveEmailFromUsername(username: string): string {
     // Firebase Email/Password requires an email address; UI uses "username" only.
@@ -251,7 +177,7 @@ export class StaffLoginComponent {
     return username.includes('@') ? username : `${username}@${STAFF_USERNAME_EMAIL_DOMAIN}`;
   }
 
-  async submit(): Promise<void> {
+  async login(): Promise<void> {
     this.error = '';
 
     if (!FIREBASE_WEB_API_KEY) {
@@ -263,58 +189,9 @@ export class StaffLoginComponent {
     const password = this.password;
 
     if (!username || !password) return;
-    if (this.mode === 'signup' && !this.pin) return;
 
     this.loading = true;
     try {
-      if (this.mode === 'signup') {
-        // IMPORTANT: This PIN is client-side and can be discovered in the browser.
-        // It's only a lightweight gate, not real security.
-        if (this.pin !== this.SIGNUP_PIN) {
-          // Avoid detailed hints; keep generic.
-          this.error = 'Unable to create account.';
-          return;
-        }
-
-        const email = this.resolveEmailFromUsername(username);
-        const resp = await fetch(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${encodeURIComponent(FIREBASE_WEB_API_KEY)}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, returnSecureToken: true })
-          }
-        );
-
-        const data = (await resp.json()) as any;
-        if (!resp.ok || !data?.idToken) {
-          // Keep UI generic, but log the real reason for debugging.
-          // Common messages: OPERATION_NOT_ALLOWED, API_KEY_HTTP_REFERRER_BLOCKED,
-          // WEAK_PASSWORD, EMAIL_EXISTS, INVALID_EMAIL, etc.
-          // eslint-disable-next-line no-console
-          console.warn('StockBoss signup failed:', data?.error?.message ?? data);
-          this.error = 'Unable to create account.';
-          return;
-        }
-
-        // Create a Firestore profile entry (never store passwords).
-        await this.createUserProfile({
-          idToken: String(data.idToken),
-          uid: String(data.localId ?? ''),
-          username
-        });
-
-        sessionStorage.setItem('staff_id_token', String(data.idToken));
-        sessionStorage.setItem('staff_uid', String(data.localId ?? ''));
-        sessionStorage.setItem('staff_username', username);
-
-        // eslint-disable-next-line no-console
-        console.info('StockBoss: account created and signed in.');
-
-        await this.router.navigateByUrl('/');
-        return;
-      }
-
       if (STAFF_LOGIN_MODE === 'customToken') {
         // Paid (Blaze) path: Cloud Function verifies username/password server-side.
         const functionUrl =
@@ -384,32 +261,10 @@ export class StaffLoginComponent {
       // For now, just return home. (We can add /staff dashboard later.)
       await this.router.navigateByUrl('/');
     } catch {
-      this.error = this.mode === 'login' ? 'Login failed. Please try again.' : 'Unable to create account.';
+      this.error = 'Login failed. Please try again.';
     } finally {
       this.loading = false;
     }
-  }
-
-  private async createUserProfile(opts: { idToken: string; uid: string; username: string }): Promise<void> {
-    if (!opts.uid) return;
-    const url =
-      `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(FIREBASE_PROJECT_ID)}` +
-      `/databases/(default)/documents/stockbossUsers/${encodeURIComponent(opts.uid)}`;
-
-    // Create/overwrite the doc for this user. Requires Firestore rules that allow it.
-    await fetch(url, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${opts.idToken}`
-      },
-      body: JSON.stringify({
-        fields: {
-          username: { stringValue: opts.username },
-          createdAt: { timestampValue: new Date().toISOString() }
-        }
-      })
-    });
   }
 }
 
