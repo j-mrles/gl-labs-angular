@@ -12,10 +12,10 @@ import { CommonModule } from '@angular/common';
 export class OurProductsComponent {
   products = [
     {
-      name: 'Chatbot Therapist',
-      description: 'A chatbot that acts as a therapist, providing mental health support with AI-driven conversations.',
-      image: 'https://images.pexels.com/photos/16380906/pexels-photo-16380906.jpeg',
-      link: 'https://github.com/j-mrles/Jarvis-Personal-Assistant'
+      name: 'StockBoss',
+      description: 'An all-in-one inventory one-stop shop for your small business — track stock, manage products, and stay on top of sales with a simple dashboard.',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=60',
+      link: '/discover'
     },
     {
       name: 'STOCKR',

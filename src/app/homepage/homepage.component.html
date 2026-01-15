@@ -7,16 +7,26 @@
   </div>
 </div>
 
-<!-- HERO SECTION -->
-<section class="hero-section" [@slideUp] [class.loaded]="heroLoaded" style="padding: 4rem 2rem; margin: 65px; background: url('images/nightsky.png') no-repeat center center; background-size: cover; color: #fff; border-radius: 1rem; text-align: center; position: relative;">
-  <div class="hero-loader" *ngIf="!heroLoaded" aria-live="polite">
-    <div class="spinner"></div>
-    <p>Preparing your experience…</p>
-  </div>
-
-  <div class="hero-content">
+<!-- HERO / HEADER SECTION -->
+<!-- NOTE: this section intentionally does NOT block rendering on the background image load -->
+<section
+  class="masthead-section loaded masthead--bg"
+  [class.bg-loaded]="bgLoaded"
+  [@slideUp]
+  style="padding: 4rem 2rem; margin: 65px; color: #fff; border-radius: 1rem; text-align: center; position: relative; --masthead-bg: url('/images/nightsky.png');"
+>
+  <div class="masthead-content">
     <!-- Logo Positioned on top of Background -->
-    <img src="images/galaxylabsicon.png" alt="galaxylabs Logo" style="max-width: 150px; position: relative; z-index: 1;">
+    <img
+      src="images/galaxylabsicon.png"
+      alt="galaxylabs Logo"
+      width="150"
+      height="150"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      style="max-width: 150px; position: relative; z-index: 1;"
+    >
     
     <!-- Text with direct white color styling -->
     <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: rgb(255, 255, 255); z-index: 1;">Welcome to galaxylabs</h1>
@@ -37,17 +47,17 @@
   <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">What We Offer</h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; padding: 0 2rem;">
     <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="AI" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="AI" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
       <h3>AI Integration</h3>
       <p>We leverage artificial intelligence to streamline operations and drive results.</p>
     </div>
     <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/3534/3534068.png" alt="Cloud" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3534/3534068.png" alt="Cloud" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
       <h3>Cloud Solutions</h3>
       <p>Secure and scalable cloud platforms built for efficiency and uptime.</p>
     </div>
     <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/3756/3756931.png" alt="Mobile" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3756/3756931.png" alt="Mobile" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
       <h3>Mobile Development</h3>
       <p>Build native and cross-platform apps that deliver top-tier UX.</p>
     </div>
@@ -70,12 +80,12 @@
   <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">Featured Projects</h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem;">
     <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <img src="images/analytics.png" alt="Project 1" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
+      <img src="images/analytics.png" alt="Project 1" loading="lazy" decoding="async" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
       <h3 style="margin-top: 1rem;">Smart Inventory System</h3>
       <p>Automated alerts and predictive stock analysis.</p>
     </div>
     <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <img src="images/solutions.png" alt="Data Insight Platform" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=60" alt="Data Insight Platform" loading="lazy" decoding="async" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
       <h3 style="margin-top: 1rem;">Data Insight Platform</h3>
       <p>Turn big data into real-time decisions for enterprise clients.</p>
     </div>

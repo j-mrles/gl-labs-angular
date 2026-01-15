@@ -42,18 +42,19 @@ import {
 })
 export class HomepageComponent implements OnInit {
   bannerVisible = true;
-  heroLoaded = false;
-  private readonly heroBackgroundUrl = 'images/nightsky.png';
+  bgLoaded = false;
+  private readonly headerBackgroundUrl = '/images/nightsky.png';
 
   ngOnInit(): void {
-    const heroImage = new Image();
-    heroImage.src = this.heroBackgroundUrl;
+    // Preload the background image, but never block rendering on it.
+    const img = new Image();
+    img.src = this.headerBackgroundUrl;
 
-    if (heroImage.complete) {
-      this.heroLoaded = true;
+    if (img.complete) {
+      this.bgLoaded = true;
     } else {
-      heroImage.onload = () => (this.heroLoaded = true);
-      heroImage.onerror = () => (this.heroLoaded = true);
+      img.onload = () => (this.bgLoaded = true);
+      img.onerror = () => (this.bgLoaded = true);
     }
   }
 

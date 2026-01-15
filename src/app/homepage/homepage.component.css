@@ -86,7 +86,7 @@
 }
 /* Mobile Responsive Styles for Homepage */
 @media (max-width: 768px) {
-  /* Hero Section - Mobile */
+  /* Header Section - Mobile */
   section:first-of-type {
     padding: 2rem 1rem !important;
     margin: 65px 1rem 2rem 1rem !important;
@@ -479,51 +479,56 @@ text-box{
   }
 } */
 
-/* Hero Section Loader */
-.hero-section {
+/* Masthead background fade-in (non-blocking) */
+.masthead-section.masthead--bg {
   position: relative;
   overflow: hidden;
+  background-color: #013f8e; /* fast placeholder while image loads */
 }
 
-.hero-section .hero-loader {
+.masthead-section.masthead--bg .masthead-content {
+  position: relative;
+  z-index: 1; /* ensure text/buttons render above the background overlay */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.masthead-section.masthead--bg .masthead-content h1 {
+  /* Override inline hero sizing so it scales well on laptops + mobile */
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 2.5rem) !important;
+  line-height: 1.15;
+}
+
+.masthead-section.masthead--bg .masthead-content p {
+  font-size: clamp(1rem, 0.9vw + 0.85rem, 1.25rem) !important;
+}
+
+.masthead-section.masthead--bg {
+  /* Override inline spacing so it never feels cramped or causes overflow */
+  padding: clamp(1.5rem, 3vw, 4rem) clamp(0.75rem, 3vw, 2rem) !important;
+  margin: 65px clamp(0.5rem, 2.5vw, 2rem) 2rem clamp(0.5rem, 2.5vw, 2rem) !important;
+}
+
+.masthead-section.masthead--bg::before {
+  content: '';
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(1, 63, 142, 0.78);
-  color: #ffffff;
-  z-index: 3;
-  gap: 1rem;
-  transition: opacity 0.4s ease;
-}
-
-.hero-section.loaded .hero-loader {
+  /* Use a CSS variable so Angular doesn't try to resolve/bundle this URL. */
+  background: var(--masthead-bg, none) no-repeat center center;
+  background-size: cover;
   opacity: 0;
-  pointer-events: none;
+  transition: opacity 700ms ease;
+  z-index: 0;
 }
 
-.hero-section .spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.hero-section .hero-content {
-  position: relative;
-  z-index: 4;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.hero-section.loaded .hero-content {
+.masthead-section.masthead--bg.bg-loaded::before {
   opacity: 1;
-  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masthead-section.masthead--bg::before {
+    transition: none;
+  }
 }
 
 @keyframes spin {

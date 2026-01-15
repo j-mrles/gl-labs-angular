@@ -1,7 +1,7 @@
 <div class="discover-container">
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Header Section -->
+  <section class="header">
     <h1>Powering Businesses with Tailored Digital Products and Solutions</h1>
     <p>From websites to full-scale platforms, we turn ideas into thriving products.</p>
     <button class="white-button">View Our Services</button>
@@ -12,7 +12,7 @@
     <h2>Our Products & Services</h2>
     <div class="solutions-grid">
       <div class="solution-card" *ngFor="let solution of solutions">
-        <img [src]="solution.image" [alt]="solution.title" class="solution-image">
+        <img [src]="solution.image" [alt]="solution.title" class="solution-image" loading="lazy" decoding="async">
         <h3>{{ solution.title }}</h3>
         <p>{{ solution.description }}</p>
       </div>

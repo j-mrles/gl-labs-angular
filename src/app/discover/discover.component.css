@@ -18,8 +18,8 @@ section h2 {
   color: #111;
 }
 
-/* Hero Section */
-.hero {
+/* Header Section */
+.header {
   padding: 4rem 2rem;
   margin: 35px;
   background: linear-gradient(135deg, #013f8e,#4f46e5);
@@ -27,12 +27,12 @@ section h2 {
   border-radius: 1rem;
 }
 
-.hero h1 {
+.header h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.hero p {
+.header p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
 }
