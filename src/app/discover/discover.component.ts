@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './discover.component.html',
-  styleUrl: './discover.component.css'
+  styleUrls: ['./discover.component.css']
 })
 export class DiscoverComponent {
   solutions = [
