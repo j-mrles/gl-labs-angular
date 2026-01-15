@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import {
   trigger,
   style,
@@ -12,7 +13,7 @@ import {
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
   animations: [
@@ -43,12 +44,14 @@ import {
 export class HomepageComponent implements OnInit {
   bannerVisible = true;
   bgLoaded = false;
-  private readonly headerBackgroundUrl = '/images/nightsky.png';
+  readonly heroBackgroundUrl =
+    'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=2400&q=70';
+  readonly heroBackgroundCss = `url('${this.heroBackgroundUrl}')`;
 
   ngOnInit(): void {
     // Preload the background image, but never block rendering on it.
     const img = new Image();
-    img.src = this.headerBackgroundUrl;
+    img.src = this.heroBackgroundUrl;
 
     if (img.complete) {
       this.bgLoaded = true;

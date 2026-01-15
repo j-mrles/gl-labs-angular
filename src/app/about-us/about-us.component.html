@@ -1,62 +1,82 @@
-<section class="about-us">
-    <!-- Header Section -->
-    <div class="about-header animate-fade-up" [style.animation-delay]="'0s'">
-      <h1>About Us</h1>
-      <p>We design and develop digital products that drive business success, innovation, and growth.</p>
-      <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200" alt="Professional Team" class="header-image" decoding="async" fetchpriority="high">
+<main class="tesla-page">
+  <section
+    class="panel panel--hero"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="About hero"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h1>About</h1>
+        <p>We design and build digital products that look great, run fast, and scale with your business.</p>
+      </div>
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/discover">Services</a>
+        <a class="btn btn--secondary" routerLink="/our-products">Products</a>
+      </div>
     </div>
-  
-    <!-- Mission Section -->
-    <section class="mission animate-fade-up" [style.animation-delay]="'0.2s'">
-      <h2>Our Mission</h2>
-      <p>To empower businesses by building custom digital solutions that are scalable, intuitive, and impactful.</p>
-    </section>
-  
-    <!-- Values Section -->
-    <section class="values animate-fade-up" [style.animation-delay]="'0.4s'">
-      <h2>Our Values</h2>
-      <div class="values-grid">
-        <div class="value-card animate-fade-up" [style.animation-delay]="'0.5s'">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Innovation" loading="lazy" decoding="async">
-          <h3>Innovation</h3>
-          <p>We embrace new technologies to deliver forward-thinking solutions.</p>
+  </section>
+
+  <section class="panel panel--dark" aria-label="Mission">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Mission</h2>
+        <p>Empower businesses with custom digital solutions that are scalable, intuitive, and impactful.</p>
+      </div>
+
+      <ul class="specs" aria-label="How we operate">
+        <li><strong>Clarity</strong><span>Simple decisions, clean UX, predictable delivery</span></li>
+        <li><strong>Quality</strong><span>Performance-first engineering and strong fundamentals</span></li>
+        <li><strong>Partnership</strong><span>We build with you, then support what we ship</span></li>
+      </ul>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Start a project</a>
+        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="panel panel--dark"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Values"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Values</h2>
+        <p>Modern teams move fast, but never compromise fundamentals.</p>
+      </div>
+
+      <div class="cards" aria-label="Values">
+        <div class="card">
+          <div class="card__title">Innovation</div>
+          <div class="card__text">We use the right tools—AI, cloud, and automation—when it improves outcomes.</div>
         </div>
-        <div class="value-card animate-fade-up" [style.animation-delay]="'0.7s'">
-          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Customer Success" loading="lazy" decoding="async">
-          <h3>Customer Success</h3>
-          <p>Your success is our priority, and we build every project around your goals.</p>
+        <div class="card">
+          <div class="card__title">Customer success</div>
+          <div class="card__text">We optimize for business results: adoption, retention, and time saved.</div>
         </div>
-        <div class="value-card animate-fade-up" [style.animation-delay]="'0.9s'">
-          <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Collaboration" loading="lazy" decoding="async">
-          <h3>Collaboration</h3>
-          <p>We believe in working closely with our clients to bring ideas to life.</p>
+        <div class="card">
+          <div class="card__title">Craft</div>
+          <div class="card__text">We sweat details: responsiveness, accessibility, and performance.</div>
         </div>
       </div>
-    </section>
-  
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us animate-fade-up" [style.animation-delay]="'1.2s'">
-      <h2>Why Choose Us?</h2>
-      <div class="reasons-grid">
-        <div class="reason-card animate-fade-up" [style.animation-delay]="'1.4s'">
-          <h3>Tailored Solutions</h3>
-          <p>We create solutions that are custom-fit to your unique needs and challenges.</p>
-        </div>
-        <div class="reason-card animate-fade-up" [style.animation-delay]="'1.6s'">
-          <h3>Experienced Team</h3>
-          <p>Our diverse team brings deep expertise across industries and technologies.</p>
-        </div>
-        <div class="reason-card animate-fade-up" [style.animation-delay]="'1.8s'">
-          <h3>Ongoing Partnership</h3>
-          <p>We provide post-launch support, maintenance, and scaling to ensure long-term success.</p>
-        </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/discover">See capabilities</a>
+        <a class="btn btn--secondary" href="mailto:info@galaxylabsusa.com">Contact</a>
       </div>
-    </section>
-  
-    <!-- Partners Section -->
-    <section class="partners animate-fade-up" [style.animation-delay]="'2s'">
-      <h2>Our Trusted Partners</h2>
-      <div class="partners-logos">
+    </div>
+  </section>
+
+  <section class="panel panel--light" aria-label="Partners">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Trusted stack</h2>
+        <p>We build with proven platforms and modern tooling.</p>
+      </div>
+
+      <div class="logos" aria-label="Partner logos">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" />
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" loading="lazy" decoding="async" />
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" loading="lazy" decoding="async" />
@@ -64,6 +84,12 @@
         <img src="https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" alt="Salesforce" loading="lazy" decoding="async" />
         <img src="https://cdn.worldvectorlogo.com/logos/stripe-4.svg" alt="Stripe" loading="lazy" decoding="async" />
       </div>
-    </section>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/our-products">View products</a>
+        <a class="btn btn--secondary" routerLink="/discover">Services</a>
+      </div>
+    </div>
   </section>
+</main>
   

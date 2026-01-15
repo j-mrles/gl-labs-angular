@@ -1,79 +1,97 @@
-<div class="discover-container">
+<main class="tesla-page">
+  <!-- HERO -->
+  <section
+    class="panel panel--hero"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Services hero"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h1>Services</h1>
+        <p>Powering businesses with tailored digital products — shipped fast, built clean.</p>
+      </div>
 
-  <!-- Header Section -->
-  <section class="header">
-    <h1>Powering Businesses with Tailored Digital Products and Solutions</h1>
-    <p>From websites to full-scale platforms, we turn ideas into thriving products.</p>
-    <button class="white-button">View Our Services</button>
-  </section>
-
-  <!-- Our Solutions -->
-  <section class="solutions">
-    <h2>Our Products & Services</h2>
-    <div class="solutions-grid">
-      <div class="solution-card" *ngFor="let solution of solutions">
-        <img [src]="solution.image" [alt]="solution.title" class="solution-image" loading="lazy" decoding="async">
-        <h3>{{ solution.title }}</h3>
-        <p>{{ solution.description }}</p>
+      <div class="panel__actions" aria-label="Primary actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Get a quote</a>
+        <a class="btn btn--secondary" routerLink="/our-products">View products</a>
       </div>
     </div>
   </section>
 
-  <!-- Featured Packages -->
-  <section class="pricing">
-    <h2>Our Packages</h2>
-    <div class="pricing-grid">
-      <div class="pricing-card" *ngFor="let package of pricingPackages" [style.borderColor]="package.color">
-        <h3>{{ package.name }}</h3>
-        <p class="description">{{ package.description }}</p>
-        <p class="price">{{ package.price }}</p>
-        <ul class="features">
-          <li *ngFor="let feature of package.features">{{ feature }}</li>
-        </ul>
-        <a [href]="package.link" class="cta-button" [style.backgroundColor]="package.color">Contact Us</a>
+  <!-- WHAT WE BUILD -->
+  <section class="panel panel--dark" aria-label="What we build">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>What we build</h2>
+        <p>From landing pages to full platforms, we turn ideas into production-ready experiences.</p>
+      </div>
+
+      <div class="cards" aria-label="Service list">
+        <div class="card" *ngFor="let solution of solutions">
+          <img class="card__icon" [src]="solution.image" [alt]="solution.title" loading="lazy" decoding="async">
+          <div class="card__title">{{ solution.title }}</div>
+          <div class="card__text">{{ solution.description }}</div>
+        </div>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/about-us">Our process</a>
+        <a class="btn btn--secondary" routerLink="/staff-login">Staff login</a>
       </div>
     </div>
   </section>
-  
-  
 
-  <!-- Technology Stack -->
-  <section class="stack">
-    <h2>Technologies We Work With</h2>
-    <ul class="tech-list">
-      <li *ngFor="let tech of techStack">{{ tech }}</li>
-    </ul>
-  </section>
+  <!-- PACKAGES -->
+  <section
+    class="panel panel--dark"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Packages"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Packages</h2>
+        <p>Clear, scoped options for startups, growing teams, and enterprise needs.</p>
+      </div>
 
-  <!-- Case Studies -->
-  <section class="case-studies">
-    <h2>Case Studies</h2>
-    <div class="case-studies-grid">
-      <mat-card class="case-card" *ngFor="let caseItem of caseStudies">
-        <mat-card-header>
-          <mat-card-title>
-            <a [href]="caseItem.link" target="_blank" rel="noopener noreferrer">
-              {{ caseItem.project }}
-            </a>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>{{ caseItem.summary }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-button [href]="caseItem.link" target="_blank" rel="noopener noreferrer" color="primary">
-            View Project
-            <mat-icon style="vertical-align: middle; font-size: 18px; margin-left: 4px;">open_in_new</mat-icon>
-          </a>
-        </mat-card-actions>
-      </mat-card>
+      <div class="pricing" aria-label="Pricing packages">
+        <article class="price-card" *ngFor="let package of pricingPackages" [style.--accent]="package.color">
+          <h3>{{ package.name }}</h3>
+          <div class="price">{{ package.price }}</div>
+          <p class="desc">{{ package.description }}</p>
+          <ul class="features">
+            <li *ngFor="let feature of package.features">{{ feature }}</li>
+          </ul>
+          <a class="btn btn--secondary btn--small" [href]="package.link">Contact</a>
+        </article>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Schedule a consult</a>
+        <a class="btn btn--secondary" routerLink="/our-products">See products</a>
+      </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="final-cta">
-    <h2>Ready to Bring Your Product to Life?</h2>
-    <button class="white-button">Schedule a Free Consultation</button>
-  </section>
+  <!-- CASE STUDIES -->
+  <section class="panel panel--light" aria-label="Case studies">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Case studies</h2>
+        <p>Real projects. Clear outcomes. Polished experiences.</p>
+      </div>
 
-</div>
+      <div class="work" aria-label="Case study list">
+        <a class="work-card" *ngFor="let caseItem of caseStudies" [href]="caseItem.link" target="_blank" rel="noopener noreferrer">
+          <div class="work-card__title">{{ caseItem.project }}</div>
+          <div class="work-card__text">{{ caseItem.summary }}</div>
+          <div class="work-card__cta">View project</div>
+        </a>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Start a project</a>
+        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,101 +1,102 @@
-<!-- LAUNCH BANNER -->
-<div class="launch-banner" [@fadeIn] *ngIf="bannerVisible">
-  <div class="launch-banner-content">
-    <span class="launch-badge">🎉 Official Launch</span>
-    <span class="launch-text">Website Version is Officially Launching - Go Live Release 0.0.0</span>
-    <button class="banner-close" (click)="dismissBanner()" aria-label="Close banner">×</button>
+<!-- Announcement (Tesla-style: simple, minimal) -->
+<div class="announcement" [@fadeIn] *ngIf="bannerVisible">
+  <div class="announcement__inner">
+    <span class="announcement__text">Now booking Q1 builds — websites, apps, and AI integrations.</span>
+    <button class="announcement__close" (click)="dismissBanner()" aria-label="Close announcement">×</button>
   </div>
 </div>
 
-<!-- HERO / HEADER SECTION -->
-<!-- NOTE: this section intentionally does NOT block rendering on the background image load -->
-<section
-  class="masthead-section loaded masthead--bg"
-  [class.bg-loaded]="bgLoaded"
-  [@slideUp]
-  style="padding: 4rem 2rem; margin: 65px; color: #fff; border-radius: 1rem; text-align: center; position: relative; --masthead-bg: url('/images/nightsky.png');"
->
-  <div class="masthead-content">
-    <!-- Logo Positioned on top of Background -->
-    <img
-      src="images/galaxylabsicon.png"
-      alt="galaxylabs Logo"
-      width="150"
-      height="150"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-      style="max-width: 150px; position: relative; z-index: 1;"
-    >
-    
-    <!-- Text with direct white color styling -->
-    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: rgb(255, 255, 255); z-index: 1;">Welcome to galaxylabs</h1>
-    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgb(255, 255, 255); z-index: 1;">Innovative solutions for a brighter future</p>
-    
-    <!-- Button with refined box-shadow for better visibility -->
-    <button class="cta-button" style="background-color: #ffffff; color: #3b82f6; 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.07); 
-      padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer; 
-      transition: background-color 0.3s, box-shadow 0.3s; z-index: 1;">Get Started</button>
-  </div>
-</section>
+<main class="tesla-home">
+  <!-- HERO -->
+  <section class="panel panel--hero" [class.bg-loaded]="bgLoaded" [style.--panel-bg]="heroBackgroundCss" aria-label="GalaxyLabs hero">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <img class="brand-mark" src="images/galaxylabsicon.png" alt="GalaxyLabs" width="96" height="96" decoding="async" fetchpriority="high">
+        <h1>GalaxyLabs</h1>
+        <p>Design and build digital products with clarity — web, mobile, and automation.</p>
+      </div>
 
-
-
-<!-- WHAT WE OFFER -->
-<section [@staggerFade] style="margin-bottom: 4rem; text-align: center;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">What We Offer</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; padding: 0 2rem;">
-    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="AI" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
-      <h3>AI Integration</h3>
-      <p>We leverage artificial intelligence to streamline operations and drive results.</p>
+      <div class="panel__actions" aria-label="Primary actions">
+        <a class="btn btn--primary" routerLink="/discover">Explore services</a>
+        <a class="btn btn--secondary" routerLink="/our-products">View products</a>
+      </div>
     </div>
-    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/3534/3534068.png" alt="Cloud" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
-      <h3>Cloud Solutions</h3>
-      <p>Secure and scalable cloud platforms built for efficiency and uptime.</p>
-    </div>
-    <div class="stagger-child" style="background-color: #fff; padding: 2rem 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s;">
-      <img src="https://cdn-icons-png.flaticon.com/512/3756/3756931.png" alt="Mobile" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: contain; margin-bottom: 1rem;">
-      <h3>Mobile Development</h3>
-      <p>Build native and cross-platform apps that deliver top-tier UX.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- HOW IT WORKS -->
-<section [@fadeIn] style="margin-bottom: 4rem; text-align: center; padding: 0 2rem;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">How It Works</h2>
-  <p style="color: #666; max-width: 600px; margin: 0 auto;">Our process is streamlined to get your product up and running in no time.</p>
-  <ul style="list-style: none; padding: 0; margin-top: 2rem;">
-    <li style="margin-bottom: 1rem;">✔ Discovery and planning</li>
-    <li style="margin-bottom: 1rem;">✔ Agile development with sprints</li>
-    <li style="margin-bottom: 1rem;">✔ Testing and deployment</li>
-  </ul>
-</section>
+  <!-- SERVICES -->
+  <section
+    class="panel panel--dark"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Services"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Services</h2>
+        <p>Fast builds. Clean UX. Real business outcomes.</p>
+        <ul class="specs" aria-label="Service highlights">
+          <li><strong>Web</strong><span>Landing pages → full platforms</span></li>
+          <li><strong>Mobile</strong><span>iOS/Android, cross-platform</span></li>
+          <li><strong>AI</strong><span>Automation, chat, workflows</span></li>
+        </ul>
+      </div>
 
-<!-- FEATURED PROJECTS -->
-<section [@slideUp] style="margin-bottom: 4rem; text-align: center; padding: 0 2rem;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #111;">Featured Projects</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem;">
-    <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <img src="images/analytics.png" alt="Project 1" loading="lazy" decoding="async" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
-      <h3 style="margin-top: 1rem;">Smart Inventory System</h3>
-      <p>Automated alerts and predictive stock analysis.</p>
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/discover">See what we build</a>
+        <a class="btn btn--secondary" routerLink="/about-us">How we work</a>
+      </div>
     </div>
-    <div class="stagger-child" style="background-color: #fff; padding: 1rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=60" alt="Data Insight Platform" loading="lazy" decoding="async" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;">
-      <h3 style="margin-top: 1rem;">Data Insight Platform</h3>
-      <p>Turn big data into real-time decisions for enterprise clients.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA / CONTACT -->
-<section [@fadeIn] style="background-color: #013f8e; color: #fff; padding: 3rem 2rem; border-radius: 1rem; text-align: center;">
-  <h2 style="margin-bottom: 1.5rem;">Ready to Start Your Project?</h2>
-  <p style="margin-bottom: 1rem;">Let’s talk about how galaxylabs can help you grow.</p>
-  <button class="cta-button" style="background-color: #ffffff; color: #3b82f6; padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">Contact Us</button>
-</section>
-<!-- CONTACT FORM SECTION -->
+  <!-- PRODUCT SPOTLIGHT -->
+  <section
+    class="panel panel--dark"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="StockBoss spotlight"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>StockBoss</h2>
+        <p>Inventory one-stop shop for small business — products, stock, and sales in one dashboard.</p>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/our-products">Learn more</a>
+        <a class="btn btn--secondary" routerLink="/discover">Request a build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / CASE STUDIES (placeholder until you add /work) -->
+  <section
+    class="panel panel--light"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Work"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Work</h2>
+        <p>We ship polished, production-ready experiences — from MVP to scale.</p>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/discover">View capabilities</a>
+        <a class="btn btn--secondary" routerLink="/about-us">Meet the team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="panel panel--contact" aria-label="Contact">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Ready when you are.</h2>
+        <p>Tell us what you’re building and we’ll reply with a clear plan.</p>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Email us</a>
+        <a class="btn btn--secondary" routerLink="/discover">Start with services</a>
+      </div>
+    </div>
+  </section>
+</main>

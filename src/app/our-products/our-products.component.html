@@ -1,14 +1,49 @@
-<div class="our-products-container">
-    <h1>Our Products</h1>
-    <p>Explore our innovative products designed to make your business more efficient and insightful.</p>
-  
-    <div class="product-cards">
-      <div *ngFor="let product of products" class="product-card">
-        <img [src]="product.image" alt="{{ product.name }}" loading="lazy" decoding="async">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <a [href]="product.link" class="btn-primary">Learn More</a>
+<main class="tesla-page">
+  <section
+    class="panel panel--hero"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Products hero"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h1>Products</h1>
+        <p>Focused tools built for real workflows — simple, fast, and production-ready.</p>
+      </div>
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/discover">Services</a>
+        <a class="btn btn--secondary" href="mailto:info@galaxylabsusa.com">Request a demo</a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="panel panel--dark" aria-label="Product list">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>Featured</h2>
+        <p>Each product is built like a flagship: clear UX, solid engineering, measurable outcomes.</p>
+      </div>
+
+      <div class="products">
+        <article class="product" *ngFor="let product of products" [style.--panel-bg]="'url(' + product.image + ')'">
+          <div class="product__bg" aria-hidden="true"></div>
+          <div class="product__content">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+
+            <div class="product__actions">
+              <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('http')" [href]="product.link" target="_blank" rel="noopener noreferrer">Learn more</a>
+              <a class="btn btn--primary btn--small" *ngIf="!product.link.startsWith('http')" [routerLink]="product.link">Learn more</a>
+              <a class="btn btn--secondary btn--small" href="mailto:info@galaxylabsusa.com?subject=Product%20demo%20request">Request demo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Contact</a>
+        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+</main>
   
