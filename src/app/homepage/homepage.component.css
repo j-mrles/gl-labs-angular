@@ -107,6 +107,19 @@
   line-height: 1.08;
 }
 
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.35rem, 1vw, 0.6rem);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.hero-brand h1 {
+  white-space: nowrap;
+}
+
 .panel__top p {
   margin: 0.85rem auto 0;
   max-width: 52ch;
@@ -116,9 +129,9 @@
 }
 
 .brand-mark {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 0.75rem auto;
+  width: clamp(76px, 6vw, 92px);
+  height: clamp(76px, 6vw, 92px);
+  margin: 0;
   opacity: 0.95;
 }
 

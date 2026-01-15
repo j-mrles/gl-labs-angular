@@ -30,9 +30,10 @@
 }
 
 .nav__logo {
-  height: 22px;
-  width: auto;
+  height: 28px;
+  width: 28px;
   display: block;
+  object-fit: contain;
   filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35));
 }
 
