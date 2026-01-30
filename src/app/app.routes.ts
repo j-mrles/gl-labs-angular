@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { staffAuthGuard } from './staff-auth.guard';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,11 @@ export const routes: Routes = [
   {
     path: 'staff-login',
     loadComponent: () => import('./staff-login/staff-login.component').then(m => m.StaffLoginComponent)
+  },
+  {
+    path: 'staff-dashboard',
+    canActivate: [staffAuthGuard],
+    loadComponent: () => import('./staff-dashboard/staff-dashboard.component').then(m => m.StaffDashboardComponent)
   },
   {
     path: 'discover',

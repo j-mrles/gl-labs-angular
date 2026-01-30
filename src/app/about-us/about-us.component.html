@@ -6,12 +6,26 @@
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h1>About</h1>
-        <p>We design and build digital products that look great, run fast, and scale with your business.</p>
+        <h1>{{ 'about.title' | translate }}</h1>
+        <p>{{ 'about.heroSubtitle' | translate }}</p>
       </div>
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">Services</a>
-        <a class="btn btn--secondary" routerLink="/our-products">Products</a>
+        <a class="btn btn--primary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/our-products">{{ 'nav.products' | translate }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel--dark" aria-label="From Durham">
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>{{ 'about.fromDurham' | translate }}</h2>
+        <p>{{ 'about.fromDurhamText' | translate }}</p>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'about.getInTouch' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/">{{ 'about.backToHome' | translate }}</a>
       </div>
     </div>
   </section>
@@ -19,19 +33,19 @@
   <section class="panel panel--dark" aria-label="Mission">
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Mission</h2>
-        <p>Empower businesses with custom digital solutions that are scalable, intuitive, and impactful.</p>
+        <h2>{{ 'about.howWeWork' | translate }}</h2>
+        <p>{{ 'about.howWeWorkText' | translate }}</p>
       </div>
 
       <ul class="specs" aria-label="How we operate">
-        <li><strong>Clarity</strong><span>Simple decisions, clean UX, predictable delivery</span></li>
-        <li><strong>Quality</strong><span>Performance-first engineering and strong fundamentals</span></li>
-        <li><strong>Partnership</strong><span>We build with you, then support what we ship</span></li>
+        <li><strong>{{ 'about.clarity' | translate }}</strong><span>{{ 'about.clarityText' | translate }}</span></li>
+        <li><strong>{{ 'about.quality' | translate }}</strong><span>{{ 'about.qualityText' | translate }}</span></li>
+        <li><strong>{{ 'about.partnership' | translate }}</strong><span>{{ 'about.partnershipText' | translate }}</span></li>
       </ul>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Start a project</a>
-        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'about.startProject' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
       </div>
     </div>
   </section>
@@ -43,37 +57,37 @@
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Values</h2>
-        <p>Modern teams move fast, but never compromise fundamentals.</p>
+        <h2>{{ 'about.values' | translate }}</h2>
+        <p>{{ 'about.valuesText' | translate }}</p>
       </div>
 
       <div class="cards" aria-label="Values">
         <div class="card">
-          <div class="card__title">Innovation</div>
-          <div class="card__text">We use the right tools—AI, cloud, and automation—when it improves outcomes.</div>
+          <div class="card__title">{{ 'about.innovation' | translate }}</div>
+          <div class="card__text">{{ 'about.innovationText' | translate }}</div>
         </div>
         <div class="card">
-          <div class="card__title">Customer success</div>
-          <div class="card__text">We optimize for business results: adoption, retention, and time saved.</div>
+          <div class="card__title">{{ 'about.yourSuccess' | translate }}</div>
+          <div class="card__text">{{ 'about.yourSuccessText' | translate }}</div>
         </div>
         <div class="card">
-          <div class="card__title">Craft</div>
-          <div class="card__text">We sweat details: responsiveness, accessibility, and performance.</div>
+          <div class="card__title">{{ 'about.craft' | translate }}</div>
+          <div class="card__text">{{ 'about.craftText' | translate }}</div>
         </div>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">See capabilities</a>
-        <a class="btn btn--secondary" href="mailto:info@galaxylabsusa.com">Contact</a>
+        <a class="btn btn--primary" routerLink="/discover">{{ 'about.seeCapabilities' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/" fragment="contact">{{ 'footer.contact' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <section class="panel panel--light" aria-label="Partners">
+  <section class="panel panel--light" aria-label="Stack">
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Trusted stack</h2>
-        <p>We build with proven platforms and modern tooling.</p>
+        <h2>{{ 'about.trustedStack' | translate }}</h2>
+        <p>{{ 'about.trustedStackText' | translate }}</p>
       </div>
 
       <div class="logos" aria-label="Partner logos">
@@ -86,8 +100,8 @@
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/our-products">View products</a>
-        <a class="btn btn--secondary" routerLink="/discover">Services</a>
+        <a class="btn btn--primary" routerLink="/our-products">{{ 'about.viewProducts' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
       </div>
     </div>
   </section>

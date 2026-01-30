@@ -11,7 +11,7 @@
       </div>
       <div class="panel__actions">
         <a class="btn btn--primary" routerLink="/discover">Services</a>
-        <a class="btn btn--secondary" href="mailto:info@galaxylabsusa.com">Request a demo</a>
+        <a class="btn btn--secondary" routerLink="/" fragment="contact">Request a demo</a>
       </div>
     </div>
   </section>
@@ -19,8 +19,8 @@
   <section class="panel panel--dark" aria-label="Product list">
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Featured</h2>
-        <p>Each product is built like a flagship: clear UX, solid engineering, measurable outcomes.</p>
+        <h2>{{ 'products.featured' | translate }}</h2>
+        <p>{{ 'products.featuredSubtitle' | translate }}</p>
       </div>
 
       <div class="products">
@@ -33,15 +33,15 @@
             <div class="product__actions">
               <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('http')" [href]="product.link" target="_blank" rel="noopener noreferrer">Learn more</a>
               <a class="btn btn--primary btn--small" *ngIf="!product.link.startsWith('http')" [routerLink]="product.link">Learn more</a>
-              <a class="btn btn--secondary btn--small" href="mailto:info@galaxylabsusa.com?subject=Product%20demo%20request">Request demo</a>
+              <a class="btn btn--secondary btn--small" routerLink="/" fragment="contact">Request demo</a>
             </div>
           </div>
         </article>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Contact</a>
-        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'products.contact' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/">{{ 'products.backToHome' | translate }}</a>
       </div>
     </div>
   </section>

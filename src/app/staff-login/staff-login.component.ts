@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -9,23 +9,27 @@ import {
   STAFF_LOGIN_MODE,
   STAFF_USERNAME_EMAIL_DOMAIN
 } from '../firebase-auth.config';
+import { LocaleService } from '../locale.service';
+import { TranslatePipe } from '../translate.pipe';
 
 @Component({
   selector: 'app-staff-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, TranslatePipe],
   template: `
     <main class="auth" aria-label="Staff login">
       <section class="auth__panel" aria-label="Login panel">
         <div class="auth__brand">
           <div class="auth__kicker">StockBoss</div>
-          <h1 class="auth__title">Login</h1>
-          <p class="auth__subtitle">Sign in to your account.</p>
+          <h1 class="auth__title">{{ 'staff.login' | translate }}</h1>
+          <p class="auth__subtitle">{{ 'staff.signIn' | translate }}</p>
         </div>
+
+        <div class="success" *ngIf="status">{{ status }}</div>
 
         <form class="auth__form" autocomplete="on" (ngSubmit)="login()">
           <label class="field">
-            <span>Username</span>
+            <span>{{ 'staff.username' | translate }}</span>
             <input
               type="text"
               name="username"
@@ -37,7 +41,7 @@ import {
           </label>
 
           <label class="field">
-            <span>Password</span>
+            <span>{{ 'staff.password' | translate }}</span>
             <input
               type="password"
               name="password"
@@ -50,15 +54,16 @@ import {
 
           <div class="error" *ngIf="error">{{ error }}</div>
 
-          <button class="btn btn--primary" type="submit" [disabled]="loading">
-            {{ loading ? 'Signing in…' : 'Continue' }}
+          <button class="btn btn--primary" type="submit" [disabled]="loading" [class.btn--loading]="loading">
+            <span class="btn__spinner" *ngIf="loading" aria-hidden="true"></span>
+            {{ loading ? ('staff.signingIn' | translate) : ('staff.continue' | translate) }}
           </button>
 
-          <a class="btn btn--secondary" routerLink="/" [class.is-disabled]="loading">Back to home</a>
+          <a class="btn btn--secondary" routerLink="/" [class.is-disabled]="loading">{{ 'staff.backToHome' | translate }}</a>
         </form>
 
         <div class="auth__fineprint">
-          By continuing, you agree to use this system responsibly.
+          {{ 'staff.fineprint' | translate }}
         </div>
       </section>
     </main>
@@ -66,8 +71,8 @@ import {
   styles: [`
     :host { display: block; background: #000; color: #fff; min-height: calc(100svh - 0px); }
     .auth {
-      min-height: calc(100svh - 56px);
-      padding: calc(56px + 32px) 16px 48px;
+      min-height: calc(100dvh - var(--nav-height) - var(--safe-top));
+      padding: calc(var(--nav-height) + var(--safe-top) + 32px) 16px 48px;
       display: grid;
       place-items: center;
       background:
@@ -130,6 +135,18 @@ import {
       border: 1px solid rgba(239, 68, 68, 0.35);
       border-radius: 12px;
       padding: 10px 12px;
+      animation: msg-in 0.3s ease;
+    }
+    .success {
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 12px;
+      padding: 10px 12px;
+      animation: msg-in 0.3s ease;
     }
     .btn {
       display: inline-flex;
@@ -155,21 +172,40 @@ import {
       cursor: not-allowed;
       transform: none;
     }
+    .btn:disabled.btn--loading {
+      cursor: wait;
+    }
     .is-disabled {
       pointer-events: none;
       opacity: 0.65;
     }
     .auth__fineprint { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center; }
-    @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } .success, .error { animation: none; } }
   `]
 })
 export class StaffLoginComponent {
+  private readonly locale = inject(LocaleService);
   username = '';
   password = '';
   loading = false;
   error = '';
+  status = '';
 
   constructor(private readonly router: Router) {}
+
+  ngOnInit(): void {
+    try {
+      if (typeof window !== 'undefined' && sessionStorage.getItem('staff_id_token')) {
+        this.status = 'Already signed in.';
+      }
+    } catch {
+      // ignore storage access issues
+    }
+  }
 
   private resolveEmailFromUsername(username: string): string {
     // Firebase Email/Password requires an email address; UI uses "username" only.
@@ -179,6 +215,7 @@ export class StaffLoginComponent {
 
   async login(): Promise<void> {
     this.error = '';
+    this.status = '';
 
     if (!FIREBASE_WEB_API_KEY) {
       this.error = 'Missing Firebase configuration. Set FIREBASE_WEB_API_KEY in src/app/firebase-auth.config.ts.';
@@ -258,8 +295,11 @@ export class StaffLoginComponent {
         console.info('StockBoss: signed in.');
       }
 
-      // For now, just return home. (We can add /staff dashboard later.)
-      await this.router.navigateByUrl('/');
+      this.status = this.locale.t('staff.signedIn');
+      // Give the user visible confirmation before redirect.
+      setTimeout(() => {
+        void this.router.navigateByUrl('/staff-dashboard');
+      }, 600);
     } catch {
       this.error = 'Login failed. Please try again.';
     } finally {

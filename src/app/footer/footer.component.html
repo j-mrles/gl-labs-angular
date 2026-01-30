@@ -2,15 +2,24 @@
   <div class="site-footer__inner">
     <div class="site-footer__left">
       <div class="site-footer__brand">galaxylabs</div>
-      <div class="site-footer__meta">&copy; 2026 galaxylabs. All rights reserved.</div>
-      <a class="site-footer__link" href="mailto:info@galaxylabsusa.com">info&#64;galaxylabsusa.com</a>
+      <div class="site-footer__meta">{{ 'footer.copyright' | translate }}</div>
+      <div class="site-footer__contact-row">
+        <a class="site-footer__link" routerLink="/" fragment="contact">{{ 'footer.contact' | translate }}</a>
+        <span class="site-footer__lang-sep" aria-hidden="true">|</span>
+        <button type="button" class="site-footer__lang" [class.site-footer__lang--active]="locale.currentLang() === 'en'" (click)="locale.setLang('en')" aria-label="English">{{ 'footer.english' | translate }}</button>
+        <span class="site-footer__lang-sep" aria-hidden="true">|</span>
+        <button type="button" class="site-footer__lang" [class.site-footer__lang--active]="locale.currentLang() === 'es'" (click)="locale.setLang('es')" aria-label="Español">{{ 'footer.espanol' | translate }}</button>
+      </div>
     </div>
 
     <nav class="site-footer__nav" aria-label="Footer links">
-      <a class="site-footer__link" routerLink="/discover">Services</a>
-      <a class="site-footer__link" routerLink="/our-products">Products</a>
-      <a class="site-footer__link" routerLink="/about-us">About</a>
-      <a class="site-footer__link" routerLink="/staff-login">Staff</a>
+      <a class="site-footer__link" routerLink="/discover">{{ 'footer.services' | translate }}</a>
+      <a class="site-footer__link" routerLink="/our-products">{{ 'footer.products' | translate }}</a>
+      <a class="site-footer__link" routerLink="/about-us">{{ 'footer.about' | translate }}</a>
     </nav>
+  </div>
+
+  <div class="site-footer__staff">
+    <a class="site-footer__staff-link" [routerLink]="isSignedIn ? '/staff-dashboard' : '/staff-login'">{{ isSignedIn ? ('footer.staffTools' | translate) : ('footer.staff' | translate) }}</a>
   </div>
 </footer>

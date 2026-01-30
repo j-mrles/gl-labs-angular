@@ -7,13 +7,13 @@
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h1>Services</h1>
-        <p>Powering businesses with tailored digital products — shipped fast, built clean.</p>
+        <h1>{{ 'discover.title' | translate }}</h1>
+        <p>{{ 'discover.heroSubtitle' | translate }}</p>
       </div>
 
       <div class="panel__actions" aria-label="Primary actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Get a quote</a>
-        <a class="btn btn--secondary" routerLink="/our-products">View products</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'discover.getQuote' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/our-products">{{ 'discover.viewProducts' | translate }}</a>
       </div>
     </div>
   </section>
@@ -22,8 +22,8 @@
   <section class="panel panel--dark" aria-label="What we build">
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>What we build</h2>
-        <p>From landing pages to full platforms, we turn ideas into production-ready experiences.</p>
+        <h2>{{ 'discover.whatWeBuild' | translate }}</h2>
+        <p>{{ 'discover.whatWeBuildText' | translate }}</p>
       </div>
 
       <div class="cards" aria-label="Service list">
@@ -35,8 +35,8 @@
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/about-us">Our process</a>
-        <a class="btn btn--secondary" routerLink="/staff-login">Staff login</a>
+        <a class="btn btn--primary" routerLink="/about-us">{{ 'discover.ourProcess' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/staff-login">{{ 'discover.staffLogin' | translate }}</a>
       </div>
     </div>
   </section>
@@ -61,12 +61,12 @@
           <ul class="features">
             <li *ngFor="let feature of package.features">{{ feature }}</li>
           </ul>
-          <a class="btn btn--secondary btn--small" [href]="package.link">Contact</a>
+          <a class="btn btn--secondary btn--small" routerLink="/" fragment="contact">{{ 'discover.contact' | translate }}</a>
         </article>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Schedule a consult</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">Schedule a consult</a>
         <a class="btn btn--secondary" routerLink="/our-products">See products</a>
       </div>
     </div>
@@ -76,8 +76,8 @@
   <section class="panel panel--light" aria-label="Case studies">
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Case studies</h2>
-        <p>Real projects. Clear outcomes. Polished experiences.</p>
+        <h2>{{ 'discover.caseStudies' | translate }}</h2>
+        <p>{{ 'discover.caseStudiesSubtitle' | translate }}</p>
       </div>
 
       <div class="work" aria-label="Case study list">
@@ -89,8 +89,8 @@
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Start a project</a>
-        <a class="btn btn--secondary" routerLink="/">Back to home</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'discover.startProject' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/">{{ 'about.backToHome' | translate }}</a>
       </div>
     </div>
   </section>

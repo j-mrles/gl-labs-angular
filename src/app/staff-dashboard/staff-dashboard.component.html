@@ -1,0 +1,36 @@
+<main class="dashboard" aria-label="Staff dashboard">
+  <div class="dashboard__inner">
+    <header class="dashboard__header">
+      <h1 class="dashboard__title">{{ 'dashboard.title' | translate }}</h1>
+      <p class="dashboard__subtitle">{{ 'dashboard.subtitle' | translate }}</p>
+    </header>
+
+    <section class="dashboard__section" aria-label="Website stats">
+      <h2 class="dashboard__section-title">{{ 'dashboard.websiteStats' | translate }}</h2>
+      <div class="stats-grid">
+        <article class="stat-card" *ngFor="let stat of stats">
+          <span class="stat-card__label">{{ stat.label }}</span>
+          <span class="stat-card__value">{{ stat.value }}</span>
+        </article>
+      </div>
+      <p class="dashboard__hint">{{ 'dashboard.statsHint' | translate }}</p>
+    </section>
+
+    <section class="dashboard__section" aria-label="Business tools">
+      <h2 class="dashboard__section-title">{{ 'dashboard.businessTools' | translate }}</h2>
+      <div class="tools-grid">
+        <a *ngFor="let tool of tools" [routerLink]="tool.route" class="tool-card">
+          <span class="tool-card__icon" [attr.aria-hidden]="true">{{ tool.icon === 'mail' ? '✉' : tool.icon === 'edit' ? '✎' : tool.icon === 'chart' ? '▣' : '⚙' }}</span>
+          <div class="tool-card__content">
+            <span class="tool-card__label">{{ tool.label }}</span>
+            <span class="tool-card__desc">{{ tool.description }}</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="dashboard__footer">
+      <a class="btn btn--secondary" routerLink="/">{{ 'dashboard.backToSite' | translate }}</a>
+    </div>
+  </div>
+</main>

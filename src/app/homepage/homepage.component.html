@@ -1,7 +1,7 @@
 <!-- Announcement (Tesla-style: simple, minimal) -->
 <div class="announcement" [@fadeIn] *ngIf="bannerVisible">
   <div class="announcement__inner">
-    <span class="announcement__text">Now booking Q1 builds — websites, apps, and AI integrations.</span>
+    <span class="announcement__text">{{ 'home.announcement' | translate }}</span>
     <button class="announcement__close" (click)="dismissBanner()" aria-label="Close announcement">×</button>
   </div>
 </div>
@@ -15,7 +15,7 @@
           <img class="brand-mark" src="images/galaxylabsicon.png" alt="galaxylabs" width="96" height="96" decoding="async" fetchpriority="high">
           <h1>galaxylabs</h1>
         </div>
-        <p>Design and build digital products with clarity — web, mobile, and automation.</p>
+        <p>{{ 'home.heroSubtitle' | translate }}</p>
       </div>
 
       <div class="panel__actions" aria-label="Primary actions">
@@ -25,7 +25,7 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES (auto-rotating carousel) -->
   <section
     class="panel panel--dark"
     style="--panel-bg: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=70');"
@@ -33,18 +33,45 @@
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Services</h2>
-        <p>Fast builds. Clean UX. Real business outcomes.</p>
-        <ul class="specs" aria-label="Service highlights">
-          <li><strong>Web</strong><span>Landing pages → full platforms</span></li>
-          <li><strong>Mobile</strong><span>iOS/Android, cross-platform</span></li>
-          <li><strong>AI</strong><span>Automation, chat, workflows</span></li>
-        </ul>
+        <h2>{{ 'home.services' | translate }}</h2>
+        <p>{{ 'home.servicesSubtitle' | translate }}</p>
+        <div
+          class="services-carousel"
+          (mouseenter)="pauseServices()"
+          (mouseleave)="resumeServices()"
+          aria-label="Service highlights carousel"
+        >
+          <div class="services-slides">
+            <article
+              class="services-slide"
+              *ngFor="let s of serviceSlides; let i = index"
+              [class.is-active]="i === activeServiceIndex"
+              aria-live="polite"
+            >
+              <h3 class="services-title">{{ s.title }}</h3>
+              <ul class="services-list">
+                <li *ngFor="let item of s.items">{{ item }}</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="services-dots" role="tablist" aria-label="Service slide selector">
+            <button
+              class="dot"
+              type="button"
+              *ngFor="let s of serviceSlides; let i = index"
+              (click)="setActiveService(i)"
+              [class.is-active]="i === activeServiceIndex"
+              [attr.aria-label]="'Show ' + s.title"
+              [attr.aria-selected]="i === activeServiceIndex"
+            ></button>
+          </div>
+        </div>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">See what we build</a>
-        <a class="btn btn--secondary" routerLink="/about-us">How we work</a>
+        <a class="btn btn--primary" routerLink="/discover">{{ 'home.seeWhatWeBuild' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/about-us">{{ 'home.howWeWork' | translate }}</a>
       </div>
     </div>
   </section>
@@ -57,48 +84,60 @@
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>StockBoss</h2>
-        <p>Inventory one-stop shop for small business — products, stock, and sales in one dashboard.</p>
+        <h2>{{ 'home.stockbossSpotlight' | translate }}</h2>
+        <p>{{ 'home.stockbossSubtitle' | translate }}</p>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/our-products">Learn more</a>
-        <a class="btn btn--secondary" routerLink="/discover">Request a build</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WORK / CASE STUDIES (placeholder until you add /work) -->
-  <section
-    class="panel panel--light"
-    style="--panel-bg: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=70');"
-    aria-label="Work"
-  >
-    <div class="panel__inner">
-      <div class="panel__top">
-        <h2>Work</h2>
-        <p>We ship polished, production-ready experiences — from MVP to scale.</p>
-      </div>
-
-      <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">View capabilities</a>
-        <a class="btn btn--secondary" routerLink="/about-us">Meet the team</a>
+        <a class="btn btn--primary" routerLink="/our-products">{{ 'home.learnMore' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/discover">{{ 'home.requestBuild' | translate }}</a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="panel panel--contact" aria-label="Contact">
+  <section
+    id="contact"
+    class="panel panel--contact"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Contact"
+  >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>Ready when you are.</h2>
-        <p>Tell us what you’re building and we’ll reply with a clear plan.</p>
+        <h2>{{ 'home.contactTitle' | translate }}</h2>
+        <p>{{ 'home.contactSubtitle' | translate }}</p>
       </div>
 
-      <div class="panel__actions">
-        <a class="btn btn--primary" href="mailto:info@galaxylabsusa.com">Email us</a>
-        <a class="btn btn--secondary" routerLink="/discover">Start with services</a>
-      </div>
+      <form class="contact-form" (ngSubmit)="submitContact()" autocomplete="on">
+        <div class="contact-row">
+          <label class="contact-field">
+            <span>{{ 'home.name' | translate }}</span>
+            <input name="name" type="text" [(ngModel)]="contactName" required autocomplete="name" [placeholder]="'home.namePlaceholder' | translate">
+          </label>
+          <label class="contact-field">
+            <span>{{ 'home.email' | translate }}</span>
+            <input name="email" type="email" [(ngModel)]="contactEmail" required autocomplete="email" [placeholder]="'home.emailPlaceholder' | translate">
+          </label>
+        </div>
+
+        <label class="contact-field">
+          <span>{{ 'home.message' | translate }}</span>
+          <textarea name="message" [(ngModel)]="contactMessage" required rows="5" [placeholder]="'home.messagePlaceholder' | translate"></textarea>
+        </label>
+
+        <!-- Honeypot (hidden) -->
+        <input class="hp" name="website" type="text" [(ngModel)]="contactWebsite" tabindex="-1" autocomplete="off">
+
+        <div class="contact-actions">
+          <button class="btn btn--primary" type="submit" [disabled]="contactSending" [class.btn--loading]="contactSending">
+            <span class="btn__spinner" *ngIf="contactSending" aria-hidden="true"></span>
+            {{ contactSending ? ('home.sending' | translate) : ('home.send' | translate) }}
+          </button>
+          <a class="btn btn--secondary" routerLink="/discover">{{ 'home.startWithServices' | translate }}</a>
+        </div>
+
+        <div class="contact-status" *ngIf="contactStatus">{{ contactStatus }}</div>
+      </form>
     </div>
   </section>
 </main>

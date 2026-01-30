@@ -5,12 +5,21 @@
         </a>
 
         <ul class="nav__links" aria-label="Primary navigation">
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/discover">Services</a></li>
-            <li><a routerLink="/our-products">Products</a></li>
-            <li><a routerLink="/about-us">About Us</a></li>
-            <li><a routerLink="/staff-login">Staff Login</a></li>
+            <li><a routerLink="/">{{ 'nav.home' | translate }}</a></li>
+            <li><a routerLink="/discover">{{ 'nav.services' | translate }}</a></li>
+            <li><a routerLink="/our-products">{{ 'nav.products' | translate }}</a></li>
+            <li><a routerLink="/about-us">{{ 'nav.aboutUs' | translate }}</a></li>
         </ul>
+
+        <button
+          class="nav__signout"
+          type="button"
+          *ngIf="isSignedIn"
+          (click)="signOut()"
+          [attr.aria-label]="'nav.signOut' | translate"
+        >
+          {{ 'nav.signOut' | translate }}
+        </button>
 
         <!-- Hamburger Icon for Mobile -->
         <div class="hamburger" [class.active]="isMenuOpen" (click)="toggleMenu()" role="button" tabindex="0" aria-label="Toggle menu">
@@ -23,11 +32,11 @@
     <!-- Side Menu -->
     <div class="side-menu" [class.open]="isMenuOpen">
         <div class="side-menu-content">
-            <a routerLink="/" (click)="closeMenu()">Home</a>
-            <a routerLink="/discover" (click)="closeMenu()">Services</a>
-            <a routerLink="/our-products" (click)="closeMenu()">Products</a>
-            <a routerLink="/about-us" (click)="closeMenu()">About Us</a>
-            <a routerLink="/staff-login" (click)="closeMenu()">Staff Login</a>
+            <a routerLink="/" (click)="closeMenu()">{{ 'nav.home' | translate }}</a>
+            <a routerLink="/discover" (click)="closeMenu()">{{ 'nav.services' | translate }}</a>
+            <a routerLink="/our-products" (click)="closeMenu()">{{ 'nav.products' | translate }}</a>
+            <a routerLink="/about-us" (click)="closeMenu()">{{ 'nav.aboutUs' | translate }}</a>
+            <button class="side-signout" type="button" *ngIf="isSignedIn" (click)="signOut()">{{ 'nav.signOut' | translate }}</button>
         </div>
     </div>
 
