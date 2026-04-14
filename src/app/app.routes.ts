@@ -16,6 +16,26 @@ export const routes: Routes = [
     loadComponent: () => import('./staff-dashboard/staff-dashboard.component').then(m => m.StaffDashboardComponent)
   },
   {
+    path: 'staff-dashboard/inquiries',
+    canActivate: [staffAuthGuard],
+    loadComponent: () => import('./staff-inquiries/staff-inquiries.component').then(m => m.StaffInquiriesComponent)
+  },
+  {
+    path: 'staff-dashboard/content',
+    canActivate: [staffAuthGuard],
+    loadComponent: () => import('./staff-content/staff-content.component').then(m => m.StaffContentComponent)
+  },
+  {
+    path: 'staff-dashboard/analytics',
+    canActivate: [staffAuthGuard],
+    loadComponent: () => import('./staff-analytics/staff-analytics.component').then(m => m.StaffAnalyticsComponent)
+  },
+  {
+    path: 'staff-dashboard/settings',
+    canActivate: [staffAuthGuard],
+    loadComponent: () => import('./staff-settings/staff-settings.component').then(m => m.StaffSettingsComponent)
+  },
+  {
     path: 'discover',
     loadComponent: () => import('./discover/discover.component').then(m => m.DiscoverComponent)
   },

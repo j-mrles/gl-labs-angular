@@ -27,10 +27,10 @@ export class StaffDashboardComponent {
   get tools() {
     const t = (k: string) => this.locale.t(k);
     return [
-      { label: t('dashboard.contactInquiries'), description: t('dashboard.contactInquiriesDesc'), route: '/staff-dashboard', icon: 'mail' },
-      { label: t('dashboard.siteContent'), description: t('dashboard.siteContentDesc'), route: '/staff-dashboard', icon: 'edit' },
-      { label: t('dashboard.analytics'), description: t('dashboard.analyticsDesc'), route: '/staff-dashboard', icon: 'chart' },
-      { label: t('dashboard.settings'), description: t('dashboard.settingsDesc'), route: '/staff-dashboard', icon: 'settings' }
+      { label: t('dashboard.contactInquiries'), description: t('dashboard.contactInquiriesDesc'), route: '/staff-dashboard/inquiries', icon: 'mail' },
+      { label: t('dashboard.siteContent'), description: t('dashboard.siteContentDesc'), route: '/staff-dashboard/content', icon: 'edit' },
+      { label: t('dashboard.analytics'), description: t('dashboard.analyticsDesc'), route: '/staff-dashboard/analytics', icon: 'chart' },
+      { label: t('dashboard.settings'), description: t('dashboard.settingsDesc'), route: '/staff-dashboard/settings', icon: 'settings' }
     ];
   }
 }

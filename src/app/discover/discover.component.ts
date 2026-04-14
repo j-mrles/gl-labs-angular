@@ -130,12 +130,12 @@ export class DiscoverComponent {
   
   caseStudiesEn = [
     { project: 'Coastal Garden Designs', summary: 'Custom website and online presence for a landscape design business, showcasing beautiful coastal garden projects and increasing client inquiries by 40%.', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
-    { project: 'Little Bee\'s Creations', summary: 'E-commerce platform for handmade crafts and custom creations, featuring an intuitive shopping experience that boosted online sales by 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee\'s-creations/home/index.html' },
+    { project: 'Little Bee\'s Creations', summary: 'E-commerce platform for handmade crafts and custom creations, featuring an intuitive shopping experience that boosted online sales by 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
     { project: 'Gum-Gum Cards (Linktree)', summary: 'Custom Linktree-style landing page solution connecting customers to multiple product offerings and social media channels, simplifying the customer journey.', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
   ];
   caseStudiesEs = [
     { project: 'Coastal Garden Designs', summary: 'Sitio web y presencia online para negocio de diseño de paisajes, con proyectos costeros y 40% más consultas.', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
-    { project: 'Little Bee\'s Creations', summary: 'Plataforma e-commerce para artesanías, con experiencia de compra que aumentó ventas un 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee\'s-creations/home/index.html' },
+    { project: 'Little Bee\'s Creations', summary: 'Plataforma e-commerce para artesanías, con experiencia de compra que aumentó ventas un 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
     { project: 'Gum-Gum Cards (Linktree)', summary: 'Landing tipo Linktree conectando clientes con productos y redes, simplificando el recorrido.', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
   ];
   get caseStudies() { return this.locale.currentLang() === 'es' ? this.caseStudiesEs : this.caseStudiesEn; }
