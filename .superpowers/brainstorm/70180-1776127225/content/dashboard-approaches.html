@@ -1,0 +1,45 @@
+<h2>Staff Dashboard — Which approach for the tool cards?</h2>
+<p class="subtitle">All 4 tool cards (Contact Inquiries, Site Content, Analytics, Settings) currently go nowhere. Pick an approach to fix them.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>In-page panels (no new routes)</h3>
+      <p>Clicking a tool card expands or slides in a section <em>within</em> the dashboard page itself — like a drawer or tab. No new URLs. All content lives on <code>/staff-dashboard</code>.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Zero new routes to create</li><li>Fast — no page load</li><li>Simple to implement</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Can feel cramped if content grows</li><li>No bookmarkable URLs per tool</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Sub-routes (dedicated pages)</h3>
+      <p>Each tool gets its own route and component: <code>/staff-dashboard/inquiries</code>, <code>/staff-dashboard/content</code>, <code>/staff-dashboard/analytics</code>, <code>/staff-dashboard/settings</code>. Most scalable long-term.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Clean URL per tool</li><li>Fully scalable — each page can grow independently</li><li>Back button works naturally</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>4 new components + routes needed</li><li>More code upfront</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>External integrations (link out)</h3>
+      <p>Each card links directly to the real tool already in use — Formspree for contact inquiries, Firebase console for analytics, etc. Minimal code, uses existing infrastructure.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>No new code — just update the URL</li><li>Uses real tools you already have</li><li>Instant fix</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Sends staff to external sites</li><li>Looks less polished / integrated</li><li>Requires knowing the right URLs</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:2rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:8px;">
+  <p class="label">My recommendation</p>
+  <p><strong>Option B (sub-routes)</strong> — the app already has a clean route structure and an auth guard on <code>/staff-dashboard</code>. Sub-routes extend that naturally, give each tool room to grow, and match the architecture pattern already in use. The upfront cost is low: 4 small components with placeholder content that can be built out over time.</p>
+</div>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhancement Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500&family=Syne:wght@700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0a0a0a;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  padding: 24px 20px 64px;
+}
+
+.page-title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 6px;
+}
+.page-sub {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, transform 0.18s;
+  position: relative;
+}
+.card:hover { transform: translateY(-2px); }
+.card.selected { border-color: #fff; }
+.card.selected .sel-badge { display: block; }
+.sel-badge {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  color: #000;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  z-index: 20;
+}
+
+.hero {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* label strip */
+.label-strip {
+  background: #111;
+  padding: 13px 18px;
+  border-top: 1px solid #222;
+}
+.label-strip h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #eee;
+  margin-bottom: 2px;
+}
+.label-strip p {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* NAV shared */
+.mock-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 100%);
+}
+.mock-nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+/* CONTENT z-index */
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+/* =====================
+   OPTION A — CURRENT (Reference)
+   ===================== */
+.overlay-a {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.88) 100%);
+  z-index: 1;
+}
+.a-nav-logo {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.05em;
+}
+.a-nav-links span {
+  font-family: Roboto, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+.a-eyebrow {
+  display: none;
+}
+.a-h1 {
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 10px;
+}
+.a-sub {
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.5;
+  margin-bottom: 22px;
+  max-width: 38ch;
+}
+.a-btns { display: flex; gap: 10px; }
+.a-btn-p {
+  font-family: Roboto, sans-serif;
+  background: #fff;
+  color: #111;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.a-btn-s {
+  font-family: Roboto, sans-serif;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 9px 20px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+/* =====================
+   OPTION B — CORMORANT EDITORIAL
+   ===================== */
+.overlay-b {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
+  z-index: 1;
+}
+.b-nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.b-nav-links span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.b-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E8B86D;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.b-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  margin-bottom: 14px;
+}
+.b-h1 em {
+  font-style: italic;
+  color: #E8B86D;
+}
+.b-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  max-width: 38ch;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.b-btns { display: flex; gap: 10px; align-items: center; }
+.b-btn-p {
+  font-family: 'DM Sans', sans-serif;
+  background: #E8B86D;
+  color: #0d0d0d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.b-btn-s {
+  font-family: 'DM Sans', sans-serif;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+
+/* =====================
+   OPTION C — BARLOW PRECISION
+   ===================== */
+.overlay-c {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%);
+  z-index: 1;
+}
+/* subtle grain */
+.overlay-c::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 2;
+  pointer-events: none;
+}
+.c-nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.c-nav-links span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+}
+.c-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00C9A7;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.c-eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: #00C9A7;
+}
+.c-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 58px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.c-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  max-width: 40ch;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+.c-btns { display: flex; gap: 10px; align-items: center; }
+.c-btn-p {
+  font-family: 'Barlow Condensed', sans-serif;
+  background: #00C9A7;
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: none;
+  cursor: pointer;
+}
+.c-btn-s {
+  font-family: 'Barlow Condensed', sans-serif;
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+}
+
+/* SAME background image for all — dark nature/city */
+.bg-tech {
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=70');
+}
+</style>
+<script>
+function pick(el, id) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  try {
+    if (window.__companion) window.__companion.recordClick(id, el.querySelector('.label-strip h3').textContent);
+  } catch(e){}
+}
+</script>
+</head>
+<body>
+
+<div class="page-title">Enhancement Options — Same dark / image-heavy vibe</div>
+<p class="page-sub">All three use the same background photo so you're judging fonts, color accents, and overlay treatment — not the image. Click to select.</p>
+
+<div class="grid">
+
+  <!-- A: CURRENT (reference) -->
+  <div class="card" onclick="pick(this, 'a')">
+    <div class="sel-badge">Selected</div>
+    <div class="hero">
+      <div class="hero-bg bg-tech"></div>
+      <div class="overlay-a"></div>
+      <div class="mock-nav" style="z-index:10">
+        <div class="a-nav-logo">galaxylabs</div>
+        <div class="mock-nav-links a-nav-links">
+          <span>Services</span><span>Products</span><span>About</span>
+        </div>
+      </div>
+      <div class="hero-content" style="z-index:5">
+        <div class="a-h1">Design &amp;<br>build digital<br>products.</div>
+        <div class="a-sub">Web, mobile, and automation — built with clarity.</div>
+        <div class="a-btns">
+          <button class="a-btn-p">Explore services</button>
+          <button class="a-btn-s">View products</button>
+        </div>
+      </div>
+    </div>
+    <div class="label-strip">
+      <h3>A — Current (Roboto)</h3>
+      <p>No accent · uniform dark overlay · pill buttons · nothing distinctive</p>
+    </div>
+  </div>
+
+  <!-- B: CORMORANT EDITORIAL + AMBER -->
+  <div class="card" onclick="pick(this, 'b')">
+    <div class="sel-badge">Selected</div>
+    <div class="hero">
+      <div class="hero-bg bg-tech"></div>
+      <div class="overlay-b"></div>
+      <div class="mock-nav" style="z-index:10">
+        <div class="b-nav-logo">galaxylabs</div>
+        <div class="mock-nav-links b-nav-links">
+          <span>Services</span><span>Products</span><span>About</span>
+        </div>
+      </div>
+      <div class="hero-content" style="z-index:5">
+        <div class="b-eyebrow">Durham, NC — Digital studio</div>
+        <div class="b-h1">Build.<br><em>Ship.</em><br>Scale.</div>
+        <div class="b-sub">Web, mobile, and automation — built with clarity.</div>
+        <div class="b-btns">
+          <button class="b-btn-p">Explore services</button>
+          <button class="b-btn-s">View products →</button>
+        </div>
+      </div>
+    </div>
+    <div class="label-strip">
+      <h3>B — Cormorant Garamond + Amber</h3>
+      <p>Luxury serif display · warm gold accent #E8B86D · bottom-anchored overlay · underline CTA</p>
+    </div>
+  </div>
+
+  <!-- C: BARLOW CONDENSED + TEAL -->
+  <div class="card" onclick="pick(this, 'c')">
+    <div class="sel-badge">Selected</div>
+    <div class="hero">
+      <div class="hero-bg bg-tech"></div>
+      <div class="overlay-c"></div>
+      <div class="mock-nav" style="z-index:10">
+        <div class="c-nav-logo">GALAXYLABS</div>
+        <div class="mock-nav-links c-nav-links">
+          <span>Services</span><span>Products</span><span>About</span>
+        </div>
+      </div>
+      <div class="hero-content" style="z-index:5; position:relative; z-index:10">
+        <div class="c-eyebrow">Digital studio</div>
+        <div class="c-h1">Build.<br>Ship.<br>Scale.</div>
+        <div class="c-sub">Web, mobile, and automation — built with clarity.</div>
+        <div class="c-btns">
+          <button class="c-btn-p">Explore services</button>
+          <button class="c-btn-s">View products</button>
+        </div>
+      </div>
+    </div>
+    <div class="label-strip">
+      <h3>C — Barlow Condensed + Teal</h3>
+      <p>Tight condensed industrial · electric teal #00C9A7 · diagonal overlay · film grain texture</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

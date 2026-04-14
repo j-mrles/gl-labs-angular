@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>galaxylabs — Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;600;700&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #111;
+    color: #eee;
+    font-family: system-ui, sans-serif;
+    padding: 32px 24px 64px;
+  }
+
+  h1 {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+  }
+
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  .card.selected {
+    border-color: #fff;
+  }
+
+  .card.selected::after {
+    content: '✓ Selected';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #fff;
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    z-index: 10;
+  }
+
+  .card-label {
+    text-align: center;
+    padding: 14px 12px 6px;
+    background: #1a1a1a;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .card-label h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #eee;
+    margin-bottom: 3px;
+  }
+
+  .card-label p {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+  }
+
+  /* ================================
+     MOCKUP A — TERMINAL NOIR
+     ================================ */
+  .mockup-a {
+    background: #080E0B;
+    padding: 0;
+    font-family: 'Martian Mono', monospace;
+    min-height: 340px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mockup-a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 100, 0.015) 2px,
+      rgba(0, 255, 100, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .a-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(74, 255, 145, 0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .a-logo {
+    font-size: 11px;
+    font-weight: 600;
+    color: #4AFF91;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .a-links {
+    display: flex;
+    gap: 20px;
+    font-size: 9px;
+    color: rgba(74, 255, 145, 0.55);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .a-hero {
+    padding: 36px 20px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .a-prompt {
+    font-size: 9px;
+    color: rgba(74, 255, 145, 0.45);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .a-h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4AFF91;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    text-shadow: 0 0 20px rgba(74, 255, 145, 0.35);
+    margin-bottom: 10px;
+  }
+
+  .a-sub {
+    font-size: 10px;
+    color: rgba(74, 255, 145, 0.6);
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    max-width: 32ch;
+    margin-bottom: 28px;
+  }
+
+  .a-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .a-btn-primary {
+    background: #4AFF91;
+    color: #080E0B;
+    font-family: 'Martian Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .a-btn-secondary {
+    background: transparent;
+    color: #4AFF91;
+    font-family: 'Martian Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(74, 255, 145, 0.35);
+    cursor: pointer;
+  }
+
+  .a-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74,255,145,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,255,145,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    z-index: 0;
+  }
+
+  .a-ticker {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 20px;
+    background: rgba(74, 255, 145, 0.07);
+    border-top: 1px solid rgba(74, 255, 145, 0.15);
+    font-size: 9px;
+    color: rgba(74, 255, 145, 0.5);
+    letter-spacing: 0.1em;
+    z-index: 2;
+  }
+
+  /* ================================
+     MOCKUP B — SWISS EDITORIAL (LIGHT)
+     ================================ */
+  .mockup-b {
+    background: #F7F4EF;
+    min-height: 340px;
+    font-family: 'Instrument Sans', sans-serif;
+    color: #111;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .b-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .b-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #111;
+    letter-spacing: -0.01em;
+  }
+
+  .b-links {
+    display: flex;
+    gap: 18px;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .b-hero {
+    padding: 40px 22px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .b-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C45928;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .b-h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 34px;
+    line-height: 1.06;
+    color: #111;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  .b-h1 em {
+    font-style: italic;
+    color: #C45928;
+  }
+
+  .b-sub {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.65;
+    max-width: 34ch;
+    margin-bottom: 24px;
+  }
+
+  .b-btns {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .b-btn-primary {
+    background: #111;
+    color: #F7F4EF;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .b-btn-secondary {
+    background: transparent;
+    color: #111;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #111;
+    cursor: pointer;
+  }
+
+  .b-sidebar {
+    width: 80px;
+    padding-top: 4px;
+  }
+
+  .b-tag {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    border-top: 1px solid #DDD;
+    padding-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .b-tag-item {
+    font-size: 8px;
+    color: #555;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .b-rule {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 50px;
+    height: 1px;
+    background: #DDD;
+  }
+
+  .b-footer-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5px;
+    color: #AAA;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .b-accent-bar {
+    width: 3px;
+    height: 48px;
+    background: #C45928;
+    position: absolute;
+    left: 0;
+    top: 80px;
+  }
+
+  /* ================================
+     MOCKUP C — DUSK / VELVET STUDIO
+     ================================ */
+  .mockup-c {
+    background: #120C1E;
+    min-height: 340px;
+    font-family: 'Oxanium', sans-serif;
+    color: #EDE6F5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .c-orb {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+    top: -80px;
+    right: -60px;
+    z-index: 0;
+  }
+
+  .c-orb2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(244, 168, 39, 0.12) 0%, transparent 70%);
+    bottom: -50px;
+    left: 20px;
+    z-index: 0;
+  }
+
+  .c-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .c-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #EDE6F5;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+  }
+
+  .c-logo span {
+    color: #F4A827;
+  }
+
+  .c-links {
+    display: flex;
+    gap: 18px;
+    font-size: 9px;
+    color: rgba(237, 230, 245, 0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .c-hero {
+    padding: 40px 22px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .c-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 6px;
+    background: rgba(244, 168, 39, 0.12);
+    border: 1px solid rgba(244, 168, 39, 0.3);
+    border-radius: 100px;
+    font-size: 8.5px;
+    color: #F4A827;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .c-badge-dot {
+    width: 5px;
+    height: 5px;
+    background: #F4A827;
+    border-radius: 50%;
+  }
+
+  .c-h1 {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.05;
+    color: #EDE6F5;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .c-h1 span {
+    background: linear-gradient(135deg, #A855F7, #F4A827);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .c-sub {
+    font-size: 10px;
+    color: rgba(237, 230, 245, 0.55);
+    line-height: 1.7;
+    max-width: 36ch;
+    margin-bottom: 26px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .c-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .c-btn-primary {
+    background: linear-gradient(135deg, #A855F7, #7C3AED);
+    color: #fff;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.35);
+  }
+
+  .c-btn-secondary {
+    background: rgba(237, 230, 245, 0.07);
+    color: rgba(237, 230, 245, 0.8);
+    font-family: 'Oxanium', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: 1px solid rgba(237, 230, 245, 0.15);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .c-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), rgba(244, 168, 39, 0.4), transparent);
+  }
+
+  /* Selection UI */
+  .instruction {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin: 0 0 24px;
+    letter-spacing: 0.03em;
+  }
+</style>
+<script>
+  function selectCard(el, choice) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+    el.closest('.card').classList.add('selected');
+    if (window.__companion) {
+      window.__companion.recordClick(choice, el.closest('.card').querySelector('.card-label h3').textContent);
+    }
+  }
+</script>
+</head>
+<body>
+  <h1>galaxylabs — Design Directions</h1>
+  <p class="subtitle">Three radically different aesthetics. Click to select your favorite direction.</p>
+  <p class="instruction">These are live mockups — real fonts, real color systems, real feel. Each one is a full commitment to a distinct design language.</p>
+
+  <div class="cards">
+
+    <!-- OPTION A: TERMINAL NOIR -->
+    <div class="card" onclick="selectCard(this, 'a')">
+      <div class="mockup-a">
+        <div class="a-grid"></div>
+        <div class="a-nav">
+          <div class="a-logo">GL_LABS</div>
+          <div class="a-links">
+            <span>services</span>
+            <span>products</span>
+            <span>about</span>
+          </div>
+        </div>
+        <div class="a-hero">
+          <div class="a-prompt">$ ./galaxylabs --build production</div>
+          <div class="a-h1">Build.<br>Ship.<br>Scale.</div>
+          <div class="a-sub">Design and build digital products with clarity — web, mobile, and automation.</div>
+          <div class="a-btns">
+            <button class="a-btn-primary">[ explore ]</button>
+            <button class="a-btn-secondary">./products</button>
+          </div>
+        </div>
+        <div class="a-ticker">// NOW BOOKING Q1 BUILDS — WEBSITES · APPS · AI INTEGRATIONS</div>
+      </div>
+      <div class="card-label">
+        <h3>A — Terminal Noir</h3>
+        <p>Martian Mono · phosphor green #4AFF91 · scan-line grid · hacker-craft aesthetic</p>
+      </div>
+    </div>
+
+    <!-- OPTION B: WARM EDITORIAL -->
+    <div class="card" onclick="selectCard(this, 'b')">
+      <div class="mockup-b">
+        <div class="b-accent-bar"></div>
+        <div class="b-nav">
+          <div class="b-logo">galaxylabs</div>
+          <div class="b-links">
+            <span>Services</span>
+            <span>Products</span>
+            <span>About</span>
+          </div>
+        </div>
+        <div class="b-hero">
+          <div>
+            <div class="b-eyebrow">Durham, NC — Est. 2024</div>
+            <div class="b-h1">Digital<br>products<br><em>done right.</em></div>
+            <div class="b-sub">Design and build digital products with clarity — web, mobile, and automation.</div>
+            <div class="b-btns">
+              <button class="b-btn-primary">Explore services</button>
+              <button class="b-btn-secondary">View products →</button>
+            </div>
+          </div>
+          <div class="b-sidebar">
+            <div class="b-tag">We build</div>
+            <div class="b-tag-item">Web apps</div>
+            <div class="b-tag-item">Mobile</div>
+            <div class="b-tag-item">AI tools</div>
+          </div>
+        </div>
+        <div class="b-rule"></div>
+        <div class="b-footer-strip">
+          <span>Q1 builds open</span>
+          <span>galaxylabs.dev</span>
+        </div>
+      </div>
+      <div class="card-label">
+        <h3>B — Warm Editorial</h3>
+        <p>Instrument Serif + Sans · cream #F7F4EF · terracotta accent · Swiss grid · light theme</p>
+      </div>
+    </div>
+
+    <!-- OPTION C: DUSK STUDIO -->
+    <div class="card" onclick="selectCard(this, 'c')">
+      <div class="mockup-c">
+        <div class="c-orb"></div>
+        <div class="c-orb2"></div>
+        <div class="c-nav">
+          <div class="c-logo">galaxy<span>labs</span></div>
+          <div class="c-links">
+            <span>Services</span>
+            <span>Products</span>
+            <span>About</span>
+          </div>
+        </div>
+        <div class="c-hero">
+          <div class="c-badge">
+            <div class="c-badge-dot"></div>
+            Now booking Q1 builds
+          </div>
+          <div class="c-h1">Build <span>digital</span><br>products that last.</div>
+          <div class="c-sub">Design and build digital products with clarity — web, mobile, and automation.</div>
+          <div class="c-btns">
+            <button class="c-btn-primary">Explore services</button>
+            <button class="c-btn-secondary">View products</button>
+          </div>
+        </div>
+        <div class="c-divider"></div>
+      </div>
+      <div class="card-label">
+        <h3>C — Dusk Studio</h3>
+        <p>Oxanium · deep plum #120C1E · amber + violet gradient · velvet dark · glowing orbs</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

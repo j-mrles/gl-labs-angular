@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A — Current vs Enhanced</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #080808;
+  color: #eee;
+  font-family: system-ui, sans-serif;
+  padding: 24px 20px 64px;
+}
+.page-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+.page-sub { font-size: 13px; color: #777; margin-bottom: 32px; }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 1100px;
+}
+@media (max-width: 700px) { .split { grid-template-columns: 1fr; } }
+
+.panel {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.panel.selected { border-color: #fff; }
+.panel.selected .badge { display: block; }
+.badge {
+  display: none;
+  position: absolute;
+  top: 10px; right: 10px;
+  background: #fff; color: #000;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 100px;
+  z-index: 20;
+}
+
+.hero {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 26px;
+}
+
+.bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=70');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* ── CURRENT ── */
+.overlay-current {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center,
+    rgba(0,0,0,0.35) 0%,
+    rgba(0,0,0,0.65) 70%,
+    rgba(0,0,0,0.88) 100%);
+}
+.nav-current {
+  position: absolute; top: 0; left: 0; right: 0;
+  padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10;
+}
+.logo-current {
+  font-family: Roboto, sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.04em;
+}
+.links-current {
+  display: flex; gap: 16px;
+  font-family: Roboto, sans-serif;
+  font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+}
+.content-current { position: relative; z-index: 5; }
+.h1-current {
+  font-family: Roboto, sans-serif;
+  font-size: 38px; font-weight: 600;
+  color: #fff; letter-spacing: -0.02em;
+  line-height: 1.08; margin-bottom: 10px;
+}
+.sub-current {
+  font-family: Roboto, sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.75);
+  line-height: 1.5; margin-bottom: 22px; max-width: 36ch;
+}
+.btns-current { display: flex; gap: 10px; }
+.btn-p-current {
+  font-family: Roboto, sans-serif;
+  background: #fff; color: #111;
+  font-size: 11px; font-weight: 600;
+  padding: 9px 20px; border: none;
+  border-radius: 9999px; cursor: pointer;
+}
+.btn-s-current {
+  font-family: Roboto, sans-serif;
+  background: rgba(255,255,255,0.12); color: #fff;
+  font-size: 11px; font-weight: 500;
+  padding: 9px 20px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 9999px; cursor: pointer;
+}
+
+/* ── ENHANCED ── */
+.overlay-enhanced {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to top,
+      rgba(0,0,0,0.97) 0%,
+      rgba(0,0,0,0.72) 45%,
+      rgba(0,0,0,0.18) 100%);
+}
+/* subtle film grain */
+.grain {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.nav-enhanced {
+  position: absolute; top: 0; left: 0; right: 0;
+  padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
+}
+.logo-enhanced {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 800;
+  color: #fff; letter-spacing: 0.02em;
+}
+.links-enhanced {
+  display: flex; gap: 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+}
+.content-enhanced { position: relative; z-index: 5; }
+.eyebrow-enhanced {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E8A838;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.eyebrow-enhanced::before {
+  content: '';
+  display: block; width: 20px; height: 1px;
+  background: #E8A838;
+}
+.h1-enhanced {
+  font-family: 'Syne', sans-serif;
+  font-size: 44px; font-weight: 800;
+  color: #fff; letter-spacing: -0.02em;
+  line-height: 1.0; margin-bottom: 12px;
+}
+.sub-enhanced {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.62);
+  line-height: 1.65; margin-bottom: 22px; max-width: 36ch;
+  font-weight: 300; letter-spacing: 0.01em;
+}
+.btns-enhanced { display: flex; gap: 10px; align-items: center; }
+.btn-p-enhanced {
+  font-family: 'DM Sans', sans-serif;
+  background: #E8A838; color: #0d0d0d;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 20px; border: none; cursor: pointer;
+  border-radius: 2px;
+}
+.btn-s-enhanced {
+  font-family: 'DM Sans', sans-serif;
+  background: transparent; color: rgba(255,255,255,0.75);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 0; border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+}
+
+.label {
+  background: #111; padding: 13px 18px;
+  border-top: 1px solid #1e1e1e;
+}
+.label h3 { font-size: 13px; font-weight: 600; color: #eee; margin-bottom: 3px; }
+.label p { font-size: 11px; color: #555; line-height: 1.5; }
+
+.changes {
+  max-width: 1100px;
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+}
+.changes h4 {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #E8A838; margin-bottom: 12px; font-weight: 600;
+}
+.change-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.change-item { }
+.change-item .c-label {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #555; margin-bottom: 4px;
+}
+.change-item .c-val {
+  font-size: 12px; color: #ccc; line-height: 1.4;
+}
+.c-val del { color: #444; text-decoration: line-through; }
+.c-val strong { color: #E8A838; }
+</style>
+<script>
+function pick(el, id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  try { if(window.__companion) window.__companion.recordClick(id, el.querySelector('.label h3').textContent); } catch(e){}
+}
+</script>
+</head>
+<body>
+
+<div class="page-title">Current vs Enhanced — same dark / image-heavy vibe</div>
+<p class="page-sub">Same photo, same layout structure. Judging the specific changes.</p>
+
+<div class="split">
+
+  <!-- CURRENT -->
+  <div class="panel" onclick="pick(this,'current')">
+    <div class="badge">Selected</div>
+    <div class="hero">
+      <div class="bg"></div>
+      <div class="overlay-current"></div>
+      <div class="nav-current">
+        <div class="logo-current">galaxylabs</div>
+        <div class="links-current"><span>Services</span><span>Products</span><span>About</span></div>
+      </div>
+      <div class="content-current">
+        <div class="h1-current">Design &amp; build<br>digital products.</div>
+        <div class="sub-current">Web, mobile, and automation — built with clarity.</div>
+        <div class="btns-current">
+          <button class="btn-p-current">Explore services</button>
+          <button class="btn-s-current">View products</button>
+        </div>
+      </div>
+    </div>
+    <div class="label">
+      <h3>Current</h3>
+      <p>Roboto · radial overlay · white pill buttons · no accent</p>
+    </div>
+  </div>
+
+  <!-- ENHANCED -->
+  <div class="panel" onclick="pick(this,'enhanced')">
+    <div class="badge">Selected</div>
+    <div class="hero">
+      <div class="bg"></div>
+      <div class="overlay-enhanced"></div>
+      <div class="grain"></div>
+      <div class="nav-enhanced">
+        <div class="logo-enhanced">galaxylabs</div>
+        <div class="links-enhanced"><span>Services</span><span>Products</span><span>About</span></div>
+      </div>
+      <div class="content-enhanced">
+        <div class="eyebrow-enhanced">Digital studio · Durham NC</div>
+        <div class="h1-enhanced">Design &amp; build<br>digital products.</div>
+        <div class="sub-enhanced">Web, mobile, and automation — built with clarity.</div>
+        <div class="btns-enhanced">
+          <button class="btn-p-enhanced">Explore services</button>
+          <button class="btn-s-enhanced">View products →</button>
+        </div>
+      </div>
+    </div>
+    <div class="label">
+      <h3>Enhanced</h3>
+      <p>Syne + DM Sans · bottom-anchored overlay · amber accent · film grain · eyebrow label</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="changes">
+  <h4>What changes</h4>
+  <div class="change-list">
+    <div class="change-item">
+      <div class="c-label">Headline font</div>
+      <div class="c-val"><del>Roboto 600</del> → <strong>Syne 800</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Body font</div>
+      <div class="c-val"><del>Roboto</del> → <strong>DM Sans Light</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Overlay</div>
+      <div class="c-val"><del>Radial center</del> → <strong>Bottom-anchored linear</strong> (photo breathes at top)</div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Accent color</div>
+      <div class="c-val"><del>None (white only)</del> → <strong>#E8A838 amber</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Buttons</div>
+      <div class="c-val"><del>Pill, white fill</del> → <strong>Sharp corner, amber + underline</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Texture</div>
+      <div class="c-val"><del>None</del> → <strong>Subtle film grain overlay</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Eyebrow label</div>
+      <div class="c-val"><del>None</del> → <strong>Small amber label above heading</strong></div>
+    </div>
+    <div class="change-item">
+      <div class="c-label">Page load</div>
+      <div class="c-val"><del>No animation</del> → <strong>Staggered fade+slide reveals</strong></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

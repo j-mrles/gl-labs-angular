@@ -1,0 +1,78 @@
+<h2>Option B — Design: Staff Dashboard Sub-routes</h2>
+<p class="subtitle">Here's exactly what will be built. Review each section and confirm.</p>
+
+<div class="section">
+  <p class="label">Route Structure</p>
+  <div class="mockup">
+    <div class="mockup-header">app.routes.ts — new routes (all protected by staffAuthGuard)</div>
+    <div class="mockup-body" style="font-family:monospace;font-size:0.85rem;line-height:1.8">
+      /staff-dashboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6bcb77">← existing</span><br>
+      /staff-dashboard/inquiries &nbsp;<span style="color:#4d9fff">← new: Contact Inquiries</span><br>
+      /staff-dashboard/content &nbsp;&nbsp;&nbsp;<span style="color:#4d9fff">← new: Site Content</span><br>
+      /staff-dashboard/analytics &nbsp;<span style="color:#4d9fff">← new: Analytics</span><br>
+      /staff-dashboard/settings &nbsp;&nbsp;<span style="color:#4d9fff">← new: Settings</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">What each page contains</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem">
+    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:1rem">
+      <h3 style="margin:0 0 0.5rem">✉ Inquiries</h3>
+      <p style="margin:0;font-size:0.85rem;opacity:0.8">Shows contact form submissions. Links to Formspree dashboard. Displays a note about where submissions are delivered.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:1rem">
+      <h3 style="margin:0 0 0.5rem">✎ Site Content</h3>
+      <p style="margin:0;font-size:0.85rem;opacity:0.8">Placeholder page. Shows editable content areas as a future roadmap item. "Coming soon" with clear labeling.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:1rem">
+      <h3 style="margin:0 0 0.5rem">▣ Analytics</h3>
+      <p style="margin:0;font-size:0.85rem;opacity:0.8">Placeholder page. Links to Firebase console for real data. Shows a "coming soon" message with next steps.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:1rem">
+      <h3 style="margin:0 0 0.5rem">⚙ Settings</h3>
+      <p style="margin:0;font-size:0.85rem;opacity:0.8">Placeholder page. Shows account info (staff username from sessionStorage). "Coming soon" for advanced settings.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">Page layout (all 4 sub-pages follow this pattern)</p>
+  <div class="mockup">
+    <div class="mockup-header">Sub-page layout</div>
+    <div class="mockup-body">
+      <div class="mock-nav" style="margin-bottom:0.75rem">← Back to Dashboard &nbsp;|&nbsp; galaxylabs Staff</div>
+      <div style="padding:1rem;background:rgba(255,255,255,0.05);border-radius:8px;margin-bottom:0.75rem">
+        <strong>Page Title (e.g. Contact Inquiries)</strong><br>
+        <small style="opacity:0.6">Page subtitle / description</small>
+      </div>
+      <div class="placeholder" style="height:120px;border-radius:8px">Main content area</div>
+      <div class="mock-button" style="margin-top:0.75rem;display:inline-block">← Back to Dashboard</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">Also fixing</p>
+  <div style="background:rgba(255,100,100,0.1);border:1px solid rgba(255,100,100,0.3);border-radius:8px;padding:1rem">
+    <strong>Little Bee's Creations URL</strong> — apostrophe in the URL path will be encoded to <code>%27</code> so the link works in all browsers.
+  </div>
+</div>
+
+<div class="options" style="margin-top:2rem">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Looks good — implement it</h3>
+      <p>4 new route components + fix the URL. All 5 broken items resolved.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="revise" onclick="toggleSelect(this)">
+    <div class="letter">✗</div>
+    <div class="content">
+      <h3>I want changes</h3>
+      <p>Tell me in the terminal what you'd like adjusted.</p>
+    </div>
+  </div>
+</div>
