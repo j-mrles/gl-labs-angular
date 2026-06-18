@@ -1,0 +1,58 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main">
+    <div class="ro-page">
+      <h1 class="ro-page__title">Reports</h1>
+      <p class="ro-page__subtitle">All your property analyses in one place.</p>
+
+      <div *ngIf="loading" style="text-align:center;padding:3rem"><span class="ro-spinner" style="width:32px;height:32px"></span></div>
+
+      <div *ngIf="!loading && reports.length === 0" class="ro-empty" style="margin-top:2rem">
+        <div class="ro-empty__icon">📋</div>
+        <p class="ro-empty__text">No reports yet.</p>
+        <a routerLink="/red-otter/analyze" class="ro-btn ro-btn--primary" style="margin-top:1rem">Analyze a property</a>
+      </div>
+
+      <div class="ro-card" *ngIf="!loading && reports.length > 0" style="padding:0;overflow:hidden">
+        <table class="ro-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Score</th>
+              <th>Price</th>
+              <th>Verdict</th>
+              <th>Saved</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of reports">
+              <td><a [routerLink]="['/red-otter/report', r.id]" style="color:var(--ro-accent);text-decoration:none;font-weight:500">{{ r.address }}</a></td>
+              <td><span class="ro-badge-score" [class]="scoreClass(r.analysis.otisScore)">{{ r.analysis.otisScore }}</span></td>
+              <td>{{ formatCurrency(r.price) }}</td>
+              <td><span class="ro-badge-verdict" [class]="verdictClass(r.analysis.otisScore)">{{ r.analysis.verdict }}</span></td>
+              <td><button class="ro-btn ro-btn--ghost" style="font-size:1.1rem;padding:0.25rem" (click)="toggleSave(r)">{{ r.saved ? '★' : '☆' }}</button></td>
+              <td style="color:var(--ro-text-muted)">{{ r.createdAt | date:'MMM d, y' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>

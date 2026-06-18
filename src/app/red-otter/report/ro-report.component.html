@@ -1,0 +1,135 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main">
+    <div class="ro-page" *ngIf="!loading && report">
+      <!-- Header -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem">
+        <div>
+          <h1 class="ro-page__title">{{ report.address }}</h1>
+          <p class="ro-page__subtitle">
+            {{ formatCurrency(report.price) }} · {{ report.beds }} bd · {{ report.baths }} ba · {{ report.sqft | number }} sqft
+          </p>
+        </div>
+        <button class="ro-btn" [class.ro-btn--primary]="!report.saved" [class.ro-btn--secondary]="report.saved" (click)="toggleSave()">
+          {{ report.saved ? '★ Saved' : '☆ Save' }}
+        </button>
+      </div>
+
+      <!-- Otis Score -->
+      <div class="ro-card" style="text-align:center">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:50%;font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:0.75rem"
+          [class]="scoreClass(report.analysis.otisScore)"
+          [style.background]="report.analysis.otisScore >= 70 ? 'var(--ro-success)' : report.analysis.otisScore >= 40 ? 'var(--ro-warning)' : 'var(--ro-danger)'"
+        >{{ report.analysis.otisScore }}</div>
+        <h2 class="ro-card__title" style="text-align:center">Otis Score</h2>
+        <p style="margin:0.25rem 0 0;font-size:0.95rem">
+          <span class="ro-badge-verdict" [class]="verdictClass(report.analysis.otisScore)">{{ report.analysis.verdict }}</span>
+        </p>
+      </div>
+
+      <!-- Analysis grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <!-- Value Analysis -->
+        <div class="ro-card">
+          <h3 class="ro-card__title">Value Analysis</h3>
+          <p style="margin:0.5rem 0">
+            <span class="ro-badge-verdict" [class]="verdictClass(report.analysis.otisScore)">{{ report.analysis.valueVerdict }}</span>
+          </p>
+          <p style="font-size:0.9rem;color:var(--ro-text-secondary);margin:0.75rem 0 0">{{ report.analysis.valueSummary }}</p>
+          <p style="font-size:0.85rem;color:var(--ro-text-muted);margin:0.75rem 0 0">
+            <strong>Neighborhood:</strong> {{ report.analysis.neighborhoodGrade }} — {{ report.analysis.neighborhoodNotes }}
+          </p>
+        </div>
+
+        <!-- Cost Breakdown -->
+        <div class="ro-card">
+          <h3 class="ro-card__title">True Monthly Cost</h3>
+          <table class="ro-table" style="margin-top:0.5rem">
+            <tbody>
+              <tr><td>Mortgage</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.mortgage) }}</td></tr>
+              <tr><td>Property Tax</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.propertyTax) }}</td></tr>
+              <tr><td>Insurance</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.insurance) }}</td></tr>
+              <tr *ngIf="report.analysis.monthlyCost.hoa"><td>HOA</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.hoa) }}</td></tr>
+              <tr><td>Maintenance</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.maintenance) }}</td></tr>
+              <tr style="font-weight:700"><td>Total</td><td style="text-align:right">{{ formatCurrency(report.analysis.monthlyCost.mortgage + report.analysis.monthlyCost.propertyTax + report.analysis.monthlyCost.insurance + report.analysis.monthlyCost.hoa + report.analysis.monthlyCost.maintenance) }}</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Red Flags -->
+        <div class="ro-card">
+          <h3 class="ro-card__title">Red Flags</h3>
+          <div *ngIf="report.analysis.redFlags.length === 0" style="padding:1rem 0;color:var(--ro-success);font-size:0.9rem">
+            ✓ No red flags detected
+          </div>
+          <ul *ngIf="report.analysis.redFlags.length > 0" style="margin:0.75rem 0 0;padding-left:1.25rem;color:var(--ro-danger)">
+            <li *ngFor="let flag of report.analysis.redFlags" style="margin-bottom:0.5rem;font-size:0.9rem">{{ flag }}</li>
+          </ul>
+        </div>
+
+        <!-- Negotiation Tips -->
+        <div class="ro-card">
+          <h3 class="ro-card__title">Negotiation Tips</h3>
+          <ol style="margin:0.75rem 0 0;padding-left:1.25rem;color:var(--ro-text-secondary)">
+            <li *ngFor="let tip of report.analysis.negotiationTips" style="margin-bottom:0.5rem;font-size:0.9rem">{{ tip }}</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Otis Take -->
+      <div class="ro-card">
+        <h3 class="ro-card__title">Otis's Take</h3>
+        <p style="font-size:0.95rem;line-height:1.65;color:var(--ro-text-secondary);margin:0.75rem 0 0">{{ report.analysis.otisTake }}</p>
+        <p style="font-size:0.8rem;color:var(--ro-text-muted);margin:1rem 0 0;font-style:italic">
+          This report is for informational purposes only and should not be considered financial advice.
+        </p>
+      </div>
+
+      <!-- Chat -->
+      <div class="ro-card">
+        <h3 class="ro-card__title">Ask Otis about this property</h3>
+        <div style="max-height:300px;overflow-y:auto;margin:1rem 0;display:flex;flex-direction:column;gap:0.75rem">
+          <div *ngFor="let m of chatMessages"
+            [style.align-self]="m.role === 'user' ? 'flex-end' : 'flex-start'"
+            [style.background]="m.role === 'user' ? 'var(--ro-accent)' : 'var(--ro-bg-warm)'"
+            [style.color]="m.role === 'user' ? '#fff' : 'var(--ro-text)'"
+            style="padding:0.65rem 1rem;border-radius:12px;max-width:80%;font-size:0.9rem;line-height:1.5"
+          >{{ m.content }}</div>
+          <div *ngIf="chatLoading" style="align-self:flex-start;color:var(--ro-text-muted);font-size:0.85rem">Otis is thinking...</div>
+        </div>
+        <form (ngSubmit)="sendChat()" style="display:flex;gap:0.5rem">
+          <input class="ro-input" placeholder="Ask about this property..." [(ngModel)]="chatInput" name="chat" style="flex:1" />
+          <button class="ro-btn ro-btn--primary" type="submit" [disabled]="chatLoading">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="loading" style="display:flex;align-items:center;justify-content:center;min-height:60vh">
+      <span class="ro-spinner" style="width:32px;height:32px"></span>
+    </div>
+
+    <div *ngIf="!loading && !report" class="ro-page">
+      <div class="ro-empty">
+        <div class="ro-empty__icon">🔍</div>
+        <p class="ro-empty__text">Report not found.</p>
+        <a routerLink="/red-otter/dashboard" class="ro-btn ro-btn--primary" style="margin-top:1rem">Back to dashboard</a>
+      </div>
+    </div>
+  </main>
+</div>

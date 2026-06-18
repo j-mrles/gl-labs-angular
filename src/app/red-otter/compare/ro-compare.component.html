@@ -1,0 +1,84 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main">
+    <div class="ro-page">
+      <h1 class="ro-page__title">Compare Properties</h1>
+      <p class="ro-page__subtitle">Side-by-side comparison of your saved properties.</p>
+
+      <div *ngIf="loading" style="text-align:center;padding:3rem"><span class="ro-spinner" style="width:32px;height:32px"></span></div>
+
+      <div *ngIf="!loading && saved.length === 0" class="ro-empty" style="margin-top:2rem">
+        <div class="ro-empty__icon">⚖️</div>
+        <p class="ro-empty__text">Save properties from your reports to compare them here.</p>
+        <a routerLink="/red-otter/reports" class="ro-btn ro-btn--primary" style="margin-top:1rem">View reports</a>
+      </div>
+
+      <div class="ro-card" *ngIf="!loading && saved.length > 0" style="padding:0;overflow-x:auto">
+        <table class="ro-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th *ngFor="let p of saved">{{ p.address }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600">Price</td>
+              <td *ngFor="let p of saved">{{ formatCurrency(p.price) }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Otis Score</td>
+              <td *ngFor="let p of saved"><span class="ro-badge-score" [class]="scoreClass(p.analysis.otisScore)">{{ p.analysis.otisScore }}</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Verdict</td>
+              <td *ngFor="let p of saved"><span class="ro-badge-verdict" [class]="verdictClass(p.analysis.otisScore)">{{ p.analysis.verdict }}</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Beds</td>
+              <td *ngFor="let p of saved">{{ p.beds }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Baths</td>
+              <td *ngFor="let p of saved">{{ p.baths }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Sqft</td>
+              <td *ngFor="let p of saved">{{ p.sqft | number }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Monthly Cost</td>
+              <td *ngFor="let p of saved">{{ formatCurrency(p.analysis.monthlyCost.mortgage + p.analysis.monthlyCost.propertyTax + p.analysis.monthlyCost.insurance + p.analysis.monthlyCost.hoa + p.analysis.monthlyCost.maintenance) }}</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Value</td>
+              <td *ngFor="let p of saved"><span class="ro-badge-verdict" [class]="verdictClass(p.analysis.otisScore)">{{ p.analysis.valueVerdict }}</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600">Red Flags</td>
+              <td *ngFor="let p of saved" [style.color]="p.analysis.redFlags.length ? 'var(--ro-danger)' : 'var(--ro-success)'">
+                {{ p.analysis.redFlags.length || 'None' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>

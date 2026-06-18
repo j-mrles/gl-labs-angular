@@ -1,6 +1,11 @@
+.dashboard-spacer {
+  height: 120px;
+  background: #000;
+}
+
 .dashboard {
-  min-height: calc(100dvh - var(--nav-height, 56px) - var(--safe-top, 0px));
-  padding: calc(var(--nav-height, 56px) + var(--safe-top, 0px) + 20px) max(16px, var(--safe-left)) max(48px, var(--safe-bottom));
+  flex: 1;
+  padding: 32px max(16px, var(--safe-left)) max(48px, var(--safe-bottom));
   padding-inline-end: max(16px, var(--safe-right));
   background: #000;
   color: rgba(255, 255, 255, 0.9);

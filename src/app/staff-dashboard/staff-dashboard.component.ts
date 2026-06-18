@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LocaleService } from '../locale.service';
 import { TranslatePipe } from '../translate.pipe';
+import { SheetsAnalyticsService } from '../sheets-analytics.service';
 
 @Component({
   selector: 'app-staff-dashboard',
@@ -11,16 +12,34 @@ import { TranslatePipe } from '../translate.pipe';
   templateUrl: './staff-dashboard.component.html',
   styleUrls: ['./staff-dashboard.component.css']
 })
-export class StaffDashboardComponent {
+export class StaffDashboardComponent implements OnInit {
   private readonly locale = inject(LocaleService);
+  private readonly analytics = inject(SheetsAnalyticsService);
+
+  statsData = {
+    pageViews30d: '—',
+    visitsWeek: '—',
+    contactSubmissions: '—',
+    productsViewed: '—',
+  };
+  statsError = '';
+
+  ngOnInit(): void {
+    this.analytics.clearCache();
+    this.analytics.fetch().then(data => {
+      this.statsData = data;
+    }).catch(() => {
+      this.statsError = 'Unable to load stats.';
+    });
+  }
 
   get stats() {
     const t = (k: string) => this.locale.t(k);
     return [
-      { label: t('dashboard.pageViews'), value: '—', trend: null },
-      { label: t('dashboard.visitsWeek'), value: '—', trend: null },
-      { label: t('dashboard.contactSubmissions'), value: '—', trend: null },
-      { label: t('dashboard.productsViewed'), value: '—', trend: null }
+      { label: t('dashboard.pageViews'), value: this.statsData.pageViews30d, trend: null },
+      { label: t('dashboard.visitsWeek'), value: this.statsData.visitsWeek, trend: null },
+      { label: t('dashboard.contactSubmissions'), value: this.statsData.contactSubmissions, trend: null },
+      { label: t('dashboard.productsViewed'), value: this.statsData.productsViewed, trend: null }
     ];
   }
 

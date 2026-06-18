@@ -1,0 +1,49 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main">
+    <div class="ro-page" style="display:flex;align-items:center;justify-content:center;min-height:80vh">
+      <div style="max-width:560px;width:100%;text-align:center">
+        <h1 class="ro-page__title">Analyze a Property</h1>
+        <p class="ro-page__subtitle" style="margin-bottom:2rem">Paste any listing URL from Zillow, Redfin, or Realtor.com</p>
+
+        <form (ngSubmit)="analyze()" style="text-align:left">
+          <label style="display:block;font-size:0.85rem;font-weight:500;color:var(--ro-text-secondary);margin-bottom:0.5rem">Listing URL</label>
+          <input
+            class="ro-input"
+            type="url"
+            placeholder="https://www.zillow.com/homedetails/..."
+            [(ngModel)]="url"
+            name="url"
+            required
+            style="margin-bottom:1rem"
+          />
+          <p *ngIf="error" style="color:var(--ro-danger);font-size:0.85rem;margin:0 0 1rem">{{ error }}</p>
+          <button class="ro-btn ro-btn--primary ro-btn--full" type="submit" [disabled]="loading" style="padding:0.85rem">
+            <span class="ro-spinner" *ngIf="loading" style="margin-right:0.5rem"></span>
+            {{ loading ? 'Analyzing...' : 'Analyze Property' }}
+          </button>
+        </form>
+
+        <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--ro-text-muted)">
+          Otis will scrape the listing data and generate a full AI-powered report in seconds.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>

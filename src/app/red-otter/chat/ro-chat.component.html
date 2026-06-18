@@ -1,0 +1,53 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main" style="display:flex;flex-direction:column">
+    <div style="flex:1;display:flex;flex-direction:column;max-width:800px;margin:0 auto;width:100%;padding:2rem">
+      <h1 class="ro-page__title">Chat with Otis</h1>
+      <p class="ro-page__subtitle" style="margin-bottom:1.5rem">Ask anything about real estate, your portfolio, or a specific property.</p>
+
+      <!-- Messages -->
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;min-height:200px">
+        <div *ngIf="messages.length === 0" class="ro-empty">
+          <div class="ro-empty__icon">💬</div>
+          <p class="ro-empty__text" style="margin-bottom:1rem">Start a conversation with Otis</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center">
+            <button *ngFor="let s of suggestions" class="ro-btn ro-btn--secondary" style="font-size:0.85rem" (click)="send(s)">{{ s }}</button>
+          </div>
+        </div>
+
+        <div *ngFor="let m of messages"
+          [style.align-self]="m.role === 'user' ? 'flex-end' : 'flex-start'"
+          [style.background]="m.role === 'user' ? 'var(--ro-accent)' : 'var(--ro-bg-warm)'"
+          [style.color]="m.role === 'user' ? '#fff' : 'var(--ro-text)'"
+          style="padding:0.75rem 1rem;border-radius:12px;max-width:80%;font-size:0.9rem;line-height:1.6"
+        >{{ m.content }}</div>
+
+        <div *ngIf="loading" style="align-self:flex-start;padding:0.75rem 1rem;background:var(--ro-bg-warm);border-radius:12px;color:var(--ro-text-muted);font-size:0.85rem">
+          Otis is thinking...
+        </div>
+      </div>
+
+      <!-- Input -->
+      <form (ngSubmit)="send()" style="display:flex;gap:0.5rem">
+        <input class="ro-input" placeholder="Ask Otis anything..." [(ngModel)]="input" name="chat" style="flex:1" />
+        <button class="ro-btn ro-btn--primary" type="submit" [disabled]="loading">Send</button>
+      </form>
+    </div>
+  </main>
+</div>

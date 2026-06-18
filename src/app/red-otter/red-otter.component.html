@@ -1,0 +1,113 @@
+<div class="ro">
+  <!-- Nav -->
+  <nav class="ro-nav">
+    <div class="ro-nav__inner">
+      <a routerLink="/red-otter" class="ro-nav__brand">Red Otter</a>
+      <div class="ro-nav__links">
+        <a href="/red-otter#features" class="ro-nav__link">Features</a>
+        <a href="/red-otter#pricing" class="ro-nav__link">Pricing</a>
+        <a routerLink="/red-otter/login" class="ro-nav__cta">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="ro-hero">
+    <img
+      class="ro-hero__bg"
+      src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&fit=crop"
+      alt="Modern home exterior at dusk"
+    />
+    <div class="ro-hero__overlay"></div>
+    <div class="ro-hero__gradient"></div>
+
+    <div class="ro-hero__content">
+      <p class="ro-hero__eyebrow">Smart Home Buying</p>
+      <h1 class="ro-hero__title">Stop guessing. <span>Start knowing.</span></h1>
+      <p class="ro-hero__subtitle">
+        Otis analyzes any real estate listing in seconds — uncovering true
+        costs, red flags, and negotiation leverage that Zillow never shows you.
+      </p>
+      <div class="ro-hero__actions">
+        <a routerLink="/red-otter/signup" class="ro-btn ro-btn--primary ro-btn--lg">Start Free Trial</a>
+        <a href="/red-otter#features" class="ro-btn ro-btn--secondary ro-btn--lg">See How It Works</a>
+      </div>
+      <p class="ro-hero__fine">14-day free trial · $24/mo after · Cancel anytime</p>
+    </div>
+
+    <div class="ro-hero__badges">
+      <div class="ro-badge" *ngFor="let b of scoreBadges">
+        <span class="ro-badge__score" [style.background]="b.color">{{ b.score }}</span>
+        <span class="ro-badge__label">{{ b.label }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="ro-features">
+    <div class="ro-features__header">
+      <h2>Everything Zillow won't tell you</h2>
+      <p>Built for buyers who want the full picture before making the biggest purchase of their life.</p>
+    </div>
+
+    <div
+      class="ro-highlight"
+      *ngFor="let h of highlights; let i = index"
+      [class.ro-highlight--alt]="i % 2 !== 0"
+    >
+      <div class="ro-highlight__inner" [class.ro-highlight--reverse]="h.reverse">
+        <div class="ro-highlight__image-wrap">
+          <img [src]="h.image" [alt]="h.title" class="ro-highlight__image" />
+          <div class="ro-highlight__badge">
+            <span class="ro-badge__score" [style.background]="getBadgeColor(h.badge.score)">{{ h.badge.score }}</span>
+            <span class="ro-badge__label" [style.color]="getBadgeColor(h.badge.score)">{{ h.badge.label }}</span>
+          </div>
+        </div>
+        <div class="ro-highlight__text">
+          <p class="ro-highlight__subtitle">{{ h.subtitle }}</p>
+          <h3>{{ h.title }}</h3>
+          <p class="ro-highlight__desc">{{ h.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ro-more-features">
+      <article class="ro-feature-card" *ngFor="let f of moreFeatures">
+        <div class="ro-feature-card__icon">{{ f.icon }}</div>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="ro-pricing">
+    <div class="ro-pricing__header">
+      <h2>Simple pricing</h2>
+      <p>Smarter than Zillow. Less than a pizza.</p>
+    </div>
+    <div class="ro-pricing__card">
+      <div class="ro-pricing__price">
+        <span class="ro-pricing__amount">$24</span>
+        <span class="ro-pricing__period">/mo</span>
+      </div>
+      <p class="ro-pricing__trial">After your 14-day free trial</p>
+      <ul class="ro-pricing__list">
+        <li *ngFor="let f of pricingFeatures">
+          <span class="ro-pricing__check">✓</span>
+          {{ f }}
+        </li>
+      </ul>
+      <a routerLink="/red-otter/signup" class="ro-btn ro-btn--primary ro-btn--lg ro-btn--full">Start 14-Day Free Trial</a>
+      <p class="ro-pricing__fine">Credit card required. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="ro-footer">
+    <div class="ro-footer__inner">
+      <span class="ro-footer__brand">Red Otter</span>
+      <p>&copy; {{ currentYear }} Red Otter. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

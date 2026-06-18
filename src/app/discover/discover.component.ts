@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LocaleService } from '../locale.service';
 import { TranslatePipe } from '../translate.pipe';
+import { AnalyticsTrackerService } from '../analytics-tracker.service';
 
 @Component({
   selector: 'app-discover',
@@ -11,8 +12,13 @@ import { TranslatePipe } from '../translate.pipe';
   templateUrl: './discover.component.html',
   styleUrls: ['./discover.component.css']
 })
-export class DiscoverComponent {
+export class DiscoverComponent implements OnInit {
   private readonly locale = inject(LocaleService);
+  private readonly tracker = inject(AnalyticsTrackerService);
+
+  ngOnInit(): void {
+    this.tracker.trackProductView('/discover');
+  }
   private solutionsEn = [
     {
       image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',

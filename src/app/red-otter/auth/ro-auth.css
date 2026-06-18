@@ -1,0 +1,269 @@
+/* ─── Red Otter Auth Pages ─────────────────────────────────────── */
+:host {
+  display: block;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  --ro-bg: #FAFAF8;
+  --ro-bg-warm: #F5F4F0;
+  --ro-text: #1B1B18;
+  --ro-text-secondary: #52524E;
+  --ro-text-muted: #9C9C97;
+  --ro-accent: #15803D;
+  --ro-accent-hover: #166534;
+  --ro-border: #E5E5E2;
+  --ro-shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --ro-danger: #DC2626;
+  --ro-success: #15803D;
+}
+
+.ro-auth {
+  min-height: 100vh;
+  display: flex;
+  background: var(--ro-bg);
+}
+
+/* Left image panel */
+.ro-auth__image {
+  display: none;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ro-auth__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ro-auth__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.6));
+}
+
+.ro-auth__image-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+}
+
+.ro-auth__image-text {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  right: 3rem;
+}
+
+.ro-auth__image-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 400px;
+}
+
+.ro-auth__image-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ro-text);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ro-auth__image-card .accent {
+  color: var(--ro-accent);
+}
+
+.ro-auth__image-card p {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ro-text-secondary);
+  max-width: 360px;
+}
+
+/* Right form panel */
+.ro-auth__form-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.ro-auth__card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid var(--ro-border);
+  border-radius: 16px;
+  box-shadow: var(--ro-shadow-lg);
+  padding: 2rem;
+}
+
+.ro-auth__card h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ro-text);
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.ro-auth__subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ro-text-secondary);
+  margin: 0 0 2rem;
+}
+
+/* Google button */
+.ro-auth__google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #fff;
+  border: 1px solid var(--ro-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ro-text);
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 1rem;
+}
+
+.ro-auth__google:hover {
+  background: var(--ro-bg-warm);
+}
+
+/* Divider */
+.ro-auth__divider {
+  position: relative;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ro-auth__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ro-border);
+}
+
+.ro-auth__divider span {
+  position: relative;
+  background: #fff;
+  padding: 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--ro-text-muted);
+}
+
+/* Form fields */
+.ro-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ro-auth__input {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--ro-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--ro-text);
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.ro-auth__input::placeholder {
+  color: var(--ro-text-muted);
+}
+
+.ro-auth__input:focus {
+  outline: none;
+  border-color: var(--ro-accent);
+  box-shadow: 0 0 0 3px rgba(21,128,61,0.15);
+}
+
+/* Messages */
+.ro-auth__error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FEE2E2;
+  border: 1px solid #FECACA;
+  color: var(--ro-danger);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+.ro-auth__success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #DCFCE7;
+  border: 1px solid #BBF7D0;
+  color: var(--ro-success);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Submit button */
+.ro-auth__submit {
+  width: 100%;
+  background: var(--ro-accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ro-auth__submit:hover {
+  background: var(--ro-accent-hover);
+}
+
+.ro-auth__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Footer link */
+.ro-auth__footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ro-text-secondary);
+  margin: 1.5rem 0 0;
+}
+
+.ro-auth__footer a {
+  color: var(--ro-accent);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.ro-auth__footer a:hover {
+  color: var(--ro-accent-hover);
+}
+
+@media (min-width: 1024px) {
+  .ro-auth__image {
+    display: block;
+  }
+}

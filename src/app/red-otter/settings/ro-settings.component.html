@@ -1,0 +1,91 @@
+<div class="ro-layout">
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link" routerLink="/red-otter/dashboard"><span class="ro-sidebar__icon">📊</span> Overview</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze"><span class="ro-sidebar__icon">🔍</span> Analyze</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat"><span class="ro-sidebar__icon">💬</span> Chat</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports"><span class="ro-sidebar__icon">📋</span> Reports</a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare"><span class="ro-sidebar__icon">⚖️</span> Compare</a>
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/settings"><span class="ro-sidebar__icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ initials }}</div>
+      <div class="ro-sidebar__user"><div class="ro-sidebar__user-email">{{ user.email }}</div></div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="ro-main">
+    <div class="ro-page">
+      <h1 class="ro-page__title">Settings</h1>
+      <p class="ro-page__subtitle">Manage your account and preferences.</p>
+
+      <!-- Account Info -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Account</h2>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1rem;font-size:0.9rem;margin-top:0.75rem">
+          <span style="color:var(--ro-text-muted)">Email</span>
+          <span>{{ user.email }}</span>
+          <span style="color:var(--ro-text-muted)">Plan</span>
+          <span>Free Trial <span class="ro-badge-verdict ro-badge-verdict--green" style="margin-left:0.5rem">Active</span></span>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Profile</h2>
+        <form (ngSubmit)="saveProfile()" style="margin-top:0.75rem">
+          <label style="display:block;font-size:0.85rem;font-weight:500;color:var(--ro-text-secondary);margin-bottom:0.5rem">Display Name</label>
+          <div style="display:flex;gap:0.75rem">
+            <input class="ro-input" [(ngModel)]="profileName" name="name" style="flex:1" />
+            <button class="ro-btn ro-btn--primary" type="submit" [disabled]="profileSaving">
+              {{ profileSaving ? 'Saving...' : 'Save' }}
+            </button>
+          </div>
+          <p *ngIf="profileStatus" style="font-size:0.85rem;color:var(--ro-success);margin:0.5rem 0 0">{{ profileStatus }}</p>
+        </form>
+      </div>
+
+      <!-- Password -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Change Password</h2>
+        <form (ngSubmit)="changePassword()" style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;max-width:400px">
+          <input class="ro-input" type="password" placeholder="Current password" [(ngModel)]="currentPassword" name="current" required />
+          <input class="ro-input" type="password" placeholder="New password (8+ characters)" [(ngModel)]="newPassword" name="new" required minlength="8" />
+          <button class="ro-btn ro-btn--primary" type="submit" [disabled]="passwordSaving" style="align-self:flex-start">
+            {{ passwordSaving ? 'Changing...' : 'Change Password' }}
+          </button>
+          <p *ngIf="passwordStatus" style="font-size:0.85rem;color:var(--ro-success);margin:0">{{ passwordStatus }}</p>
+          <p *ngIf="passwordError" style="font-size:0.85rem;color:var(--ro-danger);margin:0">{{ passwordError }}</p>
+        </form>
+      </div>
+
+      <!-- Notifications -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Notifications</h2>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:1rem">
+          <label style="display:flex;align-items:center;gap:0.75rem;cursor:pointer">
+            <input type="checkbox" [(ngModel)]="emailReportReady" name="reportReady" style="width:18px;height:18px;accent-color:var(--ro-accent)" />
+            <span style="font-size:0.9rem">Email me when a report is ready</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.75rem;cursor:pointer">
+            <input type="checkbox" [(ngModel)]="emailWeeklyDigest" name="digest" style="width:18px;height:18px;accent-color:var(--ro-accent)" />
+            <span style="font-size:0.9rem">Weekly portfolio digest</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:0.75rem;cursor:pointer">
+            <input type="checkbox" [(ngModel)]="emailPriceAlerts" name="alerts" style="width:18px;height:18px;accent-color:var(--ro-accent)" />
+            <span style="font-size:0.9rem">Price change alerts on saved properties</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Billing -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Billing</h2>
+        <p style="font-size:0.9rem;color:var(--ro-text-secondary);margin:0.5rem 0 1rem">Manage your subscription and payment method.</p>
+        <button class="ro-btn ro-btn--secondary">Manage Billing</button>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,3 +1,4 @@
+<div class="dashboard-spacer"></div>
 <main class="dashboard" aria-label="Staff dashboard">
   <div class="dashboard__inner">
     <header class="dashboard__header">
@@ -13,7 +14,7 @@
           <span class="stat-card__value">{{ stat.value }}</span>
         </article>
       </div>
-      <p class="dashboard__hint">{{ 'dashboard.statsHint' | translate }}</p>
+      <p class="dashboard__hint" *ngIf="statsError">{{ statsError }}</p>
     </section>
 
     <section class="dashboard__section" aria-label="Business tools">

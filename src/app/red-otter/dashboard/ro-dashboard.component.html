@@ -1,0 +1,126 @@
+<div class="ro-layout">
+  <!-- Sidebar -->
+  <aside class="ro-sidebar">
+    <a class="ro-sidebar__brand" routerLink="/red-otter">Red Otter</a>
+    <nav class="ro-sidebar__nav">
+      <a class="ro-sidebar__link ro-sidebar__link--active" routerLink="/red-otter/dashboard">
+        <span class="ro-sidebar__icon">📊</span> Overview
+      </a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/analyze">
+        <span class="ro-sidebar__icon">🔍</span> Analyze
+      </a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/chat">
+        <span class="ro-sidebar__icon">💬</span> Chat
+      </a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/reports">
+        <span class="ro-sidebar__icon">📋</span> Reports
+      </a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/compare">
+        <span class="ro-sidebar__icon">⚖️</span> Compare
+      </a>
+      <a class="ro-sidebar__link" routerLink="/red-otter/settings">
+        <span class="ro-sidebar__icon">⚙️</span> Settings
+      </a>
+    </nav>
+    <div class="ro-sidebar__footer">
+      <div class="ro-sidebar__avatar">{{ user.initials }}</div>
+      <div class="ro-sidebar__user">
+        <div class="ro-sidebar__user-email">{{ user.email }}</div>
+      </div>
+      <button class="ro-sidebar__signout" (click)="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="ro-main">
+    <div class="ro-page">
+      <h1 class="ro-page__title">{{ greeting }}, {{ user.name || 'there' }}</h1>
+      <p class="ro-page__subtitle">Here's your property overview.</p>
+
+      <!-- Stats -->
+      <div class="ro-stats">
+        <div class="ro-stat">
+          <div class="ro-stat__label">Total Analyses</div>
+          <div class="ro-stat__value">{{ reports.length }}</div>
+        </div>
+        <div class="ro-stat">
+          <div class="ro-stat__label">Tracked Properties</div>
+          <div class="ro-stat__value">{{ savedReports.length }}</div>
+        </div>
+        <div class="ro-stat">
+          <div class="ro-stat__label">Avg Otis Score</div>
+          <div class="ro-stat__value">{{ avgScore }}</div>
+        </div>
+        <div class="ro-stat">
+          <div class="ro-stat__label">Best Deal Found</div>
+          <div class="ro-stat__value">{{ bestDeal ? bestDeal.analysis.otisScore : '—' }}</div>
+        </div>
+      </div>
+
+      <!-- Quick Analyze -->
+      <div class="ro-card">
+        <h2 class="ro-card__title">Quick Analyze</h2>
+        <form (ngSubmit)="quickAnalyze()" style="display:flex;gap:0.75rem;align-items:flex-start;margin-top:0.75rem">
+          <input
+            class="ro-input"
+            type="url"
+            placeholder="Paste a Zillow, Redfin, or Realtor.com URL..."
+            [(ngModel)]="analyzeUrl"
+            name="url"
+            required
+            style="flex:1"
+          />
+          <button class="ro-btn ro-btn--primary" type="submit" [disabled]="analyzing">
+            <span class="ro-spinner" *ngIf="analyzing" style="margin-right:0.5rem"></span>
+            {{ analyzing ? 'Analyzing...' : 'Analyze' }}
+          </button>
+        </form>
+        <p *ngIf="analyzeError" style="color:var(--ro-danger);font-size:0.85rem;margin:0.5rem 0 0">{{ analyzeError }}</p>
+      </div>
+
+      <!-- Recent Analyses -->
+      <div class="ro-card" *ngIf="!loading">
+        <div class="ro-card__header">
+          <h2 class="ro-card__title">Recent Analyses</h2>
+          <a routerLink="/red-otter/reports" class="ro-btn ro-btn--ghost" style="font-size:0.85rem">View all</a>
+        </div>
+
+        <div *ngIf="reports.length === 0" class="ro-empty">
+          <div class="ro-empty__icon">🏠</div>
+          <p class="ro-empty__text">No analyses yet. Paste a listing URL above to get started.</p>
+        </div>
+
+        <table class="ro-table" *ngIf="reports.length > 0">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Score</th>
+              <th>Price</th>
+              <th>Verdict</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of reports | slice:0:5">
+              <td><a [routerLink]="['/red-otter/report', r.id]" style="color:var(--ro-accent);text-decoration:none">{{ r.address }}</a></td>
+              <td><span class="ro-badge-score" [class]="scoreClass(r.analysis.otisScore)">{{ r.analysis.otisScore }}</span></td>
+              <td>{{ formatCurrency(r.price) }}</td>
+              <td>
+                <span class="ro-badge-verdict"
+                  [class.ro-badge-verdict--green]="r.analysis.otisScore >= 70"
+                  [class.ro-badge-verdict--amber]="r.analysis.otisScore >= 40 && r.analysis.otisScore < 70"
+                  [class.ro-badge-verdict--red]="r.analysis.otisScore < 40"
+                >{{ r.analysis.verdict }}</span>
+              </td>
+              <td style="color:var(--ro-text-muted)">{{ r.createdAt | date:'MMM d' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="loading" style="text-align:center;padding:3rem">
+        <span class="ro-spinner" style="width:32px;height:32px"></span>
+      </div>
+    </div>
+  </main>
+</div>

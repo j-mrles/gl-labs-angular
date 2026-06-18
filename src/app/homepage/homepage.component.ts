@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { CONTACT_FORM_ENDPOINT } from '../contact.config';
 import { LocaleService } from '../locale.service';
 import { TranslatePipe } from '../translate.pipe';
+import { AnalyticsTrackerService } from '../analytics-tracker.service';
 import {
   trigger,
   style,
@@ -47,6 +48,7 @@ import {
 })
 export class HomepageComponent implements OnInit, OnDestroy {
   private readonly locale = inject(LocaleService);
+  private readonly tracker = inject(AnalyticsTrackerService);
   bannerVisible = true;
   bgLoaded = false;
   readonly heroBackgroundUrl =
@@ -169,6 +171,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
       this.contactMessage = '';
       this.contactWebsite = '';
       this.contactStatus = 'Sent. Thank you!';
+      this.tracker.trackContactSubmission();
     } catch {
       this.contactStatus = 'Unable to send right now. Please try again.';
     } finally {

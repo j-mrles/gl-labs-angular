@@ -1,0 +1,60 @@
+<div class="ro-auth">
+  <!-- Left image -->
+  <div class="ro-auth__image">
+    <img
+      src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80&fit=crop"
+      alt="Beautiful home with green lawn"
+    />
+    <div class="ro-auth__image-overlay"></div>
+    <div class="ro-auth__image-dark"></div>
+    <div class="ro-auth__image-text">
+      <div class="ro-auth__image-card">
+        <h2>Find your next home<br/><span class="accent">with confidence.</span></h2>
+        <p>AI-powered analysis on every listing. Know the true cost, spot red flags, and negotiate better.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right form -->
+  <div class="ro-auth__form-wrap">
+    <div class="ro-auth__card">
+      <h1>Welcome back</h1>
+      <p class="ro-auth__subtitle">Log in to your Red Otter account</p>
+
+      <form class="ro-auth__form" (ngSubmit)="handleSubmit()">
+        <input
+          class="ro-auth__input"
+          type="email"
+          placeholder="Email"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+        <input
+          class="ro-auth__input"
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        />
+
+        <div class="ro-auth__success" *ngIf="success">
+          <span>✓</span> Login successful! Redirecting...
+        </div>
+
+        <div class="ro-auth__error" *ngIf="error">
+          <span>✕</span> {{ error }}
+        </div>
+
+        <button class="ro-auth__submit" type="submit" [disabled]="loading">
+          {{ loading ? 'Logging in...' : 'Log in' }}
+        </button>
+      </form>
+
+      <p class="ro-auth__footer">
+        Don't have an account? <a routerLink="/red-otter/signup">Start free trial</a>
+      </p>
+    </div>
+  </div>
+</div>
