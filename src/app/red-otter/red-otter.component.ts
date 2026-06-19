@@ -74,4 +74,8 @@ export class RedOtterComponent implements OnInit {
   }
 
   currentYear = new Date().getFullYear();
+
+  scrollTo(id: string): void {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
 }

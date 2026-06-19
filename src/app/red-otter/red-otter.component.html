@@ -4,8 +4,8 @@
     <div class="ro-nav__inner">
       <a routerLink="/red-otter" class="ro-nav__brand">Red Otter</a>
       <div class="ro-nav__links">
-        <a href="/red-otter#features" class="ro-nav__link">Features</a>
-        <a href="/red-otter#pricing" class="ro-nav__link">Pricing</a>
+        <a (click)="scrollTo('features')" class="ro-nav__link" style="cursor:pointer">Features</a>
+        <a (click)="scrollTo('pricing')" class="ro-nav__link" style="cursor:pointer">Pricing</a>
         <a routerLink="/red-otter/login" class="ro-nav__cta">Login</a>
       </div>
     </div>
@@ -30,7 +30,7 @@
       </p>
       <div class="ro-hero__actions">
         <a routerLink="/red-otter/signup" class="ro-btn ro-btn--primary ro-btn--lg">Start Free Trial</a>
-        <a href="/red-otter#features" class="ro-btn ro-btn--secondary ro-btn--lg">See How It Works</a>
+        <a (click)="scrollTo('features')" class="ro-btn ro-btn--secondary ro-btn--lg" style="cursor:pointer">See How It Works</a>
       </div>
       <p class="ro-hero__fine">14-day free trial · $24/mo after · Cancel anytime</p>
     </div>
