@@ -1,7 +1,7 @@
 <!-- Announcement (Tesla-style: simple, minimal) -->
 <div class="announcement" [@fadeIn] *ngIf="bannerVisible">
   <div class="announcement__inner">
-    <span class="announcement__text">{{ 'home.announcement' | translate }}</span>
+    <span class="announcement__text">{{ announcement }}</span>
     <button class="announcement__close" (click)="dismissBanner()" aria-label="Close announcement">×</button>
   </div>
 </div>
@@ -19,8 +19,20 @@
       </div>
 
       <div class="panel__actions" aria-label="Primary actions">
-        <a class="btn btn--primary" routerLink="/discover">Explore services</a>
-        <a class="btn btn--secondary" routerLink="/our-products">View products</a>
+        <a class="btn btn--primary" routerLink="/services">Explore services</a>
+        <a class="btn btn--secondary" routerLink="/products">View products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="panel panel--stats" aria-label="Stats">
+    <div class="panel__inner">
+      <div class="stats-bar">
+        <div class="stat" *ngFor="let s of stats">
+          <span class="stat__number">{{ s.value }}</span>
+          <span class="stat__label">{{ s.label }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -70,46 +82,59 @@
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">{{ 'home.seeWhatWeBuild' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/services">{{ 'home.seeWhatWeBuild' | translate }}</a>
         <a class="btn btn--secondary" routerLink="/about-us">{{ 'home.howWeWork' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT SPOTLIGHT -->
+  <!-- PRODUCTS -->
   <section
     class="panel panel--dark"
-    style="--panel-bg: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2400&q=70');"
-    aria-label="StockBoss spotlight"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Products"
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>{{ 'home.stockbossSpotlight' | translate }}</h2>
-        <p>{{ 'home.stockbossSubtitle' | translate }}</p>
+        <h2>{{ 'home.productsTitle' | translate }}</h2>
+        <p>{{ 'home.productsSubtitle' | translate }}</p>
+      </div>
+
+      <div class="product-cards">
+        <a class="product-card" *ngFor="let p of productCards" [routerLink]="p.link">
+          <div class="product-card__image" [style.background-image]="'url(' + p.image + ')'"></div>
+          <div class="product-card__body">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.description }}</p>
+          </div>
+        </a>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/our-products">{{ 'home.learnMore' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/" fragment="contact">{{ 'home.requestBuild' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/products">{{ 'home.viewAllProducts' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <!-- RED OTTER SPOTLIGHT -->
+  <!-- TESTIMONIAL -->
   <section
     class="panel panel--dark"
-    style="--panel-bg: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=2400&q=70');"
-    aria-label="Red Otter spotlight"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Testimonial"
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h2>{{ 'home.redOtterSpotlight' | translate }}</h2>
-        <p>{{ 'home.redOtterSubtitle' | translate }}</p>
+        <blockquote class="testimonial">
+          <p class="testimonial__text">"{{ 'home.testimonialQuote' | translate }}"</p>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">{{ 'home.testimonialName' | translate }}</span>
+            <span class="testimonial__role">{{ 'home.testimonialRole' | translate }}</span>
+          </footer>
+        </blockquote>
       </div>
-
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/our-products">{{ 'home.learnMore' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/" fragment="contact">{{ 'home.requestBuild' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'home.startProject' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/about-us">{{ 'home.howWeWork' | translate }}</a>
       </div>
     </div>
   </section>
@@ -152,7 +177,7 @@
             <span class="btn__spinner" *ngIf="contactSending" aria-hidden="true"></span>
             {{ contactSending ? ('home.sending' | translate) : ('home.send' | translate) }}
           </button>
-          <a class="btn btn--secondary" routerLink="/discover">{{ 'home.startWithServices' | translate }}</a>
+          <a class="btn btn--secondary" routerLink="/services">{{ 'home.startWithServices' | translate }}</a>
         </div>
 
         <div class="contact-status" *ngIf="contactStatus">{{ contactStatus }}</div>

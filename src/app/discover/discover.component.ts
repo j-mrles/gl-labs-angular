@@ -135,14 +135,14 @@ export class DiscoverComponent implements OnInit {
   ];
   
   caseStudiesEn = [
-    { project: 'Coastal Garden Designs', summary: 'Custom website and online presence for a landscape design business, showcasing beautiful coastal garden projects and increasing client inquiries by 40%.', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
-    { project: 'Little Bee\'s Creations', summary: 'E-commerce platform for handmade crafts and custom creations, featuring an intuitive shopping experience that boosted online sales by 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
-    { project: 'Gum-Gum Cards (Linktree)', summary: 'Custom Linktree-style landing page solution connecting customers to multiple product offerings and social media channels, simplifying the customer journey.', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
+    { project: 'Coastal Garden Designs', summary: 'Custom website and online presence for a landscape design business, showcasing beautiful coastal garden projects.', stat: '+40% inquiries', image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
+    { project: 'Little Bee\'s Creations', summary: 'E-commerce platform for handmade crafts and custom creations, featuring an intuitive shopping experience.', stat: '+60% sales', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
+    { project: 'Gum-Gum Cards', summary: 'Custom Linktree-style landing page connecting customers to products and social channels.', stat: 'Simplified journey', image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
   ];
   caseStudiesEs = [
-    { project: 'Coastal Garden Designs', summary: 'Sitio web y presencia online para negocio de diseño de paisajes, con proyectos costeros y 40% más consultas.', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
-    { project: 'Little Bee\'s Creations', summary: 'Plataforma e-commerce para artesanías, con experiencia de compra que aumentó ventas un 60%.', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
-    { project: 'Gum-Gum Cards (Linktree)', summary: 'Landing tipo Linktree conectando clientes con productos y redes, simplificando el recorrido.', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
+    { project: 'Coastal Garden Designs', summary: 'Sitio web y presencia online para negocio de diseño de paisajes costeros.', stat: '+40% consultas', image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/coastal-garden-designs/homepage/index.html' },
+    { project: 'Little Bee\'s Creations', summary: 'Plataforma e-commerce para artesanías con experiencia de compra intuitiva.', stat: '+60% ventas', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/littlebee%27s-creations/home/index.html' },
+    { project: 'Gum-Gum Cards', summary: 'Landing tipo Linktree conectando clientes con productos y redes sociales.', stat: 'Recorrido simplificado', image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=500&fit=crop', link: 'https://j-mrles.github.io/LinkTree/gumgum/gumgum/home.html' }
   ];
   get caseStudies() { return this.locale.currentLang() === 'es' ? this.caseStudiesEs : this.caseStudiesEn; }
 }

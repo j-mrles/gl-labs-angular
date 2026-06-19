@@ -36,7 +36,7 @@ export const routes: Routes = [
     loadComponent: () => import('./staff-settings/staff-settings.component').then(m => m.StaffSettingsComponent)
   },
   {
-    path: 'discover',
+    path: 'services',
     loadComponent: () => import('./discover/discover.component').then(m => m.DiscoverComponent)
   },
   {
@@ -44,7 +44,7 @@ export const routes: Routes = [
     loadComponent: () => import('./about-us/about-us.component').then(m => m.AboutUsComponent)
   },
   {
-    path: 'our-products',
+    path: 'products',
     loadComponent: () => import('./our-products/our-products.component').then(m => m.OurProductsComponent)
   },
   {

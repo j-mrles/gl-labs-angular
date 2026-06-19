@@ -50,9 +50,17 @@ export class HomepageComponent implements OnInit, OnDestroy {
   private readonly locale = inject(LocaleService);
   private readonly tracker = inject(AnalyticsTrackerService);
   bannerVisible = true;
+
+  get announcement(): string {
+    const q = Math.ceil((new Date().getMonth() + 1) / 3);
+    const lang = this.locale.currentLang();
+    return lang === 'es'
+      ? `Reservando builds Q${q} — sitios web, apps e integraciones con IA.`
+      : `Now booking Q${q} builds — websites, apps, and AI integrations.`;
+  }
   bgLoaded = false;
   readonly heroBackgroundUrl =
-    'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=2400&q=70';
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2400&q=70';
   readonly heroBackgroundCss = `url('${this.heroBackgroundUrl}')`;
   contactName = '';
   contactEmail = '';
@@ -70,6 +78,28 @@ export class HomepageComponent implements OnInit, OnDestroy {
       { title: t('home.slideAI'), items: [t('home.slideAI1'), t('home.slideAI2'), t('home.slideAI3')] },
     ];
   }
+  stats = [
+    { value: '50+', label: 'Projects Shipped' },
+    { value: '12', label: 'Industries' },
+    { value: '99%', label: 'Client Retention' },
+    { value: '24h', label: 'Response Time' }
+  ];
+
+  productCards = [
+    {
+      name: 'StockBoss',
+      description: 'Inventory one-stop shop for small business — products, stock, and sales in one dashboard.',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=60',
+      link: '/services'
+    },
+    {
+      name: 'Red Otter',
+      description: 'AI-powered real estate analysis — paste a listing URL and get an instant Otis Score and full report.',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=60',
+      link: '/red-otter'
+    }
+  ];
+
   activeServiceIndex = 0;
   private servicesTimer: number | null = null;
 

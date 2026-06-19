@@ -23,6 +23,35 @@ body {
 
 html {
   scroll-padding-top: calc(var(--nav-height) + var(--safe-top));
+  color-scheme: dark;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Webkit scrollbar — auto-hide, only visible while scrolling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Hide scrollbar when not scrolling (macOS-style) */
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-y: overlay;
 }
 body {
   margin: 0;

@@ -1,22 +1,28 @@
 <main class="tesla-page">
+  <!-- HERO -->
   <section
     class="panel panel--hero"
-    style="--panel-bg: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=2400&q=70');"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=2400&q=70');"
     aria-label="Products hero"
   >
     <div class="panel__inner">
       <div class="panel__top">
-        <h1>Products</h1>
-        <p>Focused tools built for real workflows — simple, fast, and production-ready.</p>
+        <h1>{{ 'products.title' | translate }}</h1>
+        <p>{{ 'products.heroSubtitle' | translate }}</p>
       </div>
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">Services</a>
-        <a class="btn btn--secondary" routerLink="/" fragment="contact">Request a demo</a>
+        <a class="btn btn--primary" routerLink="/services">{{ 'products.services' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/" fragment="contact">{{ 'products.requestDemo' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <section class="panel panel--dark" aria-label="Product list">
+  <!-- FEATURED PRODUCTS -->
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Product list"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'products.featured' | translate }}</h2>
@@ -31,12 +37,75 @@
             <p>{{ product.description }}</p>
 
             <div class="product__actions">
-              <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('http')" [href]="product.link" target="_blank" rel="noopener noreferrer">Learn more</a>
-              <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('/')" [routerLink]="product.link">Learn more</a>
-              <a class="btn btn--secondary btn--small" routerLink="/" fragment="contact">Request demo</a>
+              <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('http')" [href]="product.link" target="_blank" rel="noopener noreferrer">{{ 'products.learnMore' | translate }}</a>
+              <a class="btn btn--primary btn--small" *ngIf="product.link.startsWith('/')" [routerLink]="product.link">{{ 'products.learnMore' | translate }}</a>
+              <a class="btn btn--secondary btn--small" routerLink="/" fragment="contact">{{ 'products.requestDemoSmall' | translate }}</a>
             </div>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE BUILD -->
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="How we build"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>{{ 'products.howWeBuild' | translate }}</h2>
+        <p>{{ 'products.howWeBuildSubtitle' | translate }}</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step" *ngFor="let step of processSteps; let i = index">
+          <span class="process-step__number">{{ i + 1 }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'products.startBuilding' | translate }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Tech stack"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>{{ 'products.builtWith' | translate }}</h2>
+        <p>{{ 'products.builtWithSubtitle' | translate }}</p>
+      </div>
+
+      <div class="tech-tags">
+        <span class="tech-tag" *ngFor="let t of techStack">{{ t }}</span>
+      </div>
+
+      <div class="panel__actions">
+        <a class="btn btn--primary" routerLink="/services">{{ 'products.services' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/about-us">{{ 'products.aboutUs' | translate }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Call to action"
+  >
+    <div class="panel__inner">
+      <div class="panel__top">
+        <h2>{{ 'products.ctaTitle' | translate }}</h2>
+        <p>{{ 'products.ctaSubtitle' | translate }}</p>
       </div>
 
       <div class="panel__actions">
@@ -46,4 +115,3 @@
     </div>
   </section>
 </main>
-  

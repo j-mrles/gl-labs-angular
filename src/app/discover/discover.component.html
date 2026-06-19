@@ -13,13 +13,17 @@
 
       <div class="panel__actions" aria-label="Primary actions">
         <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'discover.getQuote' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/our-products">{{ 'discover.viewProducts' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/products">{{ 'discover.viewProducts' | translate }}</a>
       </div>
     </div>
   </section>
 
   <!-- WHAT WE BUILD -->
-  <section class="panel panel--dark" aria-label="What we build">
+  <section
+    class="panel panel--dark"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="What we build"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'discover.whatWeBuild' | translate }}</h2>
@@ -67,13 +71,17 @@
 
       <div class="panel__actions">
         <a class="btn btn--primary" routerLink="/" fragment="contact">Schedule a consult</a>
-        <a class="btn btn--secondary" routerLink="/our-products">See products</a>
+        <a class="btn btn--secondary" routerLink="/products">See products</a>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDIES -->
-  <section class="panel panel--light" aria-label="Case studies">
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Case studies"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'discover.caseStudies' | translate }}</h2>
@@ -82,9 +90,14 @@
 
       <div class="work" aria-label="Case study list">
         <a class="work-card" *ngFor="let caseItem of caseStudies" [href]="caseItem.link" target="_blank" rel="noopener noreferrer">
-          <div class="work-card__title">{{ caseItem.project }}</div>
-          <div class="work-card__text">{{ caseItem.summary }}</div>
-          <div class="work-card__cta">View project</div>
+          <div class="work-card__image" [style.background-image]="'url(' + caseItem.image + ')'">
+            <span class="work-card__stat">{{ caseItem.stat }}</span>
+          </div>
+          <div class="work-card__body">
+            <div class="work-card__title">{{ caseItem.project }}</div>
+            <div class="work-card__text">{{ caseItem.summary }}</div>
+            <div class="work-card__cta">{{ 'discover.viewProject' | translate }} →</div>
+          </div>
         </a>
       </div>
 

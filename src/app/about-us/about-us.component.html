@@ -10,13 +10,17 @@
         <p>{{ 'about.heroSubtitle' | translate }}</p>
       </div>
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/our-products">{{ 'nav.products' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/services">{{ 'nav.services' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/products">{{ 'nav.products' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <section class="panel panel--dark" aria-label="From Durham">
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1587502624372-45609a37f4ba?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="From Durham"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'about.fromDurham' | translate }}</h2>
@@ -30,7 +34,11 @@
     </div>
   </section>
 
-  <section class="panel panel--dark" aria-label="Mission">
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Mission"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'about.howWeWork' | translate }}</h2>
@@ -45,7 +53,7 @@
 
       <div class="panel__actions">
         <a class="btn btn--primary" routerLink="/" fragment="contact">{{ 'about.startProject' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/services">{{ 'nav.services' | translate }}</a>
       </div>
     </div>
   </section>
@@ -77,31 +85,43 @@
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/discover">{{ 'about.seeCapabilities' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/services">{{ 'about.seeCapabilities' | translate }}</a>
         <a class="btn btn--secondary" routerLink="/" fragment="contact">{{ 'footer.contact' | translate }}</a>
       </div>
     </div>
   </section>
 
-  <section class="panel panel--light" aria-label="Stack">
+  <section
+    class="panel"
+    style="--panel-bg: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=70');"
+    aria-label="Stack"
+  >
     <div class="panel__inner">
       <div class="panel__top">
         <h2>{{ 'about.trustedStack' | translate }}</h2>
         <p>{{ 'about.trustedStackText' | translate }}</p>
       </div>
 
-      <div class="logos" aria-label="Partner logos">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" loading="lazy" decoding="async" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" loading="lazy" decoding="async" />
-        <img src="https://cdn.worldvectorlogo.com/logos/shopify-2.svg" alt="Shopify" loading="lazy" decoding="async" />
-        <img src="https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" alt="Salesforce" loading="lazy" decoding="async" />
-        <img src="https://cdn.worldvectorlogo.com/logos/stripe-4.svg" alt="Stripe" loading="lazy" decoding="async" />
+      <div class="tech-tags" aria-label="Technologies">
+        <span class="tech-tag">Angular</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">.NET</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">AWS</span>
+        <span class="tech-tag">Azure</span>
+        <span class="tech-tag">Google Cloud</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Stripe</span>
+        <span class="tech-tag">Shopify</span>
       </div>
 
       <div class="panel__actions">
-        <a class="btn btn--primary" routerLink="/our-products">{{ 'about.viewProducts' | translate }}</a>
-        <a class="btn btn--secondary" routerLink="/discover">{{ 'nav.services' | translate }}</a>
+        <a class="btn btn--primary" routerLink="/products">{{ 'about.viewProducts' | translate }}</a>
+        <a class="btn btn--secondary" routerLink="/services">{{ 'nav.services' | translate }}</a>
       </div>
     </div>
   </section>

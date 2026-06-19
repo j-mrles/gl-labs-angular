@@ -82,6 +82,11 @@
   border-bottom-color: rgba(255, 255, 255, 0.55);
 }
 
+.nav__links a.nav__link--active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
 /* Hamburger menu icon — visible on mobile only */
 .hamburger {
   display: none;
