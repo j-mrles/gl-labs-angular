@@ -3,7 +3,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "dist/gl-labs-angular/browser", 
+    "public": "dist/galaxylabs/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

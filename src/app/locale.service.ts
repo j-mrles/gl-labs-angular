@@ -1,7 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { TRANSLATIONS, Lang } from './translations';
 
-const STORAGE_KEY = 'galaxylabs_lang';
+const STORAGE_KEY = 'GalaxyLabs_lang';
 
 @Injectable({ providedIn: 'root' })
 export class LocaleService {

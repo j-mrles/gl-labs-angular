@@ -17,7 +17,7 @@ import { AnalyticsTrackerService } from './analytics-tracker.service';
   }
 })
 export class AppComponent implements OnInit {
-  title = 'galaxylabs';
+  title = 'GalaxyLabs';
   isRedOtter = false;
   private readonly tracker = inject(AnalyticsTrackerService);
   private readonly router = inject(Router);
